@@ -19,7 +19,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="/assets/o-nas-strona-glowna-1200.webp" imagesrcset="/assets/o-nas-strona-glowna-640.webp 640w, /assets/o-nas-strona-glowna-1200.webp 1200w" imagesizes="(max-width: 768px) 100vw, 50vw" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/hero-glowne-zdjecie-strony.webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css">
@@ -103,7 +103,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <img src="/assets/o-nas-strona-glowna-1200.webp" srcset="/assets/o-nas-strona-glowna-640.webp 640w, /assets/o-nas-strona-glowna-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw" alt="Rodzinny warsztat szwalniczy ISABELL w Ząbkach - 36 lat tradycji" loading="eager" fetchpriority="high" width="1200" height="805" decoding="async">
+        <img src="/assets/hero-glowne-zdjecie-strony.webp" alt="Zakład krawiecki ISABELL - warsztat szwalniczy w Ząbkach" loading="eager" fetchpriority="high" width="1200" height="800" decoding="async">
         <div class="visual-label">Zakład krawiecki ISABELL</div>
       </div>
     </div>
@@ -532,7 +532,7 @@
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
       hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
-      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      document.documentElement.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
     });
 
     // Close mobile menu on link click
@@ -540,7 +540,7 @@
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+        document.documentElement.classList.remove('menu-open');
       });
     });
 

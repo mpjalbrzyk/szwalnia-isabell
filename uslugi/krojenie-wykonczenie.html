@@ -494,7 +494,7 @@
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
       hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
-      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      document.documentElement.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
     });
 
     // Close mobile menu on link click
@@ -502,7 +502,7 @@
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+        document.documentElement.classList.remove('menu-open');
       });
     });
 

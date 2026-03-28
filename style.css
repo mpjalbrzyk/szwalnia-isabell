@@ -56,6 +56,18 @@ ul { list-style: none; }
   display: flex;
   justify-content: center;
 }
+/* Lock scroll & fix navbar when mobile menu is open */
+html.menu-open,
+html.menu-open body {
+  overflow: hidden;
+  height: 100%;
+}
+html.menu-open .navbar-wrapper {
+  position: fixed;
+  top: 8px;
+  left: 0;
+  right: 0;
+}
 .navbar {
   background: rgba(17, 18, 22, 0.95);
   backdrop-filter: blur(10px);
