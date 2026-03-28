@@ -67,6 +67,7 @@ html.menu-open .navbar-wrapper {
   top: 8px;
   left: 0;
   right: 0;
+  z-index: 210;
 }
 .navbar {
   background: rgba(17, 18, 22, 0.95);
@@ -199,34 +200,37 @@ html.menu-open .navbar-wrapper {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background: rgba(17, 18, 22, 0.98);
-  backdrop-filter: blur(20px);
-  z-index: 105;
+  height: 100dvh;
+  background: rgb(17, 18, 22);
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 80px 20px 40px;
+  box-sizing: border-box;
 }
 .mobile-menu.active { opacity: 1; pointer-events: all; }
-.mobile-menu ul { text-align: center; display: flex; flex-direction: column; gap: 32px; list-style: none; }
+.mobile-menu ul { text-align: center; display: flex; flex-direction: column; gap: 20px; list-style: none; width: 100%; }
 .mobile-menu a {
   color: #FFF;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   transition: color 0.2s;
 }
 .mobile-menu a:hover { color: var(--accent); }
-.mobile-menu .btn-nav { font-size: 1.1rem; padding: 14px 32px; }
+.mobile-menu .btn-nav { font-size: 1rem; padding: 12px 28px; }
 
 /* Mobile Dropdown */
 .mobile-dropdown-trigger {
   background: none;
   border: none;
   color: #FFF;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   font-family: 'DM Sans', sans-serif;
   cursor: pointer;
@@ -244,15 +248,15 @@ html.menu-open .navbar-wrapper {
 .mobile-dropdown-menu {
   display: none;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: 12px;
   padding: 0;
 }
 .mobile-dropdown.active .mobile-dropdown-menu {
   display: flex;
 }
 .mobile-dropdown-menu a {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #D1D5DB;
 }
 
