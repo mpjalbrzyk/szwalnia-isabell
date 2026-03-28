@@ -440,7 +440,7 @@ ul { list-style: none; }
   gap: 32px;
   text-align: center;
 }
-.trust-item h4 {
+.trust-item .trust-value {
   font-family: 'DM Serif Display', serif;
   font-size: 2rem;
   color: var(--accent);
@@ -570,7 +570,7 @@ ul { list-style: none; }
   margin-bottom: 6px;
   display: block;
 }
-.step-content h4 {
+.step-content h3 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -861,7 +861,7 @@ textarea.input-field {
   margin: 0 auto;
 }
 .footer-brand .logo { margin-bottom: 16px; display: inline-block; }
-.footer-brand p { font-size: 0.95rem; line-height: 1.6; max-width: 360px; }
+.footer-brand p { font-size: 0.95rem; line-height: 1.6; max-width: 360px; color: #D1D5DB; }
 .footer-col h4 {
   font-family: 'DM Serif Display', serif;
   font-size: 1.1rem;
@@ -888,7 +888,7 @@ textarea.input-field {
 }
 .footer-bottom p, .footer-bottom a {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #9CA3AF;
 }
 .footer-bottom a:hover { color: #FFF; }
 

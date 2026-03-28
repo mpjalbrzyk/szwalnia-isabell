@@ -19,7 +19,9 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/o-nas-strona-glowna-1200.webp" imagesrcset="/assets/o-nas-strona-glowna-640.webp 640w, /assets/o-nas-strona-glowna-1200.webp 1200w" imagesizes="(max-width: 768px) 100vw, 50vw" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css">
 
 <meta property="og:image" content="https://szwalnia-isabell.pl/assets/og-cover.png">
@@ -101,7 +103,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <img src="/assets/o-nas-strona-glowna.webp" alt="Rodzinny warsztat szwalniczy ISABELL w Ząbkach - 36 lat tradycji" loading="eager">
+        <img src="/assets/o-nas-strona-glowna-1200.webp" srcset="/assets/o-nas-strona-glowna-640.webp 640w, /assets/o-nas-strona-glowna-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw" alt="Rodzinny warsztat szwalniczy ISABELL w Ząbkach - 36 lat tradycji" loading="eager" fetchpriority="high" width="1200" height="805" decoding="async">
         <div class="visual-label">Zakład krawiecki ISABELL</div>
       </div>
     </div>
@@ -110,15 +112,15 @@
   <!-- SEKCJA 2: BENTO GALLERY -->
   <section class="bento-gallery">
     <div class="gallery-tile">
-      <img src="/assets/uslugi-szwalnia-isabell-hero.webp" alt="Proces krojenia i szycia odzieży w warsztacie ISABELL" loading="lazy">
+      <img src="/assets/uslugi-szwalnia-isabell-hero-800.webp" srcset="/assets/uslugi-szwalnia-isabell-hero-400.webp 400w, /assets/uslugi-szwalnia-isabell-hero-800.webp 800w" sizes="(max-width: 768px) 50vw, 33vw" alt="Proces krojenia i szycia odzieży w warsztacie ISABELL" loading="lazy" width="800" height="1072" decoding="async">
       <span class="tile-badge">Proces</span>
     </div>
     <div class="gallery-tile">
-      <img src="/assets/szycie-dla-marek-odziezowych-szwalnia.webp" alt="Realizacje szwalnicze - odzież damska" loading="lazy">
+      <img src="/assets/szycie-dla-marek-odziezowych-szwalnia.webp" srcset="/assets/szycie-dla-marek-odziezowych-szwalnia-400.webp 400w, /assets/szycie-dla-marek-odziezowych-szwalnia.webp 800w" sizes="(max-width: 768px) 50vw, 33vw" alt="Realizacje szwalnicze - odzież damska" loading="lazy" width="800" height="600" decoding="async">
       <span class="tile-badge">Realizacje</span>
     </div>
     <div class="gallery-tile">
-      <img src="/assets/detale.webp" alt="Detale krawiectwa - precyzyjne szwy i wykończenia w Szwalni ISABELL" loading="lazy">
+      <img src="/assets/detale.webp" alt="Detale krawiectwa - precyzyjne szwy i wykończenia w Szwalni ISABELL" loading="lazy" width="720" height="720" decoding="async">
       <span class="tile-badge">Detale</span>
     </div>
   </section>
@@ -127,19 +129,19 @@
   <section class="trust-bar">
     <div class="trust-grid">
       <div class="trust-item">
-        <h4>36 lat</h4>
+        <p class="trust-value">36 lat</p>
         <p>doświadczenia w branży</p>
       </div>
       <div class="trust-item">
-        <h4>3 pokolenia</h4>
+        <p class="trust-value">3 pokolenia</p>
         <p>rodzinnego rzemiosła</p>
       </div>
       <div class="trust-item">
-        <h4>4,9 / 5,0</h4>
+        <p class="trust-value">4,9 / 5,0</p>
         <p>opinie naszych klientów</p>
       </div>
       <div class="trust-item">
-        <h4>Ząbki</h4>
+        <p class="trust-value">Ząbki</p>
         <p>15 min od centrum Warszawy</p>
       </div>
     </div>
@@ -155,7 +157,7 @@
     <div class="services-grid">
       <div class="service-card">
         <div class="service-img">
-          <img src="/assets/szycie-dla-marek-odziezowych-szwalnia.webp" alt="Szycie odzieży damskiej dla marek odzieżowych - żakiety i kurtki" loading="lazy">
+          <img src="/assets/szycie-dla-marek-odziezowych-szwalnia.webp" srcset="/assets/szycie-dla-marek-odziezowych-szwalnia-400.webp 400w, /assets/szycie-dla-marek-odziezowych-szwalnia.webp 800w" sizes="(max-width: 768px) 100vw, 33vw" alt="Szycie odzieży damskiej dla marek odzieżowych - żakiety i kurtki" loading="lazy" width="800" height="600" decoding="async">
         </div>
         <div class="service-content">
           <h3>Szycie dla marek odzieżowych</h3>
@@ -165,7 +167,7 @@
       </div>
       <div class="service-card">
         <div class="service-img">
-          <img src="/assets/usluga-odziez-firmowa-szwalnia.webp" alt="Odzież firmowa na zamówienie - bluzy i koszulki z logo firmy" loading="lazy">
+          <img src="/assets/usluga-odziez-firmowa-szwalnia-800.webp" srcset="/assets/usluga-odziez-firmowa-szwalnia-400.webp 400w, /assets/usluga-odziez-firmowa-szwalnia-800.webp 800w" sizes="(max-width: 768px) 100vw, 33vw" alt="Odzież firmowa na zamówienie - bluzy i koszulki z logo firmy" loading="lazy" width="800" height="600" decoding="async">
         </div>
         <div class="service-content">
           <h3>Odzież firmowa na zamówienie</h3>
@@ -175,7 +177,7 @@
       </div>
       <div class="service-card">
         <div class="service-img">
-          <img src="/assets/usluga-krojenie-wykonczenie-szwalnia.webp" alt="Krojenie materiałów we własnej krojowni Szwalni ISABELL" loading="lazy">
+          <img src="/assets/usluga-krojenie-wykonczenie-szwalnia-800.webp" srcset="/assets/usluga-krojenie-wykonczenie-szwalnia-400.webp 400w, /assets/usluga-krojenie-wykonczenie-szwalnia-800.webp 800w" sizes="(max-width: 768px) 100vw, 33vw" alt="Krojenie materiałów we własnej krojowni Szwalni ISABELL" loading="lazy" width="800" height="600" decoding="async">
         </div>
         <div class="service-content">
           <h3>Krojenie i wykończenie</h3>
@@ -200,7 +202,7 @@
         </div>
         <div class="step-content">
           <span class="step-number">01</span>
-          <h4>Opisz swój projekt</h4>
+          <h3>Opisz swój projekt</h3>
           <p>Wypełnij formularz lub wyślij email. Podaj rodzaj odzieży, szacowaną ilość i dostępność wykrojów.</p>
         </div>
       </div>
@@ -211,7 +213,7 @@
         </div>
         <div class="step-content">
           <span class="step-number">02</span>
-          <h4>Wycena i ustalenia</h4>
+          <h3>Wycena i ustalenia</h3>
           <p>Otrzymujesz indywidualny kosztorys z realistycznym terminem realizacji. Ustalamy szczegóły produkcji.</p>
         </div>
       </div>
@@ -222,7 +224,7 @@
         </div>
         <div class="step-content">
           <span class="step-number">03</span>
-          <h4>Produkcja</h4>
+          <h3>Produkcja</h3>
           <p>Materiał trafia na stół krojczy, a następnie pod igły naszych doświadczonych szwaczek. Krojenie, szycie, wykończenie.</p>
         </div>
       </div>
@@ -233,7 +235,7 @@
         </div>
         <div class="step-content">
           <span class="step-number">04</span>
-          <h4>Odbiór</h4>
+          <h3>Odbiór</h3>
           <p>Każda sztuka jest sprawdzona. Odbierz gotową kolekcję w Ząbkach lub wyślemy kurierem pod wskazany adres.</p>
         </div>
       </div>
@@ -264,7 +266,7 @@
         </div>
       </div>
       <div class="realizacja-tile realizacja-tall">
-        <img src="/assets/detale-1-hero-do-przyciecia.webp" alt="Detale krawiectwa - precyzyjne szwy i wykończenia w Szwalni ISABELL" loading="lazy" style="object-position: center 20%;">
+        <img src="/assets/detale-1-hero-do-przyciecia-800.webp" srcset="/assets/detale-1-hero-do-przyciecia-400.webp 400w, /assets/detale-1-hero-do-przyciecia-800.webp 800w" sizes="(max-width: 768px) 100vw, 33vw" alt="Detale krawiectwa - precyzyjne szwy i wykończenia w Szwalni ISABELL" loading="lazy" style="object-position: center 20%;">
         <div class="realizacja-overlay">
           <span class="tile-badge">Detale</span>
           <h3>Precyzja w każdym detalu</h3>
@@ -354,7 +356,7 @@
   <section id="o-nas" class="o-nas">
     <div class="o-nas-container">
       <div class="o-nas-image">
-        <img src="/assets/o-nas-strona-glowna.webp" alt="Rodzinny warsztat szwalniczy ISABELL w Ząbkach" loading="lazy">
+        <img src="/assets/o-nas-strona-glowna-1200.webp" srcset="/assets/o-nas-strona-glowna-640.webp 640w, /assets/o-nas-strona-glowna-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw" alt="Rodzinny warsztat szwalniczy ISABELL w Ząbkach" loading="lazy" width="1200" height="805" decoding="async">
       </div>
       <div class="o-nas-content">
         <span class="section-badge">O nas</span>

@@ -43,7 +43,18 @@
       "Bash(rm -f \"assets/ Seria żakietów \\(duży kafelek\\).png\")",
       "Bash(rm -f assets/DSC02531.JPG)",
       "Bash(find . -type f -size +1M -not -path './.git/*' -exec ls -lh {})",
-      "Bash(find . -type f -size +3M -not -path './.git/*' -exec ls -lh {})"
+      "Bash(find . -type f -size +3M -not -path './.git/*' -exec ls -lh {})",
+      "Bash(git -C \"/Users/michaljalbrzykowski/Szwalnia ISABELL - Claude Code\" remote -v)",
+      "Bash(git -C \"/Users/michaljalbrzykowski/Szwalnia ISABELL - Claude Code\" log --oneline -5)",
+      "Bash(gh api:*)",
+      "Bash(do echo:*)",
+      "Bash(sips -g pixelWidth -g pixelHeight $f)",
+      "Bash(mv Nowe-foty-podmiana/* .)",
+      "Bash(rmdir Nowe-foty-podmiana)",
+      "Bash(grep -v detale-1-hero-do-przyciecia-800 __NEW_LINE_2c3c9bf6fd0b339c__ echo echo 'Checking: o-nas-strona-glowna.webp' grep -r o-nas-strona-glowna *.html uslugi/*.html)",
+      "Bash(grep -v o-nas-strona-glowna-640 __NEW_LINE_2c3c9bf6fd0b339c__ echo echo 'Checking: realizacje.webp' grep -r realizacje.webp *.html uslugi/*.html 2)",
+      "Bash(/dev/null __NEW_LINE_2c3c9bf6fd0b339c__ echo echo 'Checking: usluga-krojenie-wykonczenie-szwalnia.webp' grep -r usluga-krojenie-wykonczenie-szwalnia.webp *.html uslugi/*.html)",
+      "Bash(head -3 __NEW_LINE_4b043959bda31d88__ echo echo 'Checking: usluga-krojenie-wykonczenie-szwalnia-400.webp' grep -r usluga-krojenie-wykonczenie-szwalnia-400 *.html uslugi/*.html)"
     ]
   }
 }
