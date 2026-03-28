@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WGN33C5N6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WGN33C5N6D');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Szwalnia ISABELL | Wiedza i wskazówki o produkcji odzieży</title>
+<meta name="description" content="Poznaj kulisy produkcji odzieży na naszym blogu ISABELL. Praktyczna wiedza i wskazówki na temat krojenia i szycia prosto ze szwalni.">
+<meta property="og:title" content="Baza wiedzy Szwalni ISABELL - Blog ekspercki">
+<meta property="og:description" content="Poznaj świat lokalnej produkcji odzieży od podszewki. Sprawdź najnowsze artykuły z naszej szwalni.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* Blog Hub specific styling */
+  .blog-featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .blog-featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blog-featured-content {
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+  }
+  .blog-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  .blog-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .blog-card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .blog-category {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .blog-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .blog-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .blog-title a:hover {
+    text-decoration: underline;
+  }
+  .blog-excerpt {
+    color: var(--text-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+  .blog-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  @media (max-width: 992px) {
+    .blog-featured {
+      grid-template-columns: 1fr;
+    }
+    .blog-featured-img {
+      height: 300px;
+    }
+    .blog-featured-content {
+      padding: 32px 24px;
+    }
+  }
+</style>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Strona główna",
+        "item": "https://szwalnia-isabell.pl/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://szwalnia-isabell.pl/blog.html"
+      }
+    ]
+  }
+  </script>
+
+<meta property="og:image" content="https://szwalnia-isabell.pl/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://szwalnia-isabell.pl/blog.html">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.ico" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="canonical" href="https://szwalnia-isabell.pl/blog.html" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Przejdź do treści</a>
+
+  <!-- NAVBAR -->
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="/" class="logo"><img src="/assets/logo-szwalnia-isabell-v21.webp" alt="Szwalnia ISABELL" width="160" height="auto"></a>
+      <ul class="nav-links">
+        <li class="nav-dropdown">
+          <a href="/uslugi.html" class="nav-dropdown-trigger">Usługi <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="/uslugi/szycie-odziez-damska.html">Szycie odzieży damskiej</a>
+            <a href="/uslugi/odziez-firmowa.html">Odzież firmowa na zamówienie</a>
+            <a href="/uslugi/krojenie-wykonczenie.html">Krojenie i wykończenie</a>
+            <a href="/uslugi/male-serie.html">Małe serie</a>
+            <a href="/szwalnia-warszawa.html">Szwalnia Warszawa</a>
+            <a href="/szwalnia-zabki.html">Szwalnia Ząbki</a>
+          </div>
+        </li>
+        <li><a href="/realizacje.html">Realizacje</a></li>
+        <li><a href="/o-nas.html">O nas</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+      </ul>
+      <a href="/kontakt.html" class="btn-nav">Wyślij zapytanie</a>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li class="mobile-dropdown">
+        <button class="mobile-dropdown-trigger">Usługi <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="/uslugi/szycie-odziez-damska.html">Szycie odzieży damskiej</a></li>
+          <li><a href="/uslugi/odziez-firmowa.html">Odzież firmowa</a></li>
+          <li><a href="/uslugi/krojenie-wykonczenie.html">Krojenie i wykończenie</a></li>
+          <li><a href="/uslugi/male-serie.html">Małe serie</a></li>
+          <li><a href="/szwalnia-warszawa.html">Szwalnia Warszawa</a></li>
+          <li><a href="/szwalnia-zabki.html">Szwalnia Ząbki</a></li>
+        </ul>
+      </li>
+      <li><a href="/realizacje.html">Realizacje</a></li>
+      <li><a href="/o-nas.html">O nas</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/kontakt.html" class="btn-nav">Wyślij zapytanie</a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+      <ul>
+        <li><a href="/">Strona główna</a></li>
+        
+        <li><span class="separator">/</span></li>
+        <li aria-current="page">Blog</li>
+      </ul>
+    </nav>
+
+  <!-- HERO -->
+  <section class="hero hero-subpage" style="padding-bottom: 40px; text-align: center;">
+    <div class="hero-container" style="display: block; max-width: 800px; margin: 0 auto;">
+      <span class="hero-badge" style="margin: 0 auto 16px;">BAZA WIEDZY</span>
+      <h1 style="font-size: 3rem;">Blog Szwalni ISABELL</h1>
+      <p style="margin: 0 auto;">Zrozum produkcję odzieży od kuchni. Praktyczne wskazówki dla projektantów, marek odzieżowych i pasjonatów rzemiosła wspierających ugruntowaną edukację po fachu.</p>
+    </div>
+  </section>
+
+  <!-- WPISY BLOGA -->
+  <section class="section-surface" style="padding-top: 40px; padding-bottom: 80px;">
+    <!-- CONTAINER (UX Fix max-width) -->
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 5%;">
+      
+      
+      <div class="blog-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; margin-top: 40px; margin-bottom: 80px;">
+
+        <article class="blog-card" style="display: flex; flex-direction: column;">
+          <a href="/ile-kosztuje-uszycie-partii-odziezy.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/detal-kurtka-pikowana-zamek.webp" alt="Ile kosztuje uszycie partii odzieży na zlecenie w Polsce [2026]" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <span class="blog-category">Baza Wiedzy</span>
+            <h3 class="blog-title"><a href="/ile-kosztuje-uszycie-partii-odziezy.html" style="text-decoration:none; color:inherit;">Ile kosztuje uszycie partii odzieży na zlecenie w Polsce [2026]</a></h3>
+            <p class="blog-excerpt" style="flex-grow: 1;">Planujesz własną markę odzieżową i zastanawiasz się, jaki budżet przygotować na produkcję? Koszt uszycia partii odzieży w polskiej...</p>
+            <div class="blog-meta" style="margin-top: 16px;">
+              <span>26 Marca 2026</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card" style="display: flex; flex-direction: column;">
+          <a href="/jak-przygotowac-tech-pack.html" style="flex-shrink: 0;"><img src="/assets/Blogi/tech-pack-szwalnia-hero.webp" alt="Jak przygotować tech pack do szycia w szwalni" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <span class="blog-category">Baza Wiedzy</span>
+            <h3 class="blog-title"><a href="/jak-przygotowac-tech-pack.html" style="text-decoration:none; color:inherit;">Jak przygotować tech pack do szycia w szwalni</a></h3>
+            <p class="blog-excerpt" style="flex-grow: 1;">Tech pack to najważniejszy dokument, jaki dostarczysz swojej szwalni. To szczegółowa specyfikacja techniczna ubrania: rysunek tech...</p>
+            <div class="blog-meta" style="margin-top: 16px;">
+              <span>26 Marca 2026</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card" style="display: flex; flex-direction: column;">
+          <a href="/jak-znalezc-szwalnie-dla-marki.html" style="flex-shrink: 0;"><img src="/assets/Blogi/jak-znalezc-szwalnie-hero.webp" alt="Jak znaleźć szwalnię dla swojej marki odzieżowej: kompletny przewodnik" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <span class="blog-category">Baza Wiedzy</span>
+            <h3 class="blog-title"><a href="/jak-znalezc-szwalnie-dla-marki.html" style="text-decoration:none; color:inherit;">Jak znaleźć szwalnię dla swojej marki odzieżowej: kompletny przewodnik</a></h3>
+            <p class="blog-excerpt" style="flex-grow: 1;">Wybór szwalni to jedna z najważniejszych decyzji, jaką podejmiesz budując markę odzieżową. Zły wybór oznacza miesiące opóźnień, wa...</p>
+            <div class="blog-meta" style="margin-top: 16px;">
+              <span>26 Marca 2026</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card" style="display: flex; flex-direction: column;">
+          <a href="/szwalnia-vs-krawiec.html" style="flex-shrink: 0;"><img src="/assets/Blogi/szwalnia-vs-krawiec-hero.webp" alt="Szwalnia vs. krawiec: czym się różnią usługi i kiedy wybrać co" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <span class="blog-category">Baza Wiedzy</span>
+            <h3 class="blog-title"><a href="/szwalnia-vs-krawiec.html" style="text-decoration:none; color:inherit;">Szwalnia vs. krawiec: czym się różnią usługi i kiedy wybrać co</a></h3>
+            <p class="blog-excerpt" style="flex-grow: 1;">Planujesz uszyć partię bluzek dla swojej marki albo potrzebujesz żakietu dopasowanego do sylwetki? Odpowiedź na pytanie „szwalnia ...</p>
+            <div class="blog-meta" style="margin-top: 16px;">
+              <span>26 Marca 2026</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><img src="/assets/logo-szwalnia-isabell-v21.webp" alt="Szwalnia ISABELL" width="160" height="auto"></a>
+        <p>Rodzinna szwalnia z tradycją w Ząbkach pod Warszawą. Krojenie, szycie i wykończenie pod jednym dachem.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Usługi</h4>
+        <ul>
+          <li><a href="/uslugi/szycie-odziez-damska.html">Szycie odzieży damskiej</a></li>
+          <li><a href="/uslugi/odziez-firmowa.html">Odzież firmowa</a></li>
+          <li><a href="/uslugi/krojenie-wykonczenie.html">Krojenie i wykończenie</a></li>
+          <li><a href="/uslugi/male-serie.html">Małe serie</a></li>
+          <li><a href="/szwalnia-warszawa.html">Szwalnia Warszawa</a></li>
+          <li><a href="/szwalnia-zabki.html">Szwalnia Ząbki</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Strony informacyjne</h4>
+        <ul>
+          <li><a href="/realizacje.html">Realizacje</a></li>
+          <li><a href="/o-nas.html">O nas</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li>Ząbki, ul. Batorego 44</li>
+          <li>Pon-Pt: 8:00-15:00</li>
+          <li><a href="tel:+48730851555">+48 730 851 555</a></li>
+          <li><a href="mailto:kontakt@isabell.pl">kontakt@isabell.pl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Szwalnia ISABELL. Wszelkie prawa zastrzeżone.</p>
+      <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const mobileDropdownTrigger = document.querySelector('.mobile-dropdown-trigger');
+    if (mobileDropdownTrigger) {
+      mobileDropdownTrigger.addEventListener('click', () => {
+        mobileDropdownTrigger.closest('.mobile-dropdown').classList.toggle('active');
+      });
+    }
+  
+    // Handle Form Submit via AJAX
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm && !contactForm.dataset.ajaxLoaded) {
+      contactForm.dataset.ajaxLoaded = 'true';
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = contactForm.querySelector('button[type="submit"]');
+        btn.innerHTML = 'Wysyłanie...';
+        btn.disabled = true;
+
+        const formData = new FormData(contactForm);
+
+        fetch(contactForm.action, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        })
+        .then(response => {
+          if (response.ok) {
+            contactForm.innerHTML = '<div style="text-align:center; padding: 40px 0;"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="margin-bottom:16px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><h3 style="margin-bottom:8px">Wiadomość wysłana!</h3><p style="color:var(--text-body)">Dziękuję za wiadomość. Przeanalizuję zapytanie i odezwę się do Ciebie najszybciej, jak to możliwe.</p></div>';
+          } else {
+            btn.innerHTML = 'Wystąpił błąd. Spróbuj ponownie.';
+            btn.disabled = false;
+          }
+        })
+        .catch(error => {
+          btn.innerHTML = 'Błąd połącenia sieciowego.';
+          btn.disabled = false;
+        });
+      });
+    }
+
+</script>
+</body>
+</html>
