@@ -19,7 +19,9 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/hero-onas-zakladka.webp" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css">
 <style>
   /* Extra Bento UI Styles just for O Nas */
@@ -171,7 +173,7 @@
         </div>
       </div>
       <div class="hero-visual hero-visual-subpage">
-        <img src="/assets/hero-onas-zakladka.webp" alt="Szwalnia ISABELL - rodzinna firma z 36-letnim doświadczeniem w Ząbkach" loading="eager">
+        <img src="/assets/hero-onas-zakladka.webp" alt="Szwalnia ISABELL - rodzinna firma z 36-letnim doświadczeniem w Ząbkach" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
   </section>

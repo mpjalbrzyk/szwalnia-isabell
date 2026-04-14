@@ -56,7 +56,10 @@
       "Bash(/dev/null __NEW_LINE_2c3c9bf6fd0b339c__ echo echo 'Checking: usluga-krojenie-wykonczenie-szwalnia.webp' grep -r usluga-krojenie-wykonczenie-szwalnia.webp *.html uslugi/*.html)",
       "Bash(head -3 __NEW_LINE_4b043959bda31d88__ echo echo 'Checking: usluga-krojenie-wykonczenie-szwalnia-400.webp' grep -r usluga-krojenie-wykonczenie-szwalnia-400 *.html uslugi/*.html)",
       "Bash(find . -name \"*.html\" -exec sed -i '' \"s|document.body.style.overflow = mobileMenu.classList.contains\\(''active''\\) ? ''hidden'' : '''';|document.documentElement.classList.toggle\\(''menu-open'', mobileMenu.classList.contains\\(''active''\\)\\);|g\" {} +)",
-      "Bash(find . -name \"*.html\" -exec sed -i '' \"s|document.body.style.overflow = '''';|document.documentElement.classList.remove\\(''menu-open''\\);|g\" {} +)"
+      "Bash(find . -name \"*.html\" -exec sed -i '' \"s|document.body.style.overflow = '''';|document.documentElement.classList.remove\\(''menu-open''\\);|g\" {} +)",
+      "WebSearch",
+      "Bash(find . -name \"*.html\" ! -name \"index.html\" -exec sed -i '' 's|<link href=\"https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700\\\\&family=DM+Serif+Display\\\\&display=swap\" rel=\"stylesheet\">|<link href=\"https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700\\\\&family=DM+Serif+Display\\\\&display=swap\" rel=\"stylesheet\" media=\"print\" onload=\"this.media='\"'\"'all'\"'\"'\">\\\\n<noscript><link href=\"https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700\\\\&family=DM+Serif+Display\\\\&display=swap\" rel=\"stylesheet\"></noscript>|g' {} +)",
+      "Bash(grep -c 'media=\"print\" onload' *.html uslugi/*.html)"
     ]
   }
 }

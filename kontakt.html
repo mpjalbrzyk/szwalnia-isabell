@@ -19,7 +19,8 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css">
 <style>
   /* Local layout for contact page to prevent generic breaks */
@@ -277,25 +278,52 @@
       </div>
     </section>
 
-  <!-- Schema.org updated with new address -->
+  <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Szwalnia ISABELL",
-    "description": "Rodzinna szwalnia i produkcja odzieży z tradycją.",
+    "name": "Szwalnia ISABELL - Producent odzieży",
+    "alternateName": "Szwalnia ISABELL",
+    "description": "Rodzinna szwalnia z 36-letnią tradycją. Szycie odzieży damskiej i firmowej na zlecenie w Ząbkach pod Warszawą.",
     "url": "https://szwalnia-isabell.pl",
     "telephone": "+48 730 851 555",
     "email": "kontakt@isabell.pl",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Batorego 44",
+      "streetAddress": "Stefana Batorego 44",
       "postalCode": "05-091",
       "addressLocality": "Ząbki",
       "addressRegion": "mazowieckie",
       "addressCountry": "PL"
     },
-    "openingHours": "Mo-Fr 08:00-15:00"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.2949,
+      "longitude": 21.1035
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Warszawa"},
+      {"@type": "City", "name": "Ząbki"},
+      {"@type": "AdministrativeArea", "name": "Mazowieckie"}
+    ],
+    "foundingDate": "1990",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "06:00",
+        "closes": "15:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "2"
+    },
+    "image": "https://szwalnia-isabell.pl/assets/og-cover.png",
+    "priceRange": "$$",
+    "sameAs": []
   }
   </script>
 
