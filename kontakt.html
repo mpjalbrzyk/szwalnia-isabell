@@ -219,31 +219,31 @@
 
         <!-- FORM -->
         <div class="contact-form-wrapper">
-           <form class="contact-form" id="contact-form">
+           <form class="contact-form" id="contact-form" action="https://hook.eu1.make.com/iuy4kuiieqqawf3bfw9iq0jxgjh75ggr" method="POST">
             <div class="form-row">
               <div class="input-group">
                 <label for="name">Imię i nazwisko *</label>
-                <input type="text" id="name" class="input-field" placeholder="Jan Kowalski" required>
+                <input type="text" id="name" name="name" class="input-field" placeholder="Jan Kowalski" required>
               </div>
               <div class="input-group">
                 <label for="company">Firma / Marka *</label>
-                <input type="text" id="company" class="input-field" placeholder="Nazwa firmy" required>
+                <input type="text" id="company" name="company" class="input-field" placeholder="Nazwa firmy" required>
               </div>
             </div>
             <div class="form-row">
               <div class="input-group">
                 <label for="email">Email *</label>
-                <input type="email" id="email" class="input-field" placeholder="kontakt@firma.pl" required>
+                <input type="email" id="email" name="email" class="input-field" placeholder="kontakt@firma.pl" required>
               </div>
               <div class="input-group">
                 <label for="phone">Telefon (opcjonalnie)</label>
-                <input type="tel" id="phone" class="input-field" placeholder="+48 ...">
+                <input type="tel" id="phone" name="phone" class="input-field" placeholder="+48 ...">
               </div>
             </div>
             <div class="form-row">
               <div class="input-group">
                 <label for="service-type">Rodzaj zlecenia *</label>
-                <select id="service-type" class="input-field" required>
+                <select id="service-type" name="service-type" class="input-field" required>
                   <option value="" disabled selected>Wybierz rodzaj zlecenia</option>
                   <option>Szycie odzieży damskiej</option>
                   <option>Odzież firmowa na zamówienie</option>
@@ -253,7 +253,7 @@
               </div>
               <div class="input-group">
                 <label for="quantity">Szacowana ilość sztuk</label>
-                <select id="quantity" class="input-field">
+                <select id="quantity" name="quantity" class="input-field">
                   <option value="" disabled selected>Wybierz zakres</option>
                   <option>do 50 szt.</option>
                   <option>50-200 szt.</option>
@@ -264,7 +264,7 @@
             </div>
             <div class="input-group" style="margin-bottom: 16px;">
               <label for="description">Opis projektu *</label>
-              <textarea id="description" class="input-field" placeholder="Opisz swój projekt: rodzaj odzieży, materiały, specyfikacje techniczne..." rows="5" required></textarea>
+              <textarea id="description" name="description" class="input-field" placeholder="Opisz swój projekt: rodzaj odzieży, materiały, specyfikacje techniczne..." rows="5" required></textarea>
             </div>
             <div class="input-group" style="margin-bottom: 24px;">
               <label class="checkbox-label" style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; line-height: 1.5; color: var(--text-muted);">
