@@ -125,6 +125,45 @@
       padding: 32px 24px;
     }
   }
+  .blog-grid .blog-card:nth-child(n+13) {
+    display: none;
+  }
+  .blog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 80px;
+  }
+  .blog-pagination .page-btn {
+    min-width: 44px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--primary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .blog-pagination .page-btn:hover:not(:disabled):not(.active) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .blog-pagination .page-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    cursor: default;
+  }
+  .blog-pagination .page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 </style>
 
   <!-- Breadcrumb Schema -->
@@ -241,7 +280,7 @@
 
         <!-- Jak wybrać szwalnię: 10 pytań (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/jak-wybrac-szwalnie-10-pytan.html" style="flex-shrink: 0;"><img src="/assets/szycie-dla-marek-odziezowych-szwalnia.webp" alt="Rozmowa z szwalnią przed wyborem: jak wybrać szwalnię i jakie pytania zadać" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/jak-wybrac-szwalnie-10-pytan.html" style="flex-shrink: 0;"><img data-src="/assets/szycie-dla-marek-odziezowych-szwalnia.webp" alt="Rozmowa z szwalnią przed wyborem: jak wybrać szwalnię i jakie pytania zadać" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Poradniki</span>
             <h3 class="blog-title"><a href="/jak-wybrac-szwalnie-10-pytan.html" style="text-decoration:none; color:inherit;">Jak wybrać szwalnię: 10 pytań, które musisz zadać przed podpisaniem</a></h3>
@@ -254,7 +293,7 @@
 
         <!-- Szycie z powierzonego materiału (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/szycie-z-powierzonego-materialu.html" style="flex-shrink: 0;"><img src="/assets/krojownia-uslugowa-krojenie-tkanin.webp" alt="Szycie z powierzonego materiału: bele tkaniny przygotowane do rozkroju w szwalni" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/szycie-z-powierzonego-materialu.html" style="flex-shrink: 0;"><img data-src="/assets/krojownia-uslugowa-krojenie-tkanin.webp" alt="Szycie z powierzonego materiału: bele tkaniny przygotowane do rozkroju w szwalni" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Poradniki</span>
             <h3 class="blog-title"><a href="/szycie-z-powierzonego-materialu.html" style="text-decoration:none; color:inherit;">Szycie z powierzonego materiału: jak to działa krok po kroku</a></h3>
@@ -267,7 +306,7 @@
 
         <!-- Minimalne zamówienie w szwalni MOQ (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/minimalne-zamowienie-szwalnia-moq.html" style="flex-shrink: 0;"><img src="/assets/male-serie-produkcja-testowa-szwalnia.webp" alt="Minimalne zamówienie w szwalni: jak się liczy MOQ dla małych marek odzieżowych" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/minimalne-zamowienie-szwalnia-moq.html" style="flex-shrink: 0;"><img data-src="/assets/male-serie-produkcja-testowa-szwalnia.webp" alt="Minimalne zamówienie w szwalni: jak się liczy MOQ dla małych marek odzieżowych" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Poradniki</span>
             <h3 class="blog-title"><a href="/minimalne-zamowienie-szwalnia-moq.html" style="text-decoration:none; color:inherit;">Minimalne zamówienie w szwalni: ile sztuk trzeba zamówić żeby się opłacało</a></h3>
@@ -280,7 +319,7 @@
 
         <!-- Kontrola jakości w szwalni (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/kontrola-jakosci-szwalnia.html" style="flex-shrink: 0;"><img src="/assets/kontrola-jakosci-szycie-odziez.webp" alt="Kontrola jakości odzieży w szwalni: sprawdzanie szycia i wymiarów" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/kontrola-jakosci-szwalnia.html" style="flex-shrink: 0;"><img data-src="/assets/kontrola-jakosci-szycie-odziez.webp" alt="Kontrola jakości odzieży w szwalni: sprawdzanie szycia i wymiarów" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Poradniki</span>
             <h3 class="blog-title"><a href="/kontrola-jakosci-szwalnia.html" style="text-decoration:none; color:inherit;">Kontrola jakości w szwalni: co sprawdzać i jak ją ocenić</a></h3>
@@ -293,7 +332,7 @@
 
         <!-- Szwalnia Polska vs Chiny (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/szwalnia-polska-vs-chiny.html" style="flex-shrink: 0;"><img src="/assets/hero-szwalnia-zabki-warsztat.webp" alt="Porównanie produkcji odzieży w Polsce i Chinach: koszty i czas" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/szwalnia-polska-vs-chiny.html" style="flex-shrink: 0;"><img data-src="/assets/hero-szwalnia-zabki-warsztat.webp" alt="Porównanie produkcji odzieży w Polsce i Chinach: koszty i czas" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Porównania</span>
             <h3 class="blog-title"><a href="/szwalnia-polska-vs-chiny.html" style="text-decoration:none; color:inherit;">Szwalnia Polska vs szycie w Chinach: koszty, czas, jakość i ryzyko</a></h3>
@@ -306,7 +345,7 @@
 
         <!-- Jak zamówić odzież firmową dla HR (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/jak-zamowic-odziez-firmowa-hr.html" style="flex-shrink: 0;"><img src="/assets/firmowa-bluzy-z-logo.webp" alt="Proces zamówienia odzieży firmowej: od pomysłu do wdrożenia" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/jak-zamowic-odziez-firmowa-hr.html" style="flex-shrink: 0;"><img data-src="/assets/firmowa-bluzy-z-logo.webp" alt="Proces zamówienia odzieży firmowej: od pomysłu do wdrożenia" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Poradniki</span>
             <h3 class="blog-title"><a href="/jak-zamowic-odziez-firmowa-hr.html" style="text-decoration:none; color:inherit;">Jak zamówić odzież firmową: krok po kroku dla działu HR</a></h3>
@@ -319,7 +358,7 @@
 
         <!-- Próbka przeszyciowa (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/probka-przeszyciowa-szwalnia.html" style="flex-shrink: 0;"><img src="/assets/male-serie-testowanie-prototyp-odziez.webp" alt="Próbka przeszyciowa odzieży: prototyp przed produkcją seryjną" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/probka-przeszyciowa-szwalnia.html" style="flex-shrink: 0;"><img data-src="/assets/male-serie-testowanie-prototyp-odziez.webp" alt="Próbka przeszyciowa odzieży: prototyp przed produkcją seryjną" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Poradniki</span>
             <h3 class="blog-title"><a href="/probka-przeszyciowa-szwalnia.html" style="text-decoration:none; color:inherit;">Próbka przeszyciowa: dlaczego jest ważna i jak wygląda proces</a></h3>
@@ -332,7 +371,7 @@
 
         <!-- Dlaczego szycie w Polsce się opłaca 2026 (2026-05-29) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/szycie-polska-oplacalnosc-2026.html" style="flex-shrink: 0;"><img src="/assets/szwlania-z-pokolenia-na-pokolenie.webp" alt="Produkcja odzieży w Polsce 2026: opłacalność i nearshoring" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/szycie-polska-oplacalnosc-2026.html" style="flex-shrink: 0;"><img data-src="/assets/szwlania-z-pokolenia-na-pokolenie.webp" alt="Produkcja odzieży w Polsce 2026: opłacalność i nearshoring" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Analizy</span>
             <h3 class="blog-title"><a href="/szycie-polska-oplacalnosc-2026.html" style="text-decoration:none; color:inherit;">Dlaczego szycie odzieży w Polsce się opłaca w 2026 roku</a></h3>
@@ -345,7 +384,7 @@
 
         <!-- 1. Odzież firmowa vs. merch (2026-03-26) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/odziez-firmowa-vs-merch.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/zakiet-damski-rozowy.webp" alt="Odzież firmowa vs. merch: jaka jest różnica i co lepsze dla firmy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/odziez-firmowa-vs-merch.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/zakiet-damski-rozowy.webp" alt="Odzież firmowa vs. merch: jaka jest różnica i co lepsze dla firmy" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Odzież firmowa</span>
             <h3 class="blog-title"><a href="/odziez-firmowa-vs-merch.html" style="text-decoration:none; color:inherit;">Odzież firmowa vs. merch: jaka jest różnica i co lepsze dla firmy</a></h3>
@@ -358,7 +397,7 @@
 
         <!-- 2. Ile trwa produkcja odzieży (2026-03-25) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/ile-trwa-produkcja-odziezy.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/kurtka-wiosenna-musztardowa.webp" alt="Ile trwa produkcja odzieży: od projektu do gotowego produktu" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/ile-trwa-produkcja-odziezy.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/kurtka-wiosenna-musztardowa.webp" alt="Ile trwa produkcja odzieży: od projektu do gotowego produktu" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Baza Wiedzy</span>
             <h3 class="blog-title"><a href="/ile-trwa-produkcja-odziezy.html" style="text-decoration:none; color:inherit;">Ile trwa produkcja odzieży: od projektu do gotowego produktu</a></h3>
@@ -371,7 +410,7 @@
 
         <!-- 3. Szwalnia pod Warszawą (2026-03-24) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/szwalnia-pod-warszawa-lokalizacja.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/kurtka-przejsciowa-niebieska.webp" alt="Szwalnia pod Warszawą: dlaczego lokalizacja ma znaczenie" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/szwalnia-pod-warszawa-lokalizacja.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/kurtka-przejsciowa-niebieska.webp" alt="Szwalnia pod Warszawą: dlaczego lokalizacja ma znaczenie" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Lokalizacja</span>
             <h3 class="blog-title"><a href="/szwalnia-pod-warszawa-lokalizacja.html" style="text-decoration:none; color:inherit;">Szwalnia pod Warszawą: dlaczego lokalizacja ma znaczenie</a></h3>
@@ -384,7 +423,7 @@
 
         <!-- 4. Jak wybrać materiał na kurtki i żakiety (2026-03-23) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/jak-wybrac-material-kurtki-zakiety.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/kurtka-zimowa-bordowa.webp" alt="Jak wybrać materiał na kurtki i żakiety damskie" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/jak-wybrac-material-kurtki-zakiety.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/kurtka-zimowa-bordowa.webp" alt="Jak wybrać materiał na kurtki i żakiety damskie" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Materiały</span>
             <h3 class="blog-title"><a href="/jak-wybrac-material-kurtki-zakiety.html" style="text-decoration:none; color:inherit;">Jak wybrać materiał na kurtki i żakiety damskie</a></h3>
@@ -397,7 +436,7 @@
 
         <!-- 5. 5 błędów przy zlecaniu szycia (2026-03-22) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/bledy-zlecanie-szycia.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/zakiet-damski-niebieski.webp" alt="5 błędów przy zlecaniu szycia zewnętrznej szwalni" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/bledy-zlecanie-szycia.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/zakiet-damski-niebieski.webp" alt="5 błędów przy zlecaniu szycia zewnętrznej szwalni" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Porady</span>
             <h3 class="blog-title"><a href="/bledy-zlecanie-szycia.html" style="text-decoration:none; color:inherit;">5 błędów przy zlecaniu szycia zewnętrznej szwalni</a></h3>
@@ -410,7 +449,7 @@
 
         <!-- 6. CMT i full-service (2026-03-21) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/cmt-full-service-szycia.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/kurtka-zimowa-oliwkowa-isabell.webp" alt="Co to jest CMT i full-service w szwalnictwie" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/cmt-full-service-szycia.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/kurtka-zimowa-oliwkowa-isabell.webp" alt="Co to jest CMT i full-service w szwalnictwie" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Baza Wiedzy</span>
             <h3 class="blog-title"><a href="/cmt-full-service-szycia.html" style="text-decoration:none; color:inherit;">Co to jest CMT i full-service w szwalnictwie</a></h3>
@@ -423,7 +462,7 @@
 
         <!-- 7. Produkcja małych serii (2026-03-20) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/produkcja-malych-serii.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/kurtka-wiosenna-bezowa.webp" alt="Produkcja małych serii odzieży: co warto wiedzieć zanim zaczniesz" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/produkcja-malych-serii.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/kurtka-wiosenna-bezowa.webp" alt="Produkcja małych serii odzieży: co warto wiedzieć zanim zaczniesz" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Dla Nowych Marek</span>
             <h3 class="blog-title"><a href="/produkcja-malych-serii.html" style="text-decoration:none; color:inherit;">Produkcja małych serii odzieży: co warto wiedzieć zanim zaczniesz</a></h3>
@@ -436,7 +475,7 @@
 
         <!-- 8. Odzież firmowa na zamówienie (2026-03-19) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/odziez-firmowa-poradnik.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/zakiet-damski-bezowy-lniany.webp" alt="Odzież firmowa na zamówienie: kompletny poradnik dla firm" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/odziez-firmowa-poradnik.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/zakiet-damski-bezowy-lniany.webp" alt="Odzież firmowa na zamówienie: kompletny poradnik dla firm" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Odzież firmowa</span>
             <h3 class="blog-title"><a href="/odziez-firmowa-poradnik.html" style="text-decoration:none; color:inherit;">Odzież firmowa na zamówienie: kompletny poradnik dla firm</a></h3>
@@ -449,7 +488,7 @@
 
         <!-- 9. Ile kosztuje uszycie partii odzieży (2026-03-18) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/ile-kosztuje-uszycie-partii-odziezy.html" style="flex-shrink: 0;"><img src="/assets/Realizacje/detal-kurtka-pikowana-zamek.webp" alt="Ile kosztuje uszycie partii odzieży na zlecenie w Polsce [2026]" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/ile-kosztuje-uszycie-partii-odziezy.html" style="flex-shrink: 0;"><img data-src="/assets/Realizacje/detal-kurtka-pikowana-zamek.webp" alt="Ile kosztuje uszycie partii odzieży na zlecenie w Polsce [2026]" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Baza Wiedzy</span>
             <h3 class="blog-title"><a href="/ile-kosztuje-uszycie-partii-odziezy.html" style="text-decoration:none; color:inherit;">Ile kosztuje uszycie partii odzieży na zlecenie w Polsce [2026]</a></h3>
@@ -462,7 +501,7 @@
 
         <!-- 10. Jak przygotować tech pack (2026-03-17) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/jak-przygotowac-tech-pack.html" style="flex-shrink: 0;"><img src="/assets/Blogi/tech-pack-szwalnia-hero.webp" alt="Jak przygotować tech pack do szycia w szwalni" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/jak-przygotowac-tech-pack.html" style="flex-shrink: 0;"><img data-src="/assets/Blogi/tech-pack-szwalnia-hero.webp" alt="Jak przygotować tech pack do szycia w szwalni" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Baza Wiedzy</span>
             <h3 class="blog-title"><a href="/jak-przygotowac-tech-pack.html" style="text-decoration:none; color:inherit;">Jak przygotować tech pack do szycia w szwalni</a></h3>
@@ -475,7 +514,7 @@
 
         <!-- 11. Jak znaleźć szwalnię dla marki (2026-03-16) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/jak-znalezc-szwalnie-dla-marki.html" style="flex-shrink: 0;"><img src="/assets/Blogi/jak-znalezc-szwalnie-hero.webp" alt="Jak znaleźć szwalnię dla swojej marki odzieżowej: kompletny przewodnik" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/jak-znalezc-szwalnie-dla-marki.html" style="flex-shrink: 0;"><img data-src="/assets/Blogi/jak-znalezc-szwalnie-hero.webp" alt="Jak znaleźć szwalnię dla swojej marki odzieżowej: kompletny przewodnik" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Baza Wiedzy</span>
             <h3 class="blog-title"><a href="/jak-znalezc-szwalnie-dla-marki.html" style="text-decoration:none; color:inherit;">Jak znaleźć szwalnię dla swojej marki odzieżowej: kompletny przewodnik</a></h3>
@@ -488,7 +527,7 @@
 
         <!-- 12. Szwalnia vs. krawiec (2026-03-15) -->
         <article class="blog-card" style="display: flex; flex-direction: column;">
-          <a href="/szwalnia-vs-krawiec.html" style="flex-shrink: 0;"><img src="/assets/Blogi/szwalnia-vs-krawiec-hero.webp" alt="Szwalnia vs. krawiec: czym się różnią usługi i kiedy wybrać co" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
+          <a href="/szwalnia-vs-krawiec.html" style="flex-shrink: 0;"><img data-src="/assets/Blogi/szwalnia-vs-krawiec-hero.webp" alt="Szwalnia vs. krawiec: czym się różnią usługi i kiedy wybrać co" loading="lazy" class="blog-card-img" style="height: 240px; object-fit: cover;"></a>
           <div class="blog-card-content" style="flex-grow: 1; display: flex; flex-direction: column;">
             <span class="blog-category">Baza Wiedzy</span>
             <h3 class="blog-title"><a href="/szwalnia-vs-krawiec.html" style="text-decoration:none; color:inherit;">Szwalnia vs. krawiec: czym się różnią usługi i kiedy wybrać co</a></h3>
@@ -500,6 +539,8 @@
         </article>
 
       </div>
+
+      <nav id="blog-pagination" class="blog-pagination" aria-label="Paginacja bloga"></nav>
     </div>
   </section>
 
@@ -608,6 +649,56 @@
       });
     }
 
+</script>
+<script>
+  (function () {
+    const PER_PAGE = 12;
+    const grid = document.querySelector('.blog-grid');
+    const nav = document.getElementById('blog-pagination');
+    if (!grid || !nav) return;
+    const cards = Array.from(grid.querySelectorAll('.blog-card'));
+    const pages = Math.ceil(cards.length / PER_PAGE);
+    if (pages <= 1) { nav.style.display = 'none'; return; }
+
+    function buildNav(page) {
+      let html = '';
+      html += '<button class="page-btn" data-page="' + (page - 1) + '"' + (page === 1 ? ' disabled' : '') + ' aria-label="Poprzednia strona">&larr;</button>';
+      for (let p = 1; p <= pages; p++) {
+        html += '<button class="page-btn' + (p === page ? ' active' : '') + '" data-page="' + p + '" aria-label="Strona ' + p + '">' + p + '</button>';
+      }
+      html += '<button class="page-btn" data-page="' + (page + 1) + '"' + (page === pages ? ' disabled' : '') + ' aria-label="Następna strona">&rarr;</button>';
+      nav.innerHTML = html;
+      nav.querySelectorAll('.page-btn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          const p = parseInt(b.dataset.page, 10);
+          if (p >= 1 && p <= pages) render(p, true);
+        });
+      });
+    }
+
+    function loadImg(card) {
+      const img = card.querySelector('img[data-src]');
+      if (img) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
+    }
+
+    function render(page, scroll) {
+      cards.forEach(function (c, i) {
+        const visible = i >= (page - 1) * PER_PAGE && i < page * PER_PAGE;
+        c.style.display = visible ? 'flex' : 'none';
+        if (visible) loadImg(c);
+      });
+      buildNav(page);
+      history.replaceState(null, '', page === 1 ? location.pathname : ('?strona=' + page));
+      if (scroll) {
+        const y = grid.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    let start = parseInt(new URLSearchParams(location.search).get('strona'), 10) || 1;
+    if (start < 1 || start > pages) start = 1;
+    render(start, false);
+  })();
 </script>
 </body>
 </html>
