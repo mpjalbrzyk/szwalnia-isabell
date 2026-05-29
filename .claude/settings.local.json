@@ -59,7 +59,10 @@
       "Bash(find . -name \"*.html\" -exec sed -i '' \"s|document.body.style.overflow = '''';|document.documentElement.classList.remove\\(''menu-open''\\);|g\" {} +)",
       "WebSearch",
       "Bash(find . -name \"*.html\" ! -name \"index.html\" -exec sed -i '' 's|<link href=\"https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700\\\\&family=DM+Serif+Display\\\\&display=swap\" rel=\"stylesheet\">|<link href=\"https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700\\\\&family=DM+Serif+Display\\\\&display=swap\" rel=\"stylesheet\" media=\"print\" onload=\"this.media='\"'\"'all'\"'\"'\">\\\\n<noscript><link href=\"https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700\\\\&family=DM+Serif+Display\\\\&display=swap\" rel=\"stylesheet\"></noscript>|g' {} +)",
-      "Bash(grep -c 'media=\"print\" onload' *.html uslugi/*.html)"
+      "Bash(grep -c 'media=\"print\" onload' *.html uslugi/*.html)",
+      "Bash(cd /tmp/gsc_export && echo \"===== WYKRES \\(suma w czasie\\) =====\" && cat Wykres.csv && echo \"\" && echo \"===== ZAPYTANIA \\(wszystkie\\) =====\" && cat Zapytania.csv && echo \"\" && echo \"===== STRONY =====\" && cat Strony.csv)",
+      "Bash(python3 -c \"import yaml; print\\('pyyaml OK', yaml.__version__\\)\")",
+      "Bash(python3 -c \"import markdown; print\\('markdown OK'\\)\")"
     ]
   }
 }
