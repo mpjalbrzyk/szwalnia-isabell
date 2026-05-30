@@ -26,7 +26,7 @@ P_STYLE = "margin-bottom: 24px; line-height: 1.8; color: var(--text-body); font-
 H2_STYLE = "margin-top: 48px; margin-bottom: 24px; font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--primary);"
 H3_STYLE = "margin-top: 36px; margin-bottom: 16px; font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--primary);"
 A_STYLE = "color: var(--accent); text-decoration: underline;"
-LI_STYLE = "margin-bottom: 12px;"
+LI_STYLE = "margin-bottom: 12px; font-size: 1.1rem; line-height: 1.8; color: var(--text-body);"
 UL_STYLE = "margin-bottom: 24px; padding-left: 20px;"
 
 
@@ -123,6 +123,45 @@ def split_row(line):
     return line.split("|")
 
 
+TEMPLATE_CARD = '''<div style="margin: 32px 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.04);">
+                    <div style="background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary); font-size: 0.95rem; letter-spacing: 0.02em;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>
+                        Gotowy szablon do skopiowania
+                    </div>
+                    <div style="padding: 24px 28px; background: #fff; white-space: pre-wrap; word-wrap: break-word; font-family: 'DM Sans', system-ui, -apple-system, sans-serif; font-size: 1rem; line-height: 1.75; color: var(--text-body);">%s</div>
+                </div>'''
+
+
+def render_ordered(items):
+    """Numbered MDX list -> step cards (if items lead with **bold title**) or a clean numbered list."""
+    is_steps = bool(items) and bool(re.match(r"^\*\*.+?\*\*", items[0]))
+    out = []
+    if is_steps:
+        out.append('<ol style="list-style: none; padding-left: 0; margin: 32px 0;">')
+        for idx, it in enumerate(items, 1):
+            m = re.match(r"^\*\*(.+?)\*\*\.?\s*(.*)$", it, flags=re.DOTALL)
+            if m:
+                title = m.group(1).strip().rstrip(".")
+                desc = m.group(2).strip()
+            else:
+                title, desc = "", it
+            desc = re.sub(r"^[–—\-]\s*", "", desc)
+            title_html = ('<strong style="display: block; color: var(--primary); font-size: 1.15rem; margin-bottom: 6px;">%s</strong>' % inline(title)) if title else ""
+            desc_html = ('<span style="color: var(--text-body); line-height: 1.7;">%s</span>' % inline(desc)) if desc else ""
+            out.append('<li style="position: relative; padding: 20px 24px 20px 76px; margin-bottom: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; list-style: none;">'
+                       '<span aria-hidden="true" style="position: absolute; left: 20px; top: 20px; width: 40px; height: 40px; background: var(--accent); color: #fff; border-radius: 50%%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem;">%d</span>'
+                       '%s%s</li>' % (idx, title_html, desc_html))
+        out.append('</ol>')
+    else:
+        out.append('<ol style="list-style: none; padding-left: 0; margin: 24px 0;">')
+        for idx, it in enumerate(items, 1):
+            out.append('<li style="position: relative; padding-left: 48px; margin-bottom: 14px; line-height: 1.7; color: var(--text-body); font-size: 1.1rem; min-height: 32px; list-style: none;">'
+                       '<span aria-hidden="true" style="position: absolute; left: 0; top: 1px; width: 32px; height: 32px; background: var(--accent-light); color: var(--accent); border-radius: 50%%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.95rem;">%d</span>'
+                       '%s</li>' % (idx, inline(it)))
+        out.append('</ol>')
+    return "\n".join(out)
+
+
 def render_body(body):
     lines = body.split("\n")
     html = []
@@ -148,8 +187,8 @@ def render_body(body):
                 buf.append(lines[i])
                 i += 1
             i += 1  # closing fence
-            code = esc("\n".join(buf))
-            html.append('<pre style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; overflow-x: auto; font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;"><code>%s</code></pre>' % code)
+            code = esc("\n".join(buf).strip("\n"))
+            html.append(TEMPLATE_CARD % code)
             continue
         # headings
         if s.startswith("### "):
@@ -208,6 +247,19 @@ def render_body(body):
                 items.append('<li style="%s">%s</li>' % (LI_STYLE, inline(it)))
                 i += 1
             html.append('<ul style="%s">%s</ul>' % (UL_STYLE, "".join(items)))
+            continue
+        # ordered list (1. 2. 3.) -> step cards / numbered list
+        if re.match(r"^\d+\.\s+", s):
+            items = []
+            while i < n and re.match(r"^\d+\.\s+", lines[i].strip()):
+                it = re.sub(r"^\d+\.\s+", "", lines[i].strip())
+                i += 1
+                while (i < n and lines[i].strip()
+                       and not re.match(r"^(\d+\.\s|#{1,3}\s|[-*]\s|\||```)", lines[i].strip())):
+                    it += " " + lines[i].strip()
+                    i += 1
+                items.append(it)
+            html.append(render_ordered(items))
             continue
         # paragraph (gather until blank)
         buf = [s]
@@ -398,6 +450,8 @@ TEMPLATE = r'''<!DOCTYPE html>
   }}
   .blog-post-body li {{
     margin-bottom: 12px;
+    font-size: 1.1rem;
+    line-height: 1.8;
   }}
   .cross-sell-banner {{
     background: rgba(230,126,34,0.05);
