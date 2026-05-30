@@ -127,6 +127,7 @@ def render_body(body):
     lines = body.split("\n")
     html = []
     headings = []  # (id, text) for h2 TOC
+    body_questions = []  # (q, a) parsed from a body "Najczęściej zadawane pytania" section
     i = 0
     n = len(lines)
     while i < n:
@@ -163,6 +164,29 @@ def render_body(body):
             headings.append((hid, txt))
             html.append('<h2 id="%s" style="%s">%s</h2>' % (hid, H2_STYLE, inline(txt)))
             i += 1
+            if hid == "najczęściej-zadawane-pytania":
+                # Parse **Q** / answer blocks until next h2; render as accordion via placeholder
+                while i < n and not lines[i].strip().startswith("## "):
+                    ls = lines[i].strip()
+                    if not ls:
+                        i += 1
+                        continue
+                    qm = re.match(r"^\*\*(.+?)\*\*$", ls)
+                    if qm:
+                        q = qm.group(1).strip()
+                        i += 1
+                        while i < n and not lines[i].strip():
+                            i += 1
+                        ans = []
+                        while (i < n and lines[i].strip()
+                               and not lines[i].strip().startswith("## ")
+                               and not re.match(r"^\*\*(.+?)\*\*$", lines[i].strip())):
+                            ans.append(lines[i].strip())
+                            i += 1
+                        body_questions.append((q, " ".join(ans)))
+                    else:
+                        i += 1
+                html.append("<!--FAQ_HERE-->")
             continue
         # table
         if s.startswith("|") and (i + 1 < n) and re.match(r"^\s*\|?[\s:|-]+\|?\s*$", lines[i + 1]):
@@ -193,7 +217,7 @@ def render_body(body):
             i += 1
         para = " ".join(buf)
         html.append('<p style="%s">%s</p>' % (P_STYLE, inline(para)))
-    return "\n".join(html), headings
+    return "\n".join(html), headings, body_questions
 
 
 def build_toc(headings):
@@ -228,7 +252,7 @@ def build_faq_html(questions):
                         </summary>
                         <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">%s</p>
                     </details>
-                ''' % (esc(q), esc(a)))
+                ''' % (esc(q), inline(a)))
     out.append("</div>")
     return "\n".join(out)
 
@@ -237,10 +261,17 @@ def json_escape(t):
     return t.replace("\\", "\\\\").replace('"', '\\"')
 
 
+def strip_md(t):
+    # Markdown links/bold -> plain text (for JSON-LD answers)
+    t = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", t)
+    t = re.sub(r"\*\*([^*]+)\*\*", r"\1", t)
+    return t
+
+
 def build_faq_jsonld(questions):
     items = []
     for q, a in questions:
-        items.append('{"@type": "Question", "name": "%s", "acceptedAnswer": {"@type": "Answer", "text": "%s"}}' % (json_escape(q), json_escape(a)))
+        items.append('{"@type": "Question", "name": "%s", "acceptedAnswer": {"@type": "Answer", "text": "%s"}}' % (json_escape(strip_md(q)), json_escape(strip_md(a))))
     return '{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [' + ",".join(items) + "]}"
 
 
@@ -262,11 +293,12 @@ def convert(mdx_path):
     updated = fm.get("updated", date)
     hero = HERO[slug]
 
-    body_html, headings = render_body(body)
+    body_html, headings, body_questions = render_body(body)
     toc = build_toc(headings)
     related = build_related(fm["related"])
-    faq_html = build_faq_html(fm["questions"])
-    faq_jsonld = build_faq_jsonld(fm["questions"])
+    all_questions = fm["questions"] + body_questions
+    faq_html = build_faq_html(all_questions)
+    faq_jsonld = build_faq_jsonld(all_questions)
     rt = reading_time(body)
     url = "https://szwalnia-isabell.pl/%s.html" % slug
 
@@ -275,8 +307,13 @@ def convert(mdx_path):
     if "<h2" in body_html and toc:
         idx = body_html.index("<h2")
         body_html = body_html[:idx] + toc + "\n" + body_html[idx:]
-    # related box inserted before FAQ container at end
-    article_inner = body_html + "\n" + related + "\n" + faq_html
+    if "<!--FAQ_HERE-->" in body_html:
+        # Accordion replaces the in-body FAQ section; related box goes at the very end
+        article_inner = body_html.replace("<!--FAQ_HERE-->", faq_html) + "\n" + related
+    else:
+        # Fallback: FAQ heading + accordion appended after the related box
+        faq_heading = '<h2 id="najczęściej-zadawane-pytania" style="%s">Najczęściej zadawane pytania</h2>' % H2_STYLE
+        article_inner = body_html + "\n" + related + "\n" + faq_heading + "\n" + faq_html
 
     html = TEMPLATE.format(
         meta_title=esc(meta_title),
