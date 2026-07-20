@@ -26,6 +26,21 @@
       // Add source page
       data['source'] = window.location.pathname;
 
+      // Normalizacja pol formularza blogowego -> zgodnosc z mapowaniem Make/Airtable.
+      // Blog wysyla: name, contact (telefon LUB e-mail w jednym polu), message.
+      // Glowny formularz i scenariusz Make mapuja: email, phone, description.
+      // Wypelniamy tylko gdy puste, wiec glownego formularza to nie dotyczy.
+      if (data.contact && !data.email && !data.phone) {
+        if (data.contact.indexOf('@') !== -1) {
+          data.email = data.contact;
+        } else {
+          data.phone = data.contact;
+        }
+      }
+      if (data.message && !data.description) {
+        data.description = data.message;
+      }
+
       fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
