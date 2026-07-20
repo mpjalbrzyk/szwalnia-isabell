@@ -48,6 +48,14 @@
       })
         .then(function (res) {
           if (res.ok) {
+            // GA4: konwersja - lead z formularza (guard: liczymy raz na formularz)
+            if (!form.dataset.leadTracked && typeof gtag === 'function') {
+              form.dataset.leadTracked = 'true';
+              gtag('event', 'generate_lead', {
+                form_source: window.location.pathname,
+                form_id: form.id || 'contact-form'
+              });
+            }
             // Success
             form.innerHTML =
               '<div style="text-align:center;padding:40px 20px;">' +
@@ -73,6 +81,18 @@
           err.textContent = 'Cos poszlo nie tak. Sprobuj ponownie lub napisz na kontakt@szwalnia-isabell.pl';
           btn.parentNode.insertBefore(err, btn.nextSibling);
         });
+    });
+  });
+
+  // GA4: klikniecia w telefon / e-mail (leady poza formularzem - telefony i maile z GMB/stopki)
+  document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (typeof gtag !== 'function') return;
+      var isTel = link.getAttribute('href').indexOf('tel:') === 0;
+      gtag('event', 'contact_click', {
+        method: isTel ? 'phone' : 'email',
+        link_source: window.location.pathname
+      });
     });
   });
 })();
