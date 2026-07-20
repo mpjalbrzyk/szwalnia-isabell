@@ -1,7 +1,7 @@
 # CLAUDE.md — Szwalnia ISABELL
 
 > Dokumentacja projektu dla Claude Code. Aktualizować przy większych zmianach.
-> Ostatnia aktualizacja: 2026-06-15.
+> Ostatnia aktualizacja: 2026-07-20.
 
 ## 1. O czym jest ta strona
 
@@ -49,6 +49,8 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 
 | Data | Blok prac | Kluczowe commity |
 |---|---|---|
+| **2026-07-19/20** | **Sesja: pomiar + naprawy + E-E-A-T** — pomiar GSC VII (indeksacja **4→25**, ruch **+150%** kw/kw); de-kanibalizacja klastra „odzież firmowa" + meta homepage pod CTR; 7 stron zgłoszonych do reindeksacji; **naprawa formularzy blogowych** (podmiana zepsutego formularza na działający główny ×20 wpisów) + diagnoza kolejki webhooka Make (throttle 1 op./min, nie awaria); **GA4 `generate_lead` + `contact_click`** (pomiar konwersji); **odgenerycznienie 20 wpisów** blogowych (wstawki „Z naszego warsztatu" pod E-E-A-T) | `5a20e5c`, `467f32d`, `8a6ccd6`, `81c4bf0`, `5bbdf57`, `6ac4e1c`, `e435832` |
+| **2026-06-15** | **AEO + CTR + indeksacja** — schema Person/founder/sameAs, robots.txt (boty AI), IndexNow, ujednolicenie MOQ 50 szt., nowy title/meta homepage, stopka „Z bloga", ręczny request-indexing GSC | `225b309`, `7168052`, `3c8c15c`, `fcb5a7b`, `c6d12a7` |
 | **2026-05-30** | **Performance v2** — optymalizacja prędkości, audyt JS, sekcja hero | `Perormance v2`, `Js check - Perromance`, `Hero check` |
 | 2026-05-30 | **Blog rozbudowa** — wpisy 13–20, paginacja, harmonogram dat, FAQ akordeon (FAQPage schema), grafiki | `Blogi 13-20`, `Paginacja bloga (12/str)`, `Daty publikacji`, `FAQ akordeon`, `graphic input - blog`, `Poprawki blog` |
 | 2026-04-15 | **SEO + formularz** — formularz na Make, ładowanie obrazów, poprawki SEO | `Formularz Make`, `Zmiany - seo + ladowanie obrazów` |
@@ -64,4 +66,11 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 
 ## 7. Aktualny task
 
-Sprawdzenie **jak pozycjonują się** poszczególne elementy/strony (efekt prac z przełomu maja/czerwca: nowe blogi + performance) — analiza widoczności w wyszukiwarce i kolejne kroki SEO.
+**Faza wzrostu: pomiar → autorytet → konwersja.** Fundament gotowy i live. Stan po sesji 2026-07-19/20:
+- ✅ Indeksacja odblokowana (**25/33**), ruch **+150%** kw/kw, blog realnie rankuje i klika.
+- ✅ Formularze naprawione (blog: podmiana na działający główny formularz); **pomiar konwersji w GA4** (`generate_lead` + `contact_click`, oznaczone jako kluczowe zdarzenia).
+- ✅ Blog **odgenerycznionny pod E-E-A-T** (wstawki „Z naszego warsztatu" w 20 wpisach; model = CMT/wykonanie na powierzonym materiale, nie konstrukcja od zera).
+- ⏳ **Pit stop ~2026-08-20:** ponowny eksport GSC (Performance + Coverage) + dane leadów z GA4 — ocena efektu wszystkich zmian.
+- 📋 **Backlog do 20.08:** baner/zapis na newsletter + lead magnet (checklista/PDF na najlepszych wpisach, np. tech-pack poz. 5); **strona autora Michała** (czeka na bio + cytat); opinie Google (2→kilkanaście). Realne zdjęcia — odłożone (capex).
+
+Leady spływają: ~26–30 formularzy + 2–4 telefony/tydz. + maile; wizytówka Google 2–3 poz. na „Ząbki". Pomiar leadów: Airtable via webhook Make (throttle 1 op./min).
