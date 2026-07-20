@@ -20,7 +20,7 @@ Statyczna witryna WWW (czysty **HTML/CSS/JS, bez frameworka i build-stepu**) rod
 - **Stack:** statyczny HTML + wspólny `style.css` + waniliowy JS. Brak Node/build.
 - **Hosting:** **Vercel** (auto-deploy). Domena produkcyjna: https://szwalnia-isabell.pl
 - **Repo:** GitHub `mpjalbrzyk/szwalnia-isabell`, branch `main`.
-- **Deploy = `git push` na `main`** → Vercel buduje i publikuje automatycznie. **Brak `vercel.json` / CI w repo** — konfiguracja deployu jest po stronie panelu Vercel, nie w kodzie. Nie ma osobnego logu „deployów" poza historią gita.
+- **Deploy = `git push` na `main`** → Vercel buduje i publikuje automatycznie. Konfiguracja deployu głównie po stronie panelu Vercel; **`vercel.json` w repo** obsługuje wyłącznie nagłówki cache dla obrazów w `/assets/` (długi `max-age, immutable` dla webp/png/svg/ico/fontów; JS/CSS/HTML celowo pominięte, żeby aktualizacje zawsze wchodziły). Nie ma osobnego logu „deployów" poza historią gita.
 - **Dev server lokalnie:** `python3 -m http.server 8080` (patrz `.claude/launch.json`).
 - **Analytics:** GA4 `G-WGN33C5N6D`.
 - **Formularz kontaktowy:** POST do webhooka **Make** (`hook.eu1.make.com`) przez `assets/form-handler.js`.
