@@ -62,7 +62,9 @@
       "Bash(grep -c 'media=\"print\" onload' *.html uslugi/*.html)",
       "Bash(cd /tmp/gsc_export && echo \"===== WYKRES \\(suma w czasie\\) =====\" && cat Wykres.csv && echo \"\" && echo \"===== ZAPYTANIA \\(wszystkie\\) =====\" && cat Zapytania.csv && echo \"\" && echo \"===== STRONY =====\" && cat Strony.csv)",
       "Bash(python3 -c \"import yaml; print\\('pyyaml OK', yaml.__version__\\)\")",
-      "Bash(python3 -c \"import markdown; print\\('markdown OK'\\)\")"
+      "Bash(python3 -c \"import markdown; print\\('markdown OK'\\)\")",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)"
     ]
   }
 }
