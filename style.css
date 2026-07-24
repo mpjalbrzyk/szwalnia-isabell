@@ -261,43 +261,53 @@ html.menu-open .navbar-wrapper {
 }
 
 /* ── Topbar (godziny + kontakt) ── */
-.topbar { padding: 10px 5% 0; }
+.topbar {
+  background: var(--primary);
+  padding: 0 5%;
+  margin-bottom: 14px;
+}
 .topbar-inner {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 9px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  color: #9CA3AF;
 }
-.topbar svg { flex-shrink: 0; }
+.topbar svg { flex-shrink: 0; opacity: 0.75; }
 .topbar-hours {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   font-weight: 500;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 .topbar-contact {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 24px;
 }
 .topbar-contact a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 500;
+  gap: 7px;
+  font-weight: 600;
+  color: #E5E7EB;
+  white-space: nowrap;
   transition: color 0.2s;
 }
-.topbar-contact a:hover { color: var(--accent); }
+.topbar-contact a:hover { color: #FFF; }
+.topbar-contact a:hover svg { opacity: 1; }
 @media (max-width: 768px) {
-  .topbar { padding-top: 8px; }
+  .topbar { padding: 0 3%; margin-bottom: 10px; }
+  .topbar-inner { justify-content: center; padding: 8px 12px; }
   .topbar-hours { display: none; }
-  .topbar-inner { justify-content: center; }
-  .topbar-contact { gap: 16px; flex-wrap: wrap; justify-content: center; }
-  .topbar-contact a { font-size: 0.8rem; }
+  .topbar-contact { gap: 18px; }
+  .topbar-contact a { font-size: 0.78rem; }
 }
 
 /* ========================================
