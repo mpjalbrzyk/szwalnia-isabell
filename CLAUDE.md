@@ -1,7 +1,7 @@
 # CLAUDE.md — Szwalnia ISABELL
 
 > Dokumentacja projektu dla Claude Code. Aktualizować przy większych zmianach.
-> Ostatnia aktualizacja: 2026-07-20.
+> Ostatnia aktualizacja: 2026-07-24.
 
 ## 1. O czym jest ta strona
 
@@ -12,7 +12,7 @@ Statyczna witryna WWW (czysty **HTML/CSS/JS, bez frameworka i build-stepu**) rod
 **Dane firmowe (NAP):**
 - Adres: ul. Stefana Batorego 44, 05-091 Ząbki
 - Tel: +48 730 851 555 · e-mail: kontakt@isabell.pl
-- Godziny: pon–pt 06:00–15:00
+- Godziny (komunikowane klientom): pon–pt **8:00–15:00** — kanoniczne od 24.07.2026, wszędzie (stopka+schema+llms.txt). Produkcja startuje ~6:00, ale to wewnętrzny szczegół — NIE komunikować w treściach.
 - Założenie: 1990
 
 ## 2. Stack, hosting, deploy
@@ -49,6 +49,7 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 
 | Data | Blok prac | Kluczowe commity |
 |---|---|---|
+| **2026-07-24** | **Quick-winy CRO/NAP po audycie** — ujednolicenie godzin na 8:00–15:00 (schema ×8 + llms.txt, było 06:00 w schemie vs 8:00 w stopce); **topbar site-wide** (godziny + tel + mail z ikonami, 34 strony, mobile: same linki kontaktowe); **hero trust-line** („Odpowiedź w 24 h, wycena w 48 h · od 50 szt. · powierzony materiał" — message match z SERP); meta homepage wycena 24h→**48h** (realny czas wg Michała); bento eager + tło placeholder pod obrazami; literówka „połączenia" ×25 plików. **Kalkulator wycen ZATWIERDZONY** (otwarty, osobna podstrona; czeka na widełki cenowe od Michała) | (commit tej sesji) |
 | **2026-07-19/20** | **Sesja: pomiar + naprawy + E-E-A-T** — pomiar GSC VII (indeksacja **4→25**, ruch **+150%** kw/kw); de-kanibalizacja klastra „odzież firmowa" + meta homepage pod CTR; 7 stron zgłoszonych do reindeksacji; **naprawa formularzy blogowych** (podmiana zepsutego formularza na działający główny ×20 wpisów) + diagnoza kolejki webhooka Make (throttle 1 op./min, nie awaria); **GA4 `generate_lead` + `contact_click`** (pomiar konwersji); **odgenerycznienie 20 wpisów** blogowych (wstawki „Z naszego warsztatu" pod E-E-A-T) | `5a20e5c`, `467f32d`, `8a6ccd6`, `81c4bf0`, `5bbdf57`, `6ac4e1c`, `e435832` |
 | **2026-06-15** | **AEO + CTR + indeksacja** — schema Person/founder/sameAs, robots.txt (boty AI), IndexNow, ujednolicenie MOQ 50 szt., nowy title/meta homepage, stopka „Z bloga", ręczny request-indexing GSC | `225b309`, `7168052`, `3c8c15c`, `fcb5a7b`, `c6d12a7` |
 | **2026-05-30** | **Performance v2** — optymalizacja prędkości, audyt JS, sekcja hero | `Perormance v2`, `Js check - Perromance`, `Hero check` |
@@ -70,7 +71,11 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 - ✅ Indeksacja odblokowana (**25/33**), ruch **+150%** kw/kw, blog realnie rankuje i klika.
 - ✅ Formularze naprawione (blog: podmiana na działający główny formularz); **pomiar konwersji w GA4** (`generate_lead` + `contact_click`, oznaczone jako kluczowe zdarzenia).
 - ✅ Blog **odgenerycznionny pod E-E-A-T** (wstawki „Z naszego warsztatu" w 20 wpisach; model = CMT/wykonanie na powierzonym materiale, nie konstrukcja od zera).
+- ✅ **24.07:** quick-winy CRO/NAP wdrożone (godziny 8–15, topbar tel+mail, hero trust-line 48h, eager bento, literówka).
 - ⏳ **Pit stop ~2026-08-20:** ponowny eksport GSC (Performance + Coverage) + dane leadów z GA4 — ocena efektu wszystkich zmian.
-- 📋 **Backlog do 20.08:** baner/zapis na newsletter + lead magnet (checklista/PDF na najlepszych wpisach, np. tech-pack poz. 5); **strona autora Michała** (czeka na bio + cytat); opinie Google (2→kilkanaście). Realne zdjęcia — odłożone (capex).
+- 📋 **Backlog do 20.08:**
+  - **KALKULATOR WYCEN (zatwierdzony 24.07, priorytet):** otwarta podstrona (płaski URL), widełki od–do zł/szt., twardy próg <50 szt. → komunikat MOQ + link do wpisu, po wyniku CTA „Chcesz dokładną wycenę w 24h?" → formularz główny z pre-fill; email opcjonalny (PDF wyceny + checklista tech-pack = lead magnet); GA4 eventy calculator_*. Wzór: usesplot.com/pl/pricing/calculator (ale u nich full gate — u nas otwarty). **BLOKER: widełki cenowe od Michała** (produkt × ilość → zł/szt. od–do; zero zmyślonych liczb).
+  - **Nowe grafiki hero/bento przez Higgsfield** — koncept strategiczny przygotowany 24.07 (patrz memory), czeka na akceptację Michała; zasada: żadnych dubli między hero/proces/realizacje/detale, spójna paleta, bez twarzy.
+  - Strona autora Michała (czeka na bio + cytat); opinie Google (2→kilkanaście). Realne zdjęcia — odłożone (capex); newsletter = system mailingowy D2C Michała.
 
 Leady spływają: ~26–30 formularzy + 2–4 telefony/tydz. + maile; wizytówka Google 2–3 poz. na „Ząbki". Pomiar leadów: Airtable via webhook Make (throttle 1 op./min).
