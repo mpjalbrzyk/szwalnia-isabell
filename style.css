@@ -680,11 +680,11 @@ html.menu-open .navbar-wrapper {
 
 /* Proces: split z pionowym zdjęciem (tylko strona główna) */
 .process-split {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 64px;
+  grid-template-columns: 1fr 380px;
+  gap: 72px;
   align-items: start;
 }
 .process-split .process-timeline {
@@ -697,8 +697,10 @@ html.menu-open .navbar-wrapper {
 }
 .process-visual img {
   width: 100%;
-  aspect-ratio: 2/3;
+  height: auto;
+  aspect-ratio: 3/4;
   object-fit: cover;
+  object-position: center 68%;
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--muted);
