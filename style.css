@@ -610,6 +610,13 @@ html.menu-open .navbar-wrapper {
   transition: gap 0.2s;
 }
 .service-link:hover { gap: 10px; }
+/* Cały kafelek klikalny: link rozciągnięty na kartę (stretched link) */
+.service-card { position: relative; }
+.service-card .service-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
 
 /* ========================================
    PROCESS (Simplified 4-step Timeline)
