@@ -157,20 +157,20 @@ html.menu-open .navbar-wrapper {
 }
 
 .btn-nav {
-  background-color: var(--accent);
-  color: #FFF;
+  background-color: #FFF;
+  color: var(--primary);
   border: none;
   padding: 10px 24px;
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
   display: inline-block;
   flex-shrink: 0;
   font-family: 'DM Sans', sans-serif;
 }
-.btn-nav:hover { background-color: var(--accent-hover); }
+.btn-nav:hover { background-color: #E4E7EC; transform: translateY(-1px); }
 
 /* Hamburger */
 .hamburger {
@@ -679,9 +679,11 @@ html.menu-open .navbar-wrapper {
 }
 
 /* Proces: split z pionowym zdjęciem (tylko strona główna) */
+.process-home { padding-left: 0; padding-right: 0; }
 .process-split {
-  max-width: 1160px;
+  max-width: 1300px;
   margin: 0 auto;
+  padding: 0 5%;
   display: grid;
   grid-template-columns: 1fr 420px;
   gap: 56px;
@@ -690,6 +692,9 @@ html.menu-open .navbar-wrapper {
 .process-split .process-timeline {
   max-width: none;
   margin: 0;
+}
+.process-split .step-content p {
+  max-width: none;
 }
 .process-visual img {
   width: 100%;
