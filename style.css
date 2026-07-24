@@ -120,7 +120,7 @@ html.menu-open .navbar-wrapper {
 }
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 16px);
+  top: calc(100% + 28px);
   left: 50%;
   transform: translateX(-50%);
   min-width: 240px;
@@ -136,6 +136,21 @@ html.menu-open .navbar-wrapper {
   transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
   box-shadow: 0 16px 48px rgba(0,0,0,0.25);
   z-index: 110;
+}
+/* niewidzialny mostek hovera nad menu (odstęp od pilla bez gubienia :hover) */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 30px;
+}
+/* separatory między pozycjami */
+.dropdown-menu a + a {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .nav-dropdown:hover .dropdown-menu {
   opacity: 1;
