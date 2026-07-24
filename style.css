@@ -680,27 +680,22 @@ html.menu-open .navbar-wrapper {
 
 /* Proces: split z pionowym zdjęciem (tylko strona główna) */
 .process-split {
-  max-width: 1300px;
+  max-width: 1160px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 72px;
-  align-items: start;
+  grid-template-columns: 1fr 420px;
+  gap: 56px;
+  align-items: stretch;
 }
 .process-split .process-timeline {
   max-width: none;
   margin: 0;
 }
-.process-visual {
-  position: sticky;
-  top: 110px;
-}
 .process-visual img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 3/4;
+  height: 100%;
   object-fit: cover;
-  object-position: center 68%;
+  object-position: center;
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--muted);
