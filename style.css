@@ -678,6 +678,36 @@ html.menu-open .navbar-wrapper {
   margin-left: 31px;
 }
 
+/* Proces: split z pionowym zdjęciem (tylko strona główna) */
+.process-split {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: start;
+}
+.process-split .process-timeline {
+  max-width: none;
+  margin: 0;
+}
+.process-visual {
+  position: sticky;
+  top: 110px;
+}
+.process-visual img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--muted);
+}
+@media (max-width: 992px) {
+  .process-split { grid-template-columns: 1fr; gap: 0; }
+  .process-visual { display: none; }
+}
+
 /* ========================================
    REALIZACJE (Portfolio)
    ======================================== */
