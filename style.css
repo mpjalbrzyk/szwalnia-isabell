@@ -238,7 +238,10 @@ html.menu-open .navbar-wrapper {
   transition: color 0.2s;
 }
 .mobile-menu a:hover { color: var(--accent); }
-.mobile-menu .btn-nav { font-size: 1rem; padding: 12px 28px; }
+/* Kolor jawnie, bo `.mobile-menu a` (0,1,1) przebija `.btn-nav` (0,1,0)
+   i bialy napis znikal na bialym tle przycisku. */
+.mobile-menu .btn-nav { font-size: 1rem; padding: 12px 28px; color: var(--primary); }
+.mobile-menu .btn-nav:hover { color: var(--primary); background-color: #E4E7EC; }
 
 /* Mobile Dropdown */
 .mobile-dropdown-trigger {
