@@ -67,7 +67,8 @@
       "Bash(git rev-list *)",
       "Bash(python3 \"/private/tmp/claude-501/-Users-michaljalbrzykowski-Szwalnia-ISABELL---Claude-Code/b728a637-61ea-49cb-a95f-277f24f1447b/scratchpad/add_topbar.py\")",
       "Bash(python3 -m http.server 8080)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/index.html)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/index.html)",
+      "Bash(grep -n -A2 -i \"^#\\\\{1,4\\\\}.*\\\\b2[1-7]\\\\b\\\\|^| *2[1-7]\\\\|^2[1-7]\\\\.\" blog-szwalnia-isabell-plan.md)"
     ]
   }
 }
