@@ -204,7 +204,7 @@
         
         <!-- INFO -->
         <div class="contact-info-card">
-          <h1 style="font-family: 'DM Serif Display', serif; font-size: 2.2rem; margin-bottom: 40px; color: var(--primary);">Napisz do nas</h1>
+          <h1 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 2.2rem; margin-bottom: 40px; color: var(--primary);">Napisz do nas</h1>
           
           <div class="contact-info-item">
              <div class="contact-info-icon">
@@ -428,39 +428,6 @@
       });
     }
   
-    // Handle Form Submit via AJAX
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm && !contactForm.dataset.ajaxLoaded) {
-      contactForm.dataset.ajaxLoaded = 'true';
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = contactForm.querySelector('button[type="submit"]');
-        btn.innerHTML = 'Wysyłanie...';
-        btn.disabled = true;
-
-        const formData = new FormData(contactForm);
-
-        fetch(contactForm.action, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        })
-        .then(response => {
-          if (response.ok) {
-            contactForm.innerHTML = '<div style="text-align:center; padding: 40px 0;"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="margin-bottom:16px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><h3 style="margin-bottom:8px">Wiadomość wysłana!</h3><p style="color:var(--text-body)">Dziękuję za wiadomość. Przeanalizuję zapytanie i odezwę się do Ciebie najszybciej, jak to możliwe.</p></div>';
-          } else {
-            btn.innerHTML = 'Wystąpił błąd. Spróbuj ponownie.';
-            btn.disabled = false;
-          }
-        })
-        .catch(error => {
-          btn.innerHTML = 'Błąd połączenia sieciowego.';
-          btn.disabled = false;
-        });
-      });
-    }
 
 </script>
 

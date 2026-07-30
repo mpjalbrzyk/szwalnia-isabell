@@ -208,7 +208,7 @@
       <!-- Kafelek 1 -->
       <div class="bento-about-tile">
         <span class="section-badge" style="width: fit-content;">Lata 70.</span>
-        <h3 style="font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 12px;">Krawiectwo we krwi</h3>
+        <h3 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.8rem; color: var(--primary); margin-bottom: 12px;">Krawiectwo we krwi</h3>
         <p style="color: var(--text-body); line-height: 1.6;">Nasza historia zaczęła się w latach 70. od dziadka Jana, który prowadził własny zakład na południu Polski (Śląsk). To on zaszczepił w całej rodzinie twardy szacunek do rzemiosła i uczył, że dobrze uszyty produkt obroni się sam.</p>
       </div>
 
@@ -226,7 +226,7 @@
       <!-- Kafelek 4 (Rok 1990) -->
       <div class="bento-about-tile bento-large" style="background: var(--muted);">
         <span class="section-badge" style="width: fit-content; background: #fff; border: 1px solid var(--border);">Rok 1990 - Narodziny ISABELL</span>
-        <h3 style="font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 12px;">Od targowiska po szwalnię pod Warszawą</h3>
+        <h3 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.8rem; color: var(--primary); margin-bottom: 12px;">Od targowiska po szwalnię pod Warszawą</h3>
         <p style="color: var(--text-body); line-height: 1.6; margin-bottom: 16px;">W latach 90. rodzice założyli zupełnie nową firmę z charakterem - ISABELL. Zaczynali od pierwszego stoiska na ogromnych targach odzieżowych, przedzierali się przez wynajem coraz to większych punktów sprzedaży, aż finalnie zbudowali od zera własną <strong>nowoczesną szwalnię w Ząbkach pod Warszawą</strong>. Mamy własny budynek, głębokie i długofalowe relacje z dostawcami w hurtowniach materiałowych i własny know-how sprzętowy.</p>
       </div>
 
@@ -294,7 +294,7 @@
         <img src="/assets/michal-jalbrzykowski-isabell.webp" alt="Michał ze Szwalni ISABELL łączący tradycję i logistykę e-commerce" style="width: 100%; display: block;">
       </div>
       <div>
-        <h3 style="font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--primary); margin-bottom: 20px;">Wychowany między krojownią a magazynem</h3>
+        <h3 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 2rem; color: var(--primary); margin-bottom: 20px;">Wychowany między krojownią a magazynem</h3>
         <p style="color: var(--text-body); line-height: 1.7; margin-bottom: 16px;">
           Przez lata moje zawodowe ścieżki wiodły wokół technologii. Budowałem sklepy internetowe, automatyzacje logistyczne i chmury komunikacyjne dla innych podmiotów. Jednak więzi rzemieślnicze wygrały - wróciłem do rodzinnego biznesu, przynosząc z sobą digitalizację powtarzalnych procesów.
         </p>
@@ -310,7 +310,7 @@
   <!-- CTA -->
   <section class="services" style="text-align: center; padding: 60px 5%;">
     <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--primary); margin-bottom: 20px;">Gotowy uszyć swoją własną kolekcję z nami?</h2>
+      <h2 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 2rem; color: var(--primary); margin-bottom: 20px;">Gotowy uszyć swoją własną kolekcję z nami?</h2>
       <a href="/kontakt.html" class="submit-btn">Skontaktuj się ze szwalnią &rarr;</a>
     </div>
   </section>
@@ -397,39 +397,6 @@
       });
     }
   
-    // Handle Form Submit via AJAX
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm && !contactForm.dataset.ajaxLoaded) {
-      contactForm.dataset.ajaxLoaded = 'true';
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = contactForm.querySelector('button[type="submit"]');
-        btn.innerHTML = 'Wysyłanie...';
-        btn.disabled = true;
-
-        const formData = new FormData(contactForm);
-
-        fetch(contactForm.action, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        })
-        .then(response => {
-          if (response.ok) {
-            contactForm.innerHTML = '<div style="text-align:center; padding: 40px 0;"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="margin-bottom:16px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><h3 style="margin-bottom:8px">Wiadomość wysłana!</h3><p style="color:var(--text-body)">Dziękuję za wiadomość. Przeanalizuję zapytanie i odezwę się do Ciebie najszybciej, jak to możliwe.</p></div>';
-          } else {
-            btn.innerHTML = 'Wystąpił błąd. Spróbuj ponownie.';
-            btn.disabled = false;
-          }
-        })
-        .catch(error => {
-          btn.innerHTML = 'Błąd połączenia sieciowego.';
-          btn.disabled = false;
-        });
-      });
-    }
 
 </script>
 <script src="/assets/form-handler.js"></script>

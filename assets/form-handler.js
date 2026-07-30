@@ -75,10 +75,10 @@
               '<div style="text-align:center;padding:40px 20px;">' +
               '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" style="margin-bottom:16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
               (isJobApplication
-                ? '<h3 style="color:var(--primary);margin-bottom:8px;">Zgloszenie wyslane!</h3>' +
-                  '<p style="color:var(--text-body);">Dziekujemy. Odezwiemy sie telefonicznie, zwykle w ciagu kilku dni roboczych.</p>'
-                : '<h3 style="color:var(--primary);margin-bottom:8px;">Wiadomosc wyslana!</h3>' +
-                  '<p style="color:var(--text-body);">Odpowiemy najszybciej jak to mozliwe - zazwyczaj w ciagu kilku godzin.</p>') +
+                ? '<h3 style="color:var(--primary);margin-bottom:8px;">Zgłoszenie wysłane!</h3>' +
+                  '<p style="color:var(--text-body);">Dziękujemy. Odezwiemy się telefonicznie, zwykle w ciągu kilku dni roboczych.</p>'
+                : '<h3 style="color:var(--primary);margin-bottom:8px;">Wiadomość wysłana!</h3>' +
+                  '<p style="color:var(--text-body);">Odpowiemy najszybciej, jak to możliwe. Zazwyczaj w ciągu kilku godzin.</p>') +
               '</div>';
           } else {
             throw new Error('HTTP ' + res.status);
@@ -95,7 +95,7 @@
           var err = document.createElement('p');
           err.className = 'form-error-msg';
           err.style.cssText = 'color:#dc2626;text-align:center;margin-top:12px;font-size:0.95rem;';
-          err.textContent = 'Cos poszlo nie tak. Sprobuj ponownie lub napisz na kontakt@isabell.pl';
+          err.textContent = 'Coś poszło nie tak. Spróbuj ponownie lub napisz na kontakt@isabell.pl';
           btn.parentNode.insertBefore(err, btn.nextSibling);
         });
     });
