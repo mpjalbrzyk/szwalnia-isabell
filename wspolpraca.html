@@ -50,9 +50,10 @@
 
   /* Jedyny wyjatek: akapit hero ma 40 px marginesu dolnego, a lista zaufania
      24 px gornego. Skladalo sie to na 64 px dziury miedzy tekstem a lista.
-     Zerujemy margines listy, zeby rytm wynosil rowne 40 px, tyle samo ile
-     na uslugach miedzy akapitem a przyciskiem. */
-  .hero-wspolpraca .hero-trust { margin-top: 0; }
+     Zerujemy margines gorny (rytm rowne 40 px, tyle samo ile na uslugach
+     miedzy akapitem a przyciskiem) i dokladamy dolny, bo bez niego przyciski
+     przyklejaly sie do ostatniej pozycji listy. Kariera robi to samo. */
+  .hero-wspolpraca .hero-trust { margin-top: 0; margin-bottom: 28px; }
 
   /* Karty kategorii partnerow (wzorzec z kariera.html) */
   .role-grid {
