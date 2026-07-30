@@ -57,28 +57,39 @@
       })
         .then(function (res) {
           if (res.ok) {
-            // Zgloszenie rekrutacyjne to NIE jest lead sprzedazowy - osobne zdarzenie GA4,
-            // zeby nie zawyzac konwersji handlowych (generate_lead = kluczowe zdarzenie).
-            var isJobApplication = data.form_type === 'kariera';
+            // Trzy rodzaje formularzy, trzy osobne zdarzenia GA4. Zgloszenie rekrutacyjne
+            // i partnerskie to NIE leady sprzedazowe, wiec nie moga zawyzac generate_lead,
+            // ktore jest oznaczone w GA4 jako kluczowe zdarzenie.
+            var formType = data.form_type || 'wycena';
+            var eventName = formType === 'kariera' ? 'job_application'
+                          : formType === 'wspolpraca' ? 'partner_application'
+                          : 'generate_lead';
 
             // GA4: konwersja (guard: liczymy raz na formularz)
             if (!form.dataset.leadTracked && typeof gtag === 'function') {
               form.dataset.leadTracked = 'true';
-              gtag('event', isJobApplication ? 'job_application' : 'generate_lead', {
+              gtag('event', eventName, {
                 form_source: window.location.pathname,
                 form_id: form.id || 'contact-form',
-                form_type: data.form_type || 'wycena'
+                form_type: formType
               });
             }
+
+            // Komunikat po wysylce. To JEDYNE zrodlo tych tekstow w calym serwisie
+            // (handlery inline zostaly usuniete 30.07), wiec musza byc dopracowane.
+            var messages = {
+              kariera: ['Zgłoszenie wysłane!', 'Dziękujemy. Odezwiemy się telefonicznie, zwykle w ciągu kilku dni roboczych.'],
+              wspolpraca: ['Zgłoszenie wysłane!', 'Dziękujemy. Michał odezwie się telefonicznie, zwykle w ciągu kilku dni roboczych.'],
+              wycena: ['Wiadomość wysłana!', 'Odpowiemy najszybciej, jak to możliwe. Zazwyczaj w ciągu kilku godzin.']
+            };
+            var msg = messages[formType] || messages.wycena;
+
             // Success
             form.innerHTML =
               '<div style="text-align:center;padding:40px 20px;">' +
               '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" style="margin-bottom:16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
-              (isJobApplication
-                ? '<h3 style="color:var(--primary);margin-bottom:8px;">Zgłoszenie wysłane!</h3>' +
-                  '<p style="color:var(--text-body);">Dziękujemy. Odezwiemy się telefonicznie, zwykle w ciągu kilku dni roboczych.</p>'
-                : '<h3 style="color:var(--primary);margin-bottom:8px;">Wiadomość wysłana!</h3>' +
-                  '<p style="color:var(--text-body);">Odpowiemy najszybciej, jak to możliwe. Zazwyczaj w ciągu kilku godzin.</p>') +
+              '<h3 style="color:var(--primary);margin-bottom:8px;">' + msg[0] + '</h3>' +
+              '<p style="color:var(--text-body);">' + msg[1] + '</p>' +
               '</div>';
           } else {
             throw new Error('HTTP ' + res.status);
