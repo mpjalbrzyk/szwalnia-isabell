@@ -19,50 +19,40 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="/assets/uslugi-szwalnia-isabell-hero-800.webp" imagesrcset="/assets/uslugi-szwalnia-isabell-hero-400.webp 400w, /assets/uslugi-szwalnia-isabell-hero-800.webp 800w" imagesizes="(max-width: 768px) 100vw, 50vw" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/hero-wspolpraca-haft-zdobienie-isabell.webp" imagesrcset="/assets/hero-wspolpraca-haft-zdobienie-isabell-800.webp 800w, /assets/hero-wspolpraca-haft-zdobienie-isabell.webp 1264w" imagesizes="(max-width: 768px) 100vw, 50vw" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css">
 
-<meta property="og:image" content="https://szwalnia-isabell.pl/assets/og-cover.png">
+<meta property="og:image" content="https://szwalnia-isabell.pl/assets/og-wspolpraca-partnerzy.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Szwalnia ISABELL w Ząbkach pod Warszawą">
+<meta property="og:image:alt" content="Hafciarka przemysłowa wyszywa wzór na granatowej bluzie w jasnej hali Szwalni ISABELL">
 <meta property="og:url" content="https://szwalnia-isabell.pl/wspolpraca.html">
 <meta property="og:site_name" content="Szwalnia ISABELL">
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Współpraca z Szwalnią ISABELL">
 <meta name="twitter:description" content="Szukamy firm zdobiących odzież, dostawców tkanin i dodatków oraz konstruktorów. Powtarzalne serie, płatności w terminie.">
-<meta name="twitter:image" content="https://szwalnia-isabell.pl/assets/og-cover.png">
+<meta name="twitter:image" content="https://szwalnia-isabell.pl/assets/og-wspolpraca-partnerzy.jpg">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon.ico" sizes="64x64">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="canonical" href="https://szwalnia-isabell.pl/wspolpraca.html" />
 
 <style>
-  /* Hero: zdjecie rozciagniete na pelna wysokosc kolumny tekstowej.
-     max-height jest zabezpieczeniem: bez niego dluzszy tekst rozciaga kolumne,
-     a object-fit: cover wycina z kadru waski pionowy pasek. */
-  .hero-wspolpraca .hero-container { align-items: stretch; }
-  .hero-wspolpraca .hero-visual {
-    height: auto;
-    min-height: 520px;
-    max-height: 680px;
-  }
-  .hero-wspolpraca .hero-visual img { object-position: center 40%; }
-  .hero-wspolpraca .hero-trust { margin-top: 20px; margin-bottom: 30px; gap: 10px 22px; }
-  @media (max-width: 992px) {
-    /* Kadr jest pionowy (3:4). Pelna wysokosc na mobile zajelaby caly ekran,
-       dlatego lekko przycinamy do 4:5. */
-    .hero-wspolpraca .hero-visual {
-      height: auto;
-      min-height: 0;
-      max-height: none;
-      aspect-ratio: 4 / 5;
-    }
-    .hero-wspolpraca .hero-visual img { height: 100%; }
-  }
+  /* Hero BEZ wlasnych nadpisan geometrii. Reszta podstron (uslugi, lokalne,
+     realizacje) korzysta z bazy w style.css: hero-visual 520 px na desktopie
+     i 400 px ponizej 992 px, hero-container align-items center, gap 60 px,
+     padding 80/5%/60. Trzymamy dokladnie ten sam rytm, zeby odstepy i wielkosc
+     kadru zgadzaly sie z pozostalymi stronami. Kariera ma swoj wariant
+     rozciagany na pelna wysokosc kolumny i tego tu NIE powtarzamy. */
+
+  /* Jedyny wyjatek: akapit hero ma 40 px marginesu dolnego, a lista zaufania
+     24 px gornego. Skladalo sie to na 64 px dziury miedzy tekstem a lista.
+     Zerujemy margines listy, zeby rytm wynosil rowne 40 px, tyle samo ile
+     na uslugach miedzy akapitem a przyciskiem. */
+  .hero-wspolpraca .hero-trust { margin-top: 0; }
 
   /* Karty kategorii partnerow (wzorzec z kariera.html) */
   .role-grid {
@@ -100,7 +90,8 @@
   .role-tag {
     display: inline-block;
     width: fit-content;
-    font-size: 0.72rem;
+    /* 0.72rem dawalo 11.5 px, za malo do wygodnego czytania na telefonie */
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.4px;
     text-transform: uppercase;
@@ -254,6 +245,9 @@
 
   /* Klasa zamiast stylu inline, zeby media query mialo szanse nadpisac padding */
   .faq-wspolpraca { padding: 80px 5%; }
+  /* Cel dotyku: naglowek pytania mial ok. 24 px wysokosci, czyli mocno ponizej
+     progu 44 px zalecanego na ekranach dotykowych. */
+  .faq-wspolpraca .faq-item summary { min-height: 44px; }
 
   .field-hint {
     display: block;
@@ -274,7 +268,6 @@
     /* Odstepy miedzy sekcjami: 80+80 px na mobile to prawie 1,5 tys. px samej pustki.
        Selektor z [class] podbija specyficznosc ponad .services / .process / .contact-section. */
     main > section[class]:not(.hero) { padding-top: 48px; padding-bottom: 48px; }
-    .hero-wspolpraca .hero-container { padding-top: 24px; padding-bottom: 36px; }
     .role-grid { margin-top: 32px; }
     .honest-box, .accent-box { margin-top: 28px; }
     .cta-strip { margin-top: 32px; }
@@ -282,7 +275,9 @@
 
     #wspolpraca-form { padding: 24px 20px; }
     .cat-grid { grid-template-columns: 1fr; gap: 8px; }
-    .cat-option { padding: 10px 12px; font-size: 0.88rem; }
+    /* min-height 44 px: kazdy checkbox to osobny cel dotyku, a przy padding 10 px
+       etykieta miala ok. 40 px i lapala sie ponizej progu. */
+    .cat-option { padding: 10px 12px; font-size: 0.88rem; min-height: 44px; }
   }
   @media (max-width: 700px) {
     .wyrozniki-2x2 { grid-template-columns: 1fr; }
@@ -323,7 +318,7 @@
     <div class="topbar-inner">
       <span class="topbar-hours">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Pon–Pt: 8:00–15:00
+        Pon-Pt: 8:00-15:00
       </span>
       <div class="topbar-contact">
         <a href="tel:+48730851555">
@@ -401,9 +396,8 @@
     <div class="hero-container">
       <div class="hero-content">
         <span class="hero-badge">Współpraca</span>
-        <h1>Współpraca z firmami i dostawcami</h1>
-        <p><strong>Gotowy produkt to rzadko samo szycie.</strong> Dochodzą haft, nadruk, naszywki, właściwa dzianina, metki i dodatki. Budujemy stałe grono firm, z którymi robimy to razem, żeby marka rozmawiała z jednym wykonawcą, a nie składała zamówienie z pięciu kawałków.</p>
-        <p>Szyjemy w Ząbkach <strong>od 1990 roku</strong>, a prowadzi nas <a href="/o-nas.html" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">trzecie pokolenie rodziny</a>. Jeśli Twoja firma zdobi odzież, dostarcza tkaniny i dodatki albo doradza przy konstrukcji, chcemy Cię poznać. <strong>Współpracujemy z firmami prowadzącymi działalność</strong> i rozliczamy się fakturą.</p>
+        <h1>Współpraca z firmami</h1>
+        <p><strong>Gotowy produkt to rzadko samo szycie.</strong> Dochodzą haft, nadruk, naszywki, właściwa dzianina, metki i dodatki. Szukamy firm, które robią te rzeczy, żeby marka rozmawiała z jednym wykonawcą zamiast składać zamówienie z pięciu kawałków.</p>
         <ul class="hero-trust">
           <li>Powtarzalne serie</li>
           <li>Płatności w terminie</li>
@@ -416,7 +410,7 @@
         </div>
       </div>
       <div class="hero-visual hero-visual-subpage">
-        <img src="/assets/uslugi-szwalnia-isabell-hero-800.webp" srcset="/assets/uslugi-szwalnia-isabell-hero-400.webp 400w, /assets/uslugi-szwalnia-isabell-hero-800.webp 800w" sizes="(max-width: 768px) 100vw, 50vw" alt="Hala produkcyjna szwalni ISABELL: maszyny szwalnicze w rzędzie, stół z ułożonymi granatowymi tkaninami i nawoje materiałów pod oknem" loading="eager" fetchpriority="high" width="800" height="1072" decoding="async">
+        <img src="/assets/hero-wspolpraca-haft-zdobienie-isabell.webp" srcset="/assets/hero-wspolpraca-haft-zdobienie-isabell-800.webp 800w, /assets/hero-wspolpraca-haft-zdobienie-isabell.webp 1264w" sizes="(max-width: 768px) 100vw, 50vw" alt="Hafciarka przemysłowa wyszywa geometryczny wzór na granatowej bluzie, obok nawoje bordowej i beżowej nici, w tle ułożone stosy bluz w jasnej hali" loading="eager" fetchpriority="high" width="1264" height="848" decoding="async">
       </div>
     </div>
   </section>
@@ -449,7 +443,8 @@
 
       <div class="role-card">
         <div class="role-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/></svg>
+          <!-- Stempel: czytelny skrot dla nadruku i znakowania odziezy -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14"/><path d="M9 13V8a3 3 0 0 1 6 0v5"/><path d="M6.5 13h11a2 2 0 0 1 2 2v3h-15v-3a2 2 0 0 1 2-2z"/></svg>
         </div>
         <h3>Zdobienie i personalizacja odzieży</h3>
         <span class="role-tag">Najczęściej poszukiwane</span>
@@ -471,7 +466,8 @@
 
       <div class="role-card">
         <div class="role-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4"/><path d="M12 11v10"/></svg>
+          <!-- Warstwy: bele tkanin i dzianin jeden na drugim, lepsze niz pudelko -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg>
         </div>
         <h3>Materiały, tkaniny i dodatki</h3>
         <span class="role-tag">Dostawcy</span>
@@ -490,7 +486,9 @@
 
       <div class="role-card">
         <div class="role-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><path d="M6 20V9l6-5 6 5v11"/><path d="M10 20v-6h4v6"/></svg>
+          <!-- Linijka krawiecka: konstrukcja i wykroj. Wczesniej byla tu ikona domu,
+               ktora czytala sie jak branza nieruchomosci. -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0z"/><path d="m8.5 6.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m14.5 12.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>
         </div>
         <h3>Konstrukcja, modelowanie i konsultacje</h3>
         <span class="role-tag">Współpraca projektowa</span>
@@ -637,7 +635,7 @@
         </div>
       </div>
       <aside class="process-visual">
-        <img src="/assets/proces-pakowanie-odziezy-karton.webp" srcset="/assets/proces-pakowanie-odziezy-karton-500.webp 500w, /assets/proces-pakowanie-odziezy-karton.webp 1000w" sizes="420px" alt="Gotowa partia odzieży pakowana do kartonu w szwalni ISABELL, ostatni etap przed wysyłką do klienta" loading="lazy" width="1000" height="1491" decoding="async">
+        <img src="/assets/proces-wspolpraca-sitodruk-partner.webp" srcset="/assets/proces-wspolpraca-sitodruk-partner-500.webp 500w, /assets/proces-wspolpraca-sitodruk-partner.webp 848w" sizes="420px" alt="Karuzela sitodrukowa z granatowym T-shirtem na palecie, obok bordowy i beżowy pigment, w tle stosy bluz w jasnej hali" loading="lazy" width="848" height="1264" decoding="async">
       </aside>
     </div>
     <div class="cta-strip">
@@ -874,7 +872,7 @@
           <li><a href="/minimalne-zamowienie-szwalnia-moq.html">Minimalne zamówienie (MOQ)</a></li>
           <li><a href="/jak-znalezc-szwalnie-dla-marki.html">Jak znaleźć szwalnię dla marki</a></li>
           <li><a href="/produkcja-malych-serii.html">Produkcja małych serii</a></li>
-          <li><a href="/odziez-firmowa-poradnik.html">Odzież firmowa – poradnik</a></li>
+          <li><a href="/odziez-firmowa-poradnik.html">Odzież firmowa - poradnik</a></li>
           <li><a href="/szwalnia-polska-vs-chiny.html">Polska vs Chiny: gdzie szyć</a></li>
         </ul>
       </div>
@@ -934,7 +932,7 @@
       "closes": "15:00"
     }
   ],
-  "image": "https://szwalnia-isabell.pl/assets/og-cover.png",
+  "image": "https://szwalnia-isabell.pl/assets/og-wspolpraca-partnerzy.jpg",
   "sameAs": [
     "https://www.google.com/search?kgmid=/g/11z2w4y559"
   ]

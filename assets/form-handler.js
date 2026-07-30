@@ -1,5 +1,5 @@
 /**
- * Szwalnia ISABELL – Webhook Form Handler
+ * Szwalnia ISABELL - Webhook Form Handler
  * Wysyła dane formularzy do Make.com webhook → Airtable
  */
 (function () {
