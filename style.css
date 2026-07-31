@@ -44,6 +44,38 @@ ul { list-style: none; }
 }
 .skip-link:focus { top: 16px; }
 
+
+/* Ikony social w stopce. Profile naleza do marki ISABELL (isabell.pl), ktora jest
+   ta sama firma co szwalnia; powiazanie i tak jest juz publiczne przez linki
+   w 5 wpisach blogowych. Cel dotyku 44 px, zgodnie z audytem mobilnym. */
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D1D5DB;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.footer-social a:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.38);
+  color: #FFF;
+  transform: translateY(-1px);
+}
+.footer-social a:focus-visible {
+  outline: 2px solid #FFF;
+  outline-offset: 2px;
+}
+
 /* ========================================
    NAVBAR
    ======================================== */
