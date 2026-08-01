@@ -13,9 +13,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Współpraca dla firm zdobiących odzież i dostawców | Szwalnia ISABELL</title>
-<meta name="description" content="Szukamy firm, które zdobią odzież (haft, sitodruk, druk 3D, naszywki), dostarczają tkaniny i dodatki oraz doradzają przy konstrukcji. Stałe serie, płatności w terminie, Ząbki pod Warszawą.">
+<meta name="description" content="Szukamy firm, które zdobią odzież: sitodruk, haft, druk 3D, DTG. Oraz dostawców tkanin i dodatków i konstruktorów. Szwalnia w Ząbkach pod Warszawą, serie od 50 sztuk.">
 <meta property="og:title" content="Współpraca z Szwalnią ISABELL: zdobienie, materiały, konsultacje">
-<meta property="og:description" content="Budujemy stałe grono partnerów: haft, sitodruk, druk 3D, naszywki, tkaniny, dodatki i konstrukcja. Powtarzalne serie i płatności w terminie.">
+<meta property="og:description" content="Budujemy stałe grono partnerów: sitodruk, haft, druk 3D, tkaniny, dodatki i konstrukcja. Krojenie, szycie i wykończenie robimy u siebie.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Współpraca z Szwalnią ISABELL">
-<meta name="twitter:description" content="Szukamy firm zdobiących odzież, dostawców tkanin i dodatków oraz konstruktorów. Powtarzalne serie, płatności w terminie.">
+<meta name="twitter:description" content="Szukamy firm zdobiących odzież, dostawców tkanin i dodatków oraz konstruktorów. Szwalnia w Ząbkach pod Warszawą.">
 <meta name="twitter:image" content="https://szwalnia-isabell.pl/assets/og-wspolpraca-partnerzy.jpg">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon.ico" sizes="64x64">
@@ -54,6 +54,64 @@
      miedzy akapitem a przyciskiem) i dokladamy dolny, bo bez niego przyciski
      przyklejaly sie do ostatniej pozycji listy. Kariera robi to samo. */
   .hero-wspolpraca .hero-trust { margin-top: 0; margin-bottom: 28px; }
+
+
+
+  /* Sekcja modelu "plywala": lezala na tym samym tle co hero, bez zadnej ramy.
+     Hairline u gory konczy hero, a bialy pojemnik zakotwicza tresc. */
+  .section-model { border-top: 1px solid var(--border); }
+  .model-card {
+    max-width: 1080px;
+    margin: 40px auto 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+  }
+  .model-card .model-split { margin-top: 0; }
+
+  /* Model wspolpracy: zdjecie po lewej, cztery krotkie punkty po prawej.
+     Wczesniej byl tu rozlazly akapit ze zmyslonym scenariuszem. */
+  .model-split {
+    max-width: 1080px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .model-visual img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--muted);
+  }
+  .model-points { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 22px; }
+  .model-points li {
+    position: relative;
+    padding-left: 26px;
+    color: var(--text-body);
+    line-height: 1.65;
+  }
+  .model-points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+  .model-points strong { display: block; color: var(--primary); margin-bottom: 4px; }
+  @media (max-width: 992px) {
+    .model-card { padding: 24px 20px; }
+    .model-split { grid-template-columns: 1fr; gap: 28px; }
+
+  }
 
   /* Karty kategorii partnerow (wzorzec z kariera.html) */
   .role-grid {
@@ -196,6 +254,26 @@
   .accent-box h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 12px; }
   .accent-box p { color: var(--text-body); line-height: 1.7; }
   .accent-box p + p { margin-top: 14px; }
+
+
+  /* Ta sama karta co przy modelu, ale zdjecie po prawej, zeby uklad sie nie powtarzal
+     jeden do jednego. Punkty zaczynaja sie od krzyzyka, bo to lista wykluczen. */
+  .model-split-rev .model-visual { order: 2; }
+  .model-points-no li::before {
+    content: "\00d7";
+    background: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    top: 3px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+  }
+  .model-points-no a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 992px) {
+    .model-split-rev .model-visual { order: 0; }
+  }
 
   /* Rozwidlenie dla klientow: chroni leady handlowe przed utknieciem na tej stronie */
   .client-fork {
@@ -435,11 +513,11 @@
       <div class="hero-content">
         <span class="hero-badge">Współpraca</span>
         <h1>Współpraca z firmami</h1>
-        <p><strong>Gotowy produkt to rzadko samo szycie.</strong> Dochodzą haft, nadruk, naszywki, właściwa dzianina, metki i dodatki. Szukamy firm, które robią te rzeczy, żeby marka rozmawiała z jednym wykonawcą zamiast składać zamówienie z pięciu kawałków.</p>
+        <p><strong>Gotowy produkt to rzadko samo szycie.</strong> Dochodzą haft, nadruk, naszywki, właściwa dzianina i dodatki. Szukamy firm, które robią te rzeczy, żeby marka rozmawiała z jednym wykonawcą zamiast składać zamówienie z pięciu kawałków.</p>
         <ul class="hero-trust">
-          <li>Powtarzalne serie</li>
-          <li>Płatności w terminie</li>
-          <li>Rozmowa z właścicielem</li>
+          <li>Szwalnia od 1990</li>
+          <li>Serie od 50 sztuk</li>
+          <li>Rozliczenie na fakturę</li>
           <li>Ząbki pod Warszawą</li>
         </ul>
         <div class="hero-ctas">
@@ -454,19 +532,38 @@
   </section>
 
   <!-- SEKCJA 2: NA CZYM POLEGA -->
-  <section class="process">
+  <section class="process section-model">
     <div class="section-header">
       <span class="section-badge">Model współpracy</span>
-      <h2>Na czym polega współpraca z naszą szwalnią</h2>
-      <p>Najprościej pokazać to na konkretnym zleceniu, bo tak wygląda większość naszych projektów.</p>
+      <h2>Szyjemy u siebie. Zdobienia szukamy u Was.</h2>
     </div>
-    <div class="honest-box">
-      <p><strong>Marka streetwearowa zamawia 150 bluz z kapturem.</strong> Do tego chce wypukły haft na piersi, tkaną metkę w karku i naszywkę na rękawie. My kroimy i szyjemy, jeden partner robi haft i naszywki, drugi dostarcza metki. Klient odbiera gotowy, spakowany towar i ma jeden telefon do wykonawcy zamiast czterech.</p>
-      <p>W jednych zleceniach partner robi <strong>jeden element</strong>, w innych bierze <strong>cały etap</strong>. Zdarza się też, że przekazujemy komplet, bo ktoś zrobi konkretną rzecz szybciej i lepiej niż my. Nie traktujemy tego jako oddawania zlecenia, tylko jako domknięcie łańcucha, którego klient sam nie poskłada.</p>
-      <p>Dlatego <strong>nie szukamy pojedynczej przysługi na jedno zamówienie.</strong> Szukamy firm, z którymi da się to powtarzać przez kolejne sezony, przy przewidywalnej jakości i przewidywalnych terminach.</p>
-      <div class="cta-strip" style="margin-top: 32px;">
-        <a href="#zgloszenie" class="submit-btn">Zgłoś współpracę</a>
+    <div class="model-card">
+      <div class="model-split">
+      <div class="model-visual">
+        <img src="/assets/model-wspolpraca-streetwear-isabell.webp" srcset="/assets/model-wspolpraca-streetwear-isabell-500.webp 500w, /assets/model-wspolpraca-streetwear-isabell.webp 1000w" sizes="(max-width: 992px) 100vw, 420px" alt="Granatowa bluza z kapturem i bordowy T-shirt w stylu streetwear, ułożone płasko, z geometrycznym haftem na piersi" loading="lazy" width="1000" height="747" decoding="async">
       </div>
+      <ul class="model-points">
+        <li>
+          <strong>Krojenie, szycie i wykończenie robimy u siebie.</strong>
+          Wszystko pod jednym dachem w Ząbkach, na materiale powierzonym przez klienta.
+        </li>
+        <li>
+          <strong>Sitodruku i haftu szukamy u partnerów.</strong>
+          Tego nie mamy na miejscu, a klienci pytają o to coraz częściej.
+        </li>
+        <li>
+          <strong>Działa to w obie strony.</strong>
+          Jeśli robisz nadruki, a Twój klient pyta o gotową koszulkę albo bluzę, my ją uszyjemy.
+        </li>
+        <li>
+          <strong>Szukamy stałych partnerów, nie jednorazowej przysługi.</strong>
+          Zależy nam na firmach, z którymi da się pracować przy kolejnych projektach.
+        </li>
+      </ul>
+      </div>
+    </div>
+    <div class="cta-strip">
+      <a href="#zgloszenie" class="submit-btn">Zgłoś współpracę</a>
     </div>
   </section>
 
@@ -481,12 +578,13 @@
 
       <div class="role-card">
         <div class="role-icon">
-          <!-- Stempel: czytelny skrot dla nadruku i znakowania odziezy -->
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14"/><path d="M9 13V8a3 3 0 0 1 6 0v5"/><path d="M6.5 13h11a2 2 0 0 1 2 2v3h-15v-3a2 2 0 0 1 2-2z"/></svg>
+          <!-- Koszulka ze znakiem na piersi: najczytelniejszy skrot dla zdobienia odziezy.
+               Wczesniej byl celownik, potem stempel, potem pedzel. Zaden nie czytal sie od razu. -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/><circle cx="12" cy="14" r="2.6"/></svg>
         </div>
         <h3>Zdobienie i personalizacja odzieży</h3>
-        <span class="role-tag">Najczęściej poszukiwane</span>
-        <p>Tu dostajemy najwięcej zapytań od klientów. Interesują nas firmy, które robią to <strong>powtarzalnie na serii</strong>, a nie tylko na pojedynczych sztukach.</p>
+        <span class="role-tag">Szukamy najbardziej</span>
+        <p>Interesują nas firmy, które robią to <strong>powtarzalnie na serii</strong>, a nie tylko na pojedynczych sztukach.</p>
         <details class="role-details" open>
           <summary>Techniki, które nas interesują</summary>
           <ul class="role-req">
@@ -495,7 +593,6 @@
           <li><strong>DTG i DTF</strong>, czyli druk bezpośredni i transfery, przy krótszych nakładach.</li>
           <li>Sublimacja, flex i flock.</li>
           <li><strong>Haft komputerowy</strong>, płaski oraz wypukły.</li>
-          <li><strong>Naszywki i patche</strong>: haftowane, tkane, silikonowe, skórzane.</li>
           <li>Aplikacje oraz okucia metalowe: nity, oczka, napy.</li>
           <li>Tłoczenie, grawer i znakowanie laserem.</li>
           <li>Barwienie i efekty wykończeniowe: garment dye, tie dye, acid wash, stone wash.</li>
@@ -506,12 +603,13 @@
 
       <div class="role-card">
         <div class="role-icon">
-          <!-- Warstwy: bele tkanin i dzianin jeden na drugim, lepsze niz pudelko -->
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg>
+          <!-- Stos zlozonych tkanin. Wczesniej byly warstwy (czytaly sie jak kwadraty),
+               potem bela (czytala sie jak rura). Stos jest jednoznaczny. -->
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="15" width="18" height="4.5" rx="1.5"/><rect x="4.8" y="9.8" width="14.4" height="4.5" rx="1.5"/><rect x="6.6" y="4.6" width="10.8" height="4.5" rx="1.5"/></svg>
         </div>
         <h3>Materiały, tkaniny i dodatki</h3>
         <span class="role-tag">Dostawcy</span>
-        <p>Część klientów przychodzi z własnym materiałem, część pyta nas, gdzie go kupić. <strong>Chcemy mieć na to dobrą odpowiedź</strong> i sprawdzone kontakty pod ręką.</p>
+        <p>Klienci przychodzą do nas z powierzonym materiałem. <strong>Chcemy mieć pod ręką sprawdzone kontakty</strong>, gdy pytają, gdzie go kupić.</p>
         <details class="role-details" open>
           <summary>Czego szukamy</summary>
           <ul class="role-req">
@@ -519,7 +617,6 @@
           <li><strong>Tkaniny</strong>: bawełna, wełna, materiały techniczne, softshell.</li>
           <li>Podszewki, ocieplina i wkłady.</li>
           <li><strong>Dodatki galanteryjne</strong>: suwaki, guziki, napy, sznurki, troki, końcówki, ściągacze, taśmy.</li>
-          <li><strong>Metki i znakowanie</strong>: tkane, satynowe, drukowane, metki pielęgnacyjne, zawieszki.</li>
           <li>Opakowania: polybagi, kartony, warianty premium i ekologiczne.</li>
         </ul>
         </details>
@@ -550,95 +647,19 @@
 
     </div>
 
-    <div class="accent-box">
-      <h3>Najwięcej pytań dostajemy od marek streetwearowych</h3>
-      <p><strong>Bluzy, hoodie, koszulki i czapki prawie nigdy nie kończą się na szyciu.</strong> Klient chce wypukły haft, sitodruk, naszywkę i własną tkaną metkę, często wszystko naraz w jednym zamówieniu. To najczęstszy zestaw pytań, jaki do nas trafia.</p>
-      <p>Jeśli Twoja firma robi którąkolwiek z tych rzeczy, jesteś dokładnie tą firmą, do której chcemy mieć numer telefonu.</p>
-    </div>
-  </section>
-
-  <!-- SEKCJA 4: CO DAJEMY PARTNEROWI -->
-  <section class="section-dark wyrozniki">
-    <div class="section-header">
-      <span class="section-badge" style="background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3);">Warunki</span>
-      <h2>Co dostaje partner, który z nami pracuje</h2>
-      <p>Cztery rzeczy, o które firmy pytają nas najczęściej przy pierwszej rozmowie.</p>
-    </div>
-    <div class="wyrozniki-grid wyrozniki-2x2">
-      <div class="wyroznik-item">
-        <div class="wyroznik-icon" style="color: #fff; background: rgba(255,255,255,0.1);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-        </div>
-        <h3>Powtarzalne serie, nie pojedyncze zlecenia</h3>
-        <p>Szyjemy dla stałych klientów przez cały rok. Zamówienia wracają w kolejnych sezonach, więc <strong>raz dograna współpraca zwykle się powtarza</strong>, a nie kończy na jednej partii.</p>
-      </div>
-      <div class="wyroznik-item">
-        <div class="wyroznik-icon" style="color: #fff; background: rgba(255,255,255,0.1);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4"/><path d="M18 10v4"/></svg>
-        </div>
-        <h3>Płatności w terminie</h3>
-        <p>Termin ustalamy na starcie i go dotrzymujemy. <strong>Nie wiążemy zapłaty za Twoją pracę z tym, kiedy zapłaci nam nasz klient.</strong> To Twój najmniejszy problem i tak ma zostać.</p>
-      </div>
-      <div class="wyroznik-item">
-        <div class="wyroznik-icon" style="color: #fff; background: rgba(255,255,255,0.1);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <h3>Jasna specyfikacja od pierwszej wiadomości</h3>
-        <p>Dostajesz konkret: wyrób, nakład, materiał, miejsce i technika zdobienia, termin. <strong>Nie musisz się domyślać ani dopytywać przez tydzień</strong>, żeby wystawić wycenę.</p>
-      </div>
-      <div class="wyroznik-item">
-        <div class="wyroznik-icon" style="color: #fff; background: rgba(255,255,255,0.1);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <h3>Rozmowa z właścicielem, nie z działem zakupów</h3>
-        <p>Nie prowadzimy przetargów i nie każemy wgrywać cennika do systemu. <strong>Dzwoni Michał</strong> i warunki ustalamy w jednej rozmowie, po ludzku.</p>
-      </div>
-    </div>
     <div class="cta-strip">
-      <a href="#zgloszenie" class="cta-light">Zgłoś współpracę</a>
-      <p>Zgłoszenia zbieramy przez cały rok, także gdy akurat nie mamy otwartego projektu.</p>
+      <a href="#zgloszenie" class="submit-btn">Zgłoś współpracę</a>
     </div>
   </section>
 
-  <!-- SEKCJA 5: CZEGO OCZEKUJEMY -->
-  <section class="process">
-    <div class="section-header">
-      <span class="section-badge">Oczekiwania</span>
-      <h2>Czego oczekujemy od partnera</h2>
-      <p>Mówimy o tym wprost na początku, żeby nikt nie tracił czasu na rozmowę, z której nic nie wyjdzie.</p>
-    </div>
-    <div class="honest-box">
-      <ul class="honest-list">
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Powtarzalności na całej serii.</strong> Setna sztuka musi wyglądać jak pierwsza. To sprawdzamy najmocniej, bo nasz klient rozlicza nas z całej partii, a nie z próbki.</span>
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Dotrzymanych terminów.</strong> Zdobienie siedzi w środku procesu. Tydzień opóźnienia u partnera to tydzień opóźnienia u klienta i nasza reputacja, dlatego pytamy o terminy bardzo konkretnie.</span>
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Zgody na partię próbną.</strong> Pierwsze zlecenie jest małe. Sprawdzamy jakość i komunikację, zanim powierzymy Ci pełną serię.</span>
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Działalności gospodarczej i faktury.</strong> Rozliczamy się wyłącznie fakturą, bez wyjątków.</span>
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Uczciwej informacji o możliwościach.</strong> Wolimy usłyszeć od razu, że czegoś nie zrobisz albo nie zdążysz, niż odkryć to tydzień przed terminem u klienta.</span>
-        </li>
-      </ul>
-    </div>
-  </section>
+
 
   <!-- SEKCJA 6: JAK ZACZYNAMY -->
   <section class="process process-home">
     <div class="section-header">
       <span class="section-badge">Proces</span>
       <h2>Jak zaczynamy współpracę</h2>
-      <p>Cztery kroki, bez procedur na wyrost. Zwykle zamykamy to w kilka dni.</p>
+      <p>Cztery kroki, bez procedur na wyrost.</p>
     </div>
     <div class="process-split">
       <div class="process-timeline">
@@ -664,8 +685,8 @@
           <div class="step-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></div>
           <div class="step-content">
             <span class="step-number">03</span>
-            <h4>Mała partia próbna</h4>
-            <p>Pierwsze zlecenie jest niewielkie. Sprawdzamy jakość wykonania, terminowość i to, jak nam się razem pracuje. Ty przy okazji sprawdzasz nas.</p>
+            <h4>Pierwsze zlecenie</h4>
+            <p>Zakres i termin ustalamy pod konkretny projekt. Przy pierwszym zleceniu obie strony sprawdzają, jak im się razem pracuje.</p>
           </div>
         </div>
         <div class="process-connector"></div>
@@ -674,7 +695,7 @@
           <div class="step-content">
             <span class="step-number">04</span>
             <h4>Stała współpraca</h4>
-            <p>Jeśli próba wyjdzie, wchodzisz na naszą listę partnerów i wracamy do Ciebie przy kolejnych projektach, także wtedy, gdy klient pyta o coś nowego.</p>
+            <p>Jeśli współpraca się sprawdzi, wchodzisz na naszą listę partnerów i wracamy do Ciebie przy kolejnych projektach, także wtedy, gdy klient pyta o coś nowego.</p>
           </div>
         </div>
       </div>
@@ -687,31 +708,39 @@
     </div>
   </section>
 
-  <!-- SEKCJA 7: DLA KOGO TO NIE JEST -->
+  <!-- SEKCJA: NA TE ZGLOSZENIA NIE ODPOWIADAMY -->
   <section class="process section-surface">
     <div class="section-header">
-      <span class="section-badge">Zakres</span>
-      <h2>Dla kogo ta strona nie jest</h2>
-      <p>Trzy sytuacje, w których nie będziemy dobrym adresem. Lepiej wiedzieć to teraz niż po dwóch tygodniach.</p>
+      <span class="section-badge">Zanim napiszesz</span>
+      <h2>Na te zgłoszenia nie odpowiadamy</h2>
     </div>
-    <div class="honest-box">
-      <ul class="honest-list">
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-          <span><strong>Nie współpracujemy z osobami prywatnymi.</strong> Rozliczamy się fakturą, więc po drugiej stronie musi być firma.</span>
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-          <span><strong>Nie zlecamy szycia do domu.</strong> Szyjemy u siebie, na własnych maszynach, pod okiem naszych ludzi. Jeśli szukasz pracy przy maszynie, właściwym miejscem jest <a href="/kariera.html" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">strona kariery</a>.</span>
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-          <span><strong>Nie szukamy usług do pojedynczych sztuk ani poprawek.</strong> Pracujemy w seriach produkcyjnych, na materiale powierzonym przez klienta.</span>
-        </li>
-      </ul>
+    <div class="model-card">
+      <div class="model-split model-split-rev">
+        <div class="model-visual">
+          <img src="/assets/krojownia-serie-produkcyjne-isabell.webp" srcset="/assets/krojownia-serie-produkcyjne-isabell-500.webp 500w, /assets/krojownia-serie-produkcyjne-isabell.webp 1000w" sizes="(max-width: 992px) 100vw, 420px" alt="Krojownia szwalni ISABELL: nałożona warstwa granatowej tkaniny z wykrojami na stole krojczym" loading="lazy" width="1000" height="747" decoding="async">
+        </div>
+        <ul class="model-points model-points-no">
+          <li>
+            <strong>Agencje marketingowe, SEO i firmy od pozyskiwania leadów.</strong>
+            Nie odpowiadamy na takie oferty.
+          </li>
+          <li>
+            <strong>Osoby prywatne.</strong>
+            Rozliczamy się fakturą, więc po drugiej stronie musi być firma.
+          </li>
+          <li>
+            <strong>Szycie w domu.</strong>
+            Szyjemy u siebie, na własnych maszynach. Szukasz pracy przy maszynie? Zajrzyj na <a href="/kariera.html">stronę kariery</a>.
+          </li>
+          <li>
+            <strong>Pojedyncze sztuki i poprawki.</strong>
+            Pracujemy w seriach produkcyjnych, na materiale powierzonym przez klienta.
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="client-fork">
-      <p><strong>Szukasz szwalni do produkcji swojej marki?</strong> To nie ta strona. Zapytania o szycie i wycenę zbieramy w innym miejscu: sprawdź <a href="/uslugi.html">nasze usługi</a>, zobacz <a href="/realizacje.html">realizacje</a> albo napisz przez <a href="/kontakt.html">formularz kontaktowy</a>.</p>
+      <p><strong>Szukasz szwalni do produkcji swojej marki?</strong> To nie ta strona. Sprawdź <a href="/uslugi.html">nasze usługi</a>, zobacz <a href="/realizacje.html">realizacje</a> albo napisz przez <a href="/kontakt.html">formularz kontaktowy</a>.</p>
     </div>
   </section>
 
@@ -728,7 +757,7 @@
           <img src="/assets/michal-jalbrzykowski-isabell.webp" alt="Michał Jałbrzykowski, właściciel Szwalni ISABELL w Ząbkach" loading="lazy" width="1201" height="1600" decoding="async" style="height: auto;">
         </div>
         <div class="contact-personal">
-          <p>Jestem Michał, trzecie pokolenie rodziny prowadzącej ISABELL. Zgłoszenia partnerskie czytam osobiście i sam dzwonię. Jeśli to, co robicie, pasuje do tego, o co pytają nasi klienci, odezwę się i pogadamy konkretnie.</p>
+          <p>Jestem Michał, trzecie pokolenie rodziny prowadzącej ISABELL. Zgłoszenia partnerskie trafiają bezpośrednio do mnie. Jeśli to, co robicie, pasuje do tego, o co pytają nasi klienci, odezwiemy się i pogadamy konkretnie.</p>
           <div class="contact-trust">
             <div class="contact-trust-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -784,7 +813,7 @@
             <div class="cat-grid">
               <label class="cat-option"><input type="checkbox" name="categories" value="Zdobienie odzieży"> Zdobienie odzieży</label>
               <label class="cat-option"><input type="checkbox" name="categories" value="Materiały i tkaniny"> Materiały i tkaniny</label>
-              <label class="cat-option"><input type="checkbox" name="categories" value="Dodatki, metki, opakowania"> Dodatki, metki, opakowania</label>
+              <label class="cat-option"><input type="checkbox" name="categories" value="Dodatki i opakowania"> Dodatki i opakowania</label>
               <label class="cat-option"><input type="checkbox" name="categories" value="Konstrukcja i konsultacje"> Konstrukcja i konsultacje</label>
               <label class="cat-option"><input type="checkbox" name="categories" value="Szycie dla Waszych klientów"> Szycie dla Waszych klientów</label>
             </div>
@@ -830,7 +859,7 @@
           </div>
 
           <button type="submit" class="submit-btn" style="width: 100%;">Wyślij zgłoszenie</button>
-          <p class="form-note">Odezwiemy się telefonicznie, zwykle w ciągu kilku dni roboczych.</p>
+          <p class="form-note">Odezwiemy się telefonicznie.</p>
         </form>
       </div>
     </div>
@@ -844,28 +873,12 @@
     </div>
     <div class="faq-grid" style="max-width: 800px; margin: 40px auto 0; display: flex; flex-direction: column; gap: 16px;">
       <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
-        <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Jakie nakłady zlecacie partnerom?</summary>
-        <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Najczęściej od 50 do 500 sztuk, bo w takich seriach pracujemy na co dzień. Zdarzają się większe partie przy odzieży firmowej i mniejsze przy kolekcjach kapsułowych. Dlatego niski próg minimalnego zamówienia jest u nas atutem, a nie problemem.</p>
-      </details>
-      <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
-        <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Czy płacicie w terminie?</summary>
-        <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Tak. Termin płatności ustalamy przy pierwszym zleceniu i go dotrzymujemy. Nie wiążemy zapłaty za Waszą pracę z tym, kiedy zapłaci nam nasz klient. To nasze ryzyko, nie Wasze.</p>
-      </details>
-      <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
         <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Czy trzeba mieć działalność gospodarczą?</summary>
         <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Tak. Rozliczamy się wyłącznie na fakturę, więc po drugiej stronie musi być firma. Dotyczy to również konstruktorów i osób doradzających przy projektach.</p>
       </details>
       <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
-        <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Jak wygląda partia próbna?</summary>
-        <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Pierwsze zlecenie jest niewielkie i normalnie płatne. Sprawdzamy na nim jakość wykonania, powtarzalność i terminowość, a Wy sprawdzacie, jak nam się razem pracuje. Jeśli wyjdzie dobrze, przechodzimy do pełnych serii.</p>
-      </details>
-      <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
         <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Czy szyjecie odzież dla firm zdobiących odzież?</summary>
         <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Tak. Jeśli prowadzicie drukarnię albo hafciarnię i Wasz klient pyta o całą sztukę odzieży, a nie tylko o nadruk, możemy ją uszyć. Zaznaczcie w formularzu kategorię „szycie dla Waszych klientów" i opiszcie, o jaki wyrób chodzi.</p>
-      </details>
-      <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
-        <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Czy współpraca musi być lokalna?</summary>
-        <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Przy zdobieniu wygodniej jest, gdy jesteście w Warszawie i okolicach, bo partia musi do Was dojechać i wrócić. Przy materiałach, dodatkach i konsultacjach lokalizacja nie ma znaczenia i pracujemy z firmami z całej Polski.</p>
       </details>
       <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
         <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Na czym dokładnie pracujecie?</summary>
@@ -873,7 +886,7 @@
       </details>
       <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border);">
         <summary style="font-weight: 500; cursor: pointer; color: var(--primary); display: flex; justify-content: space-between; align-items: center;">Kiedy dostaniemy odpowiedź?</summary>
-        <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Zwykle w ciągu kilku dni roboczych, telefonicznie. Zgłoszenia zbieramy przez cały rok, także gdy w danym momencie nie mamy otwartego projektu wymagającego Waszej usługi.</p>
+        <p style="margin-top: 16px; color: var(--text-muted); line-height: 1.6;">Odzywamy się telefonicznie. Zgłoszenia zbieramy przez cały rok, także gdy w danym momencie nie mamy otwartego projektu wymagającego Waszej usługi.</p>
       </details>
     </div>
   </section>
@@ -1009,22 +1022,6 @@
     "mainEntity": [
         {
             "@type": "Question",
-            "name": "Jakie nakłady zleca partnerom Szwalnia ISABELL?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Najczęściej od 50 do 500 sztuk. Zdarzają się większe partie przy odzieży firmowej i mniejsze przy kolekcjach kapsułowych. Niski próg minimalnego zamówienia u partnera jest atutem."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Czy Szwalnia ISABELL płaci partnerom w terminie?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Tak. Termin płatności ustalany jest przy pierwszym zleceniu i dotrzymywany. Zapłata za pracę partnera nie jest powiązana z terminem płatności klienta końcowego."
-            }
-        },
-        {
-            "@type": "Question",
             "name": "Czy do współpracy potrzebna jest działalność gospodarcza?",
             "acceptedAnswer": {
                 "@type": "Answer",
@@ -1033,26 +1030,10 @@
         },
         {
             "@type": "Question",
-            "name": "Jak wygląda partia próbna przy nowej współpracy?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Pierwsze zlecenie jest niewielkie i normalnie płatne. Sprawdzana jest na nim jakość wykonania, powtarzalność i terminowość. Po udanej próbie współpraca przechodzi do pełnych serii."
-            }
-        },
-        {
-            "@type": "Question",
             "name": "Czy Szwalnia ISABELL szyje odzież dla firm zdobiących odzież?",
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Tak. Jeśli drukarnia lub hafciarnia ma klienta pytającego o całą sztukę odzieży, a nie tylko o nadruk, szwalnia może ją uszyć. W formularzu należy zaznaczyć kategorię szycia dla klientów partnera."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Czy współpraca musi być lokalna?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Przy zdobieniu odzieży wygodniejsza jest lokalizacja w Warszawie i okolicach, ponieważ partia musi dojechać i wrócić. Przy materiałach, dodatkach i konsultacjach lokalizacja nie ma znaczenia."
             }
         },
         {
@@ -1068,7 +1049,7 @@
             "name": "Kiedy partner dostanie odpowiedź na zgłoszenie?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Zwykle w ciągu kilku dni roboczych, telefonicznie. Zgłoszenia zbierane są przez cały rok, także gdy nie ma otwartego projektu wymagającego danej usługi."
+                "text": "Odzywamy się telefonicznie. Zgłoszenia zbierane są przez cały rok, także gdy nie ma otwartego projektu wymagającego danej usługi."
             }
         }
     ]
