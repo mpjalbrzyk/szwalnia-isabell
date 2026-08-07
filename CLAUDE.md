@@ -1,7 +1,7 @@
 # CLAUDE.md — Szwalnia ISABELL
 
 > Dokumentacja projektu dla Claude Code. Aktualizować przy większych zmianach.
-> Ostatnia aktualizacja: 2026-08-01.
+> Ostatnia aktualizacja: 2026-08-07.
 
 ## 1. O czym jest ta strona
 
@@ -49,6 +49,7 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 
 | Data | Blok prac | Kluczowe commity |
 |---|---|---|
+| **2026-08-06/07** | **SESJA: KALKULATOR WYCEN LIVE.** (1) **`/kalkulator-wyceny-szycia.html`** — 6 kroków, wynik w widełkach, **bez bramki mailowej**, 4 zakończenia (brak materiału / poniżej MOQ / wyrób poza ofertą / wycena). Klocki wyboru zamiast list rozwijanych, pasek 12 miesięcy z oznaczeniem obłożenia, przyklejony pasek z ceną na telefonie; (2) **Decyzje właściciela zmieniające pierwotny pakiet:** MOQ **50 szt.** jednolite (zgodne z „od 50 sztuk" na całej stronie), **nie odrzucamy w kalkulatorze, odrzucamy w rozmowie** (powyżej MOQ cena zawsze), **próg skali per wyrób** (płaszcz 200, żakiet 280, bluzka 1040) z komunikatem o rozłożeniu na partie, zakres dopasowany do kroku 1, odpowiedź **~7 dni roboczych** zamiast 24 h (poprawione też w `form-handler.js`, dotyczy wszystkich formularzy); (3) **Cennik `2026-08-e`** generowany z modelu kosztowego (`~/ISABELL-model`, poza repo), wyłącznie punkty cenowe i progi, zero stawek i czasów; (4) **Weryfikacja:** 9090 kombinacji vs model (zero zaniżeń poniżej progu opłacalności), 192 testy przecieków ceny, układ na 8 szerokościach 320-1440 px; (5) **SEO:** treść statyczna w źródle (tabela widełek, 3 sekcje, FAQ w akordeonie), FAQPage + BreadcrumbList, linkowanie dwukierunkowe z wpisami o kosztach i MOQ, pozycja w stopce na 37 stronach, sitemap + llms.txt; (6) **Pipeline sprawdzony:** filtr 2. gałęzi routera przepuszcza `form_type=kalkulator` (**nie było blokera**), dane idą w polu `description` → kolumna `Notes`, test zakończony sukcesem (1,8 KB wobec 453 B) | `b8ffd2b`, `8f02b9b`, `da27bc7` |
 | **2026-07-30/08-01** | **SESJA: naprawa bugów + /wspolpraca.html + sieć partnerska.** (1) **Bugfixy krytyczne:** podwójna wysyłka formularzy (inline handler usunięty z 33 stron, zostaje `form-handler.js`), faux bold w `DM Serif Display` (jawne `font-weight: 400`, 320 deklaracji w 26 plikach), 345 myślników em/en → łącznik w 39 plikach; (2) **AWARIA I HARTOWANIE:** bot wysłał na webhook etykietę placeholdera „Wybierz zakres", Airtable odbił `422`, Make **wyłączył scenariusz na ~12 h**. Pola `Rodzaj usługi` i `Szacowana ilość` w tabeli leadów zamienione z listy wyboru na **tekst**, więc żadna wartość już go nie położy; (3) **`/wspolpraca.html` LIVE** — sieć dostawców uzupełniających (zdobienie, materiały, konsultacje), 9 sekcji, formularz 14 pól, FAQ, własne grafiki Higgsfield; Airtable tabela `Wspolpraca` + **trzecia gałąź routera Make** (uwaga: router uruchamia KAŻDĄ pasującą gałąź, więc filtr leadów trzeba było zawęzić); (4) **GA4:** `partner_application` jako trzeci typ zgłoszenia + wymiar niestandardowy „Strona formularza" dla `form_source`; (5) **Social + OG:** ikony IG/FB/YT/TikTok w stopce na 36 stronach, profile w `sameAs` na 10 stronach, **31 dedykowanych obrazków OG** (wcześniej 34 strony dzieliły jeden ogólny); (6) polityka prywatności: sekcja formularza współpracy, doprecyzowane retencje (3 lata od końca roku / 5 lat podatkowe), linki do dokumentów Make i Airtable | `8dab40d`, `4038f75`, `e4bb802`, `3a05eee` |
 | **2026-07-24/25** | **WIELKA SESJA: CRO + rebrand graficzny + UX + redakcja.** (1) NAP/CRO: godziny 8:00–15:00 wszędzie (schema×8+llms), topbar site-wide (godziny+tel+mail; v2 ciemny po feedbacku), hero trust-line (24h/48h/50szt/powierzony), meta 24h→48h, literówka ×25; (2) **GRAFIKI (Higgsfield/nano-banana, paleta: granat+bordo+ciemny fiolet+camel):** hero home = fioletowa suknia na manekinie (kwadrat 1:1), bento (krojownia CNC/bordowe żakiety/makro stebnówki), 7 hero podstron (uslugi, 4 usługi, W-wa, Ząbki — koniec dubli hero=karta), 5 pionów do sekcji współpracy; (3) **UX:** sekcja „Jak wygląda współpraca" = split kroki+zdjęcie na pełną wysokość (home + 4 strony usług, ikony krawieckie), CTA nav = biały primary → kotwica #kontakt (29 stron scroll bez przeładowania), całe karty klikalne (stretched link), dropdown z odstępem+separatorami; (4) dywersyfikacja W-wa/Ząbki (karty+hero+bugfixy: „Projektujemy"→CMT, Title Case, FAQ martwe var--text); (5) **redakcja:** 46 poprawek kwiatków AI („The Board", „formacje", „szczebel podłabrowy"...), ~110 boldów faktów (o-nas+20 wpisów). **Kalkulator ZATWIERDZONY** (otwarta podstrona, parking do wyliczeń Michała ~przyszły tydzień); **brief Kariera/Współpraca przyjęty** (parking, `_briefy/`) | `cfcb7e3`…`76e26bd` (16 commitów) |
 | **2026-07-19/20** | **Sesja: pomiar + naprawy + E-E-A-T** — pomiar GSC VII (indeksacja **4→25**, ruch **+150%** kw/kw); de-kanibalizacja klastra „odzież firmowa" + meta homepage pod CTR; 7 stron zgłoszonych do reindeksacji; **naprawa formularzy blogowych** (podmiana zepsutego formularza na działający główny ×20 wpisów) + diagnoza kolejki webhooka Make (throttle 1 op./min, nie awaria); **GA4 `generate_lead` + `contact_click`** (pomiar konwersji); **odgenerycznienie 20 wpisów** blogowych (wstawki „Z naszego warsztatu" pod E-E-A-T) | `5a20e5c`, `467f32d`, `8a6ccd6`, `81c4bf0`, `5bbdf57`, `6ac4e1c`, `e435832` |
@@ -70,21 +71,28 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 
 **Faza wzrostu: pomiar → autorytet → konwersja.** Fundament gotowy i live.
 
-**Stan po sesji 2026-07-30/08-01:**
-- ✅ **Pomiar jest wreszcie uczciwy.** Do 30.07 każde wysłanie formularza tworzyło **dwa** rekordy w Airtable i dwa maile (inline handler + `form-handler.js`). Naprawione. Historia w tabeli leadów sprzed 30.07 jest z tego powodu **zawyżona** i czeka na odduplikowanie.
-- ✅ **Trzy typy zgłoszeń mierzone osobno w GA4:** `generate_lead` (handlowe), `job_application` (kariera), `partner_application` (współpraca). Plus `contact_click`. Wymiar „Strona formularza" (`form_source`) zarejestrowany 30.07 — **nie działa wstecz**, historia zaczyna się od tej daty.
-- ✅ **Pipeline zahartowany po awarii:** pola listy wyboru w tabeli leadów zamienione na tekst, więc nieoczekiwana wartość od bota nie wyłączy już scenariusza Make.
-- ✅ **`/kariera.html` i `/wspolpraca.html` LIVE**, oba z własnym formularzem, tabelą w Airtable i gałęzią w routerze Make.
-- ⏳ **Pit stop pomiarowy: 2026-08-19** (termin potwierdzony przez Michała) — eksport GSC (Performance + Coverage) + dane z GA4.
+**Stan po sesji 2026-08-06/07:**
+- ✅ **KALKULATOR WYCEN ZAMKNIĘTY I LIVE.** `/kalkulator-wyceny-szycia.html`, cennik `2026-08-e`, pipeline sprawdzony end-to-end. Model kosztowy powstał i leży w `~/ISABELL-model` (**poza repo**, zawiera płace i faktury). Pakiet wdrożeniowy w `pakiet-publiczny/` (gitignore).
+- ✅ **Pomiar jest uczciwy.** Do 30.07 każde wysłanie formularza tworzyło **dwa** rekordy w Airtable i dwa maile. Naprawione. Historia sprzed 30.07 jest **zawyżona** i czeka na odduplikowanie.
+- ✅ **Trzy typy zgłoszeń mierzone osobno w GA4:** `generate_lead`, `job_application`, `partner_application`, plus `contact_click`. Kalkulator liczy się jako `generate_lead` z `form_source=/kalkulator-wyceny-szycia.html`. Wymiar „Strona formularza" **nie działa wstecz**, historia od 30.07.
+- ✅ **`/kariera.html`, `/wspolpraca.html`, `/kalkulator-wyceny-szycia.html` LIVE.**
+- ⏳ **Pit stop pomiarowy: 2026-08-19** — eksport GSC (Performance + Coverage) + GA4. Pierwszy pomiar z kalkulatorem w indeksie.
 
-**Backlog:**
-- 📋 **Odduplikowanie tabeli leadów** — przed pit stopem, żeby porównanie „przed i po" miało sens.
-- 📋 **KALKULATOR WYCEN** — pełny brief w `_briefy/brief-kalkulator-wycen.md` (gitignore). **KLUCZOWY KONTEKST z 31.07: Michał nigdy nie wyceniał** — klient podawał stawkę i za tyle było szyte. Nie ma modelu kosztów, więc cen nie da się odtworzyć, trzeba je ustalić pierwszy raz. Dlatego **wersja wewnętrzna jest prawdopodobnie ważniejsza od publicznej**. Michał pracuje nad tym osobno.
-- 📋 Strona autora Michała (czeka na bio + cytat); opinie Google (2 → kilkanaście).
-- 📋 Wpisy blogowe 21–27 (domknięcie planu 27 tematów).
-- 📋 `validThrough` w trzech `JobPosting` na karierze wygasa **2026-10-31**, odświeżać co kwartał.
-- 📋 Strona współpracy ma ok. 18 ekranów telefonu mimo zwinięcia list technik; dalsze skrócenie = decyzja redakcyjna.
-- ❄️ Umowy powierzenia (DPA) z Make i Airtable — **świadomie odłożone przez Michała 31.07**. Szczegóły w `_briefy/rodo-podkladka-wspolpraca.md`.
-- ❄️ `baseSalary` w ofertach pracy — **świadomie odrzucone**, GSC zgłasza to jako problem niekrytyczny. Nie wracać bez decyzji Michała.
+**Backlog, kolejność ustalona 07.08:**
+1. 📋 **Wpisy blogowe 21-27** (NASTĘPNY TASK) — domknięcie planu 27 tematów. Tematy w `Wpisy-blogowe/blog-szwalnia-isabell-plan.md`. **Uwaga na kanibalizację:** temat 26 „Koszt produkcji jednej sztuki odzieży" nachodzi na wpis o kosztach i na kalkulator, trzeba rozjechać intencje albo zmienić temat.
+2. 📋 **Odduplikowanie tabeli leadów** — przed pit stopem 19.08, żeby porównanie „przed i po" miało sens.
+3. 📋 **Dostęp GSC po API** — uprawnienie dla `mpjalbrzyk@gmail.com` nadane 07.08 w property `sc-domain:szwalnia-isabell.pl`, ale API wciąż zwracało 403 (propagacja). Sprawdzić. Instrukcja i plan archiwizacji: `_briefy/gsc-api-instrukcja.md`.
+4. 📋 **Archiwizacja GSC** — dane znikają po 16 miesiącach. Materiał z okresu indeksacji 4→25 stron przestanie być dostępny w połowie 2027.
+5. 📋 Strona autora Michała (czeka na bio + cytat); opinie Google (2 → kilkanaście).
+6. 📋 `validThrough` w trzech `JobPosting` wygasa **2026-10-31**, odświeżać co kwartał.
+7. 📋 **Reautoryzacja Gmail w Make do 2026-10-12** — po tej dacie maile ze zgłoszeń przestaną przychodzić.
+8. 📋 Strona współpracy ma ok. 18 ekranów telefonu; dalsze skrócenie = decyzja redakcyjna.
+- ❄️ Umowy powierzenia (DPA) z Make i Airtable — **świadomie odłożone 31.07**. Szczegóły w `_briefy/rodo-podkladka-wspolpraca.md`.
+- ❄️ `baseSalary` w ofertach pracy — **świadomie odrzucone**. Nie wracać bez decyzji Michała.
+- ❄️ Karta wyceny w PDF z kalkulatora — odłożona, nie blokuje.
+
+**Dług techniczny (drobny, nie pilny):**
+- Nagłówki FAQ na wpisach blogowych mają 24 px wysokości zamiast wymaganych 44 px (cel dotykowy). W kalkulatorze poprawione lokalnie, na blogu nie ruszane. Jedna reguła w `style.css`.
+- Sześć pustych kolumn w tabeli leadów (`wyrob`, `ilosc_dokladna`, `wycena`, `wersja_cennika`, `form_type`, `source`) czeka na mapowanie w Make. Dane i tak docierają w polu `description`. **UWAGA: `Refresh` przy tabeli w module Airtable kasuje całe istniejące mapowanie.**
 
 **Leady:** ~26–30 zgłoszeń tygodniowo **łącznie ze wszystkich kanałów** (formularze + wizytówka Google + telefony + WhatsApp + maile), nie z samego formularza. GA4 mierzy wyłącznie formularz, więc jego liczby są z natury niższe i to nie jest błąd.
