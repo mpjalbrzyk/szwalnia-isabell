@@ -80,7 +80,7 @@
             var messages = {
               kariera: ['Zgłoszenie wysłane!', 'Dziękujemy. Odezwiemy się telefonicznie, zwykle w ciągu kilku dni roboczych.'],
               wspolpraca: ['Zgłoszenie wysłane!', 'Dziękujemy. Michał odezwie się telefonicznie, zwykle w ciągu kilku dni roboczych.'],
-              wycena: ['Wiadomość wysłana!', 'Z wyceną staramy się wrócić jak najszybciej, najczęściej zajmuje to około 7 dni roboczych.']
+              wycena: ['Wiadomość wysłana!', 'Odezwiemy się w ciągu 48 h. Przygotowanie pełnej wyceny zajmuje zwykle do 7 dni roboczych.']
             };
             var msg = messages[formType] || messages.wycena;
 

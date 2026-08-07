@@ -13,6 +13,7 @@ Statyczna witryna WWW (czysty **HTML/CSS/JS, bez frameworka i build-stepu**) rod
 - Adres: ul. Stefana Batorego 44, 05-091 Ząbki
 - Tel: +48 730 851 555 · e-mail: kontakt@isabell.pl
 - Godziny (komunikowane klientom): pon–pt **8:00–15:00** — kanoniczne od 24.07.2026, wszędzie (stopka+schema+llms.txt). Produkcja startuje ~6:00, ale to wewnętrzny szczegół — NIE komunikować w treściach.
+- **Czasy odpowiedzi (kanoniczne od 07.08.2026, potwierdzone przez Michała):** pierwsza odpowiedź **48 h**, bezpłatna wycena **do 7 dni** roboczych. Obowiązuje w `index.html` (pasek pod hero), `kalkulator-wyceny-szycia.html` i `assets/form-handler.js` (komunikat po wysłaniu). Rekrutacja ma własny termin (~7 dni, `kariera.html`). **Nie mylić z treściami eksperckimi** na blogu, które opisują terminy rynkowe innych dostawców — tamtych nie ruszać.
 - Założenie: 1990
 
 ## 2. Stack, hosting, deploy
@@ -103,7 +104,7 @@ Zmienione w czterech miejscach `index.html`: `<title>`, `description`, `og:title
 1. 📋 **Wpisy blogowe 21-27** (NASTĘPNY TASK) — domknięcie planu 27 tematów. Tematy w `Wpisy-blogowe/blog-szwalnia-isabell-plan.md`. **Uwaga na kanibalizację:** temat 26 „Koszt produkcji jednej sztuki odzieży" nachodzi na wpis o kosztach i na kalkulator, trzeba rozjechać intencje albo zmienić temat.
 2. 📋 **Odduplikowanie tabeli leadów** — przed pit stopem 19.08, żeby porównanie „przed i po" miało sens.
 3. 📋 **Odzież ciężka: treść na stronie** — Michał potwierdził 07.08, że **to jest ich oferta** (kurtki zimowe pikowane, żakiety — są na zdjęciach w realizacjach). Title/meta już to nazywa, ale **słowo „odzież ciężka" nadal nie pada w treści żadnej strony**, a pozycji 7,3 sam tytuł nie podniesie. Wpleść w istniejącą sekcję o kurtkach, bez dopisywania nowych obietnic.
-4. 📋 **Rozjazd czasu odpowiedzi** — po zmianie meta została **jedna** wzmianka: `index.html:125` „Odpowiedź w 24 h, bezpłatna wycena w 48 h" w pasku zaufania pod hero. Reszta serwisu mówi „~7 dni roboczych". Michał sprawdza realny czas, potem ujednolicić.
+4. ✅ **Rozjazd czasu odpowiedzi: ZAMKNIĘTY 07.08.** Michał podał realne terminy — odpowiedź 48 h, wycena do 7 dni. Ujednolicone w trzech miejscach (patrz §1). Sprawdzone: zero pozostałości „24 h" jako naszej obietnicy.
 - ✅ **Dostęp GSC + GA4 po API: NAPRAWIONY 07.08.** Przyczyną nie była propagacja ani złe konto człowieka. Serwer MCP łączy się jako **konto usługi `gsc-mcp@isabell-gsc.iam.gserviceaccount.com`** (projekt `isabell-gsc`, klucz w `~/.config/gsc-mcp/service-account.json`, chmod 600, poza repo) — i to konto nie było dodane do property szwalni. Dodane z uprawnieniem Pełne w GSC oraz rolą Przeglądający w GA4, włączone Analytics Data API. Klucz nie wygasa, więc nadaje się pod crona. Skrypt archiwizacji: **`gsc-archiwum/seo-archiwum.py`** (cały katalog w `.gitignore`, bo repo jest publiczne i Vercel serwuje wszystko, co do niego wjedzie). Uruchomienie: `python3 seo-archiwum.py --miesiac 2026-07`. Eksport miesięczny robić **najwcześniej 4 dnia następnego miesiąca** — GSC ma 2-3 dni opóźnienia.
 6. 📋 **Archiwizacja GSC** — dane znikają po 16 miesiącach. Materiał z okresu indeksacji 4→25 stron przestanie być dostępny w połowie 2027.
 7. 📋 Strona autora Michała (czeka na bio + cytat); opinie Google (2 → kilkanaście).
