@@ -5,3 +5,17 @@ grafiki-do-optymalizacji/
 gsc-lipiec/
 _grafiki-kandydaci/
 _briefy/
+
+# Model kosztowy. NIGDY nie moze trafic do repo publicznego.
+# Zawiera place, faktury, czasy operacji i stawki. Wyciek = odtworzenie
+# struktury kosztow zakladu przez kazdego chetnego.
+model/
+
+# Z pakietu kalkulatora do repo idzie WYLACZNIE pricing-config.json
+# (skopiowany do assets/). Dokumenty robocze zostaja poza repo, bo Vercel
+# serwuje wszystko, co wjedzie, wiec STRATEGIA.md bylaby publiczna pod
+# szwalnia-isabell.pl/pakiet-publiczny/STRATEGIA.md
+pakiet-publiczny/
+
+# Archiwum eksportow z Search Console
+gsc-archiwum/

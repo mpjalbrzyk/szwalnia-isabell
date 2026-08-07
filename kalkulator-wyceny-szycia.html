@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WGN33C5N6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WGN33C5N6D');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator wyceny szycia odzieży | Szwalnia ISABELL</title>
+<meta name="description" content="Sprawdź w minutę, ile kosztuje uszycie Twojej partii i czy zlecenie do nas pasuje. Szyjemy na materiale powierzonym. Bez podawania maila.">
+<meta property="og:title" content="Kalkulator wyceny szycia odzieży - Szwalnia ISABELL">
+<meta property="og:description" content="Policz szacunkową cenę uszycia swojej partii. Bez podawania maila, wynik od razu.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* ── Kalkulator: layout ── */
+  /* Hero wyrownany do lewej, tak jak cala tresc ponizej. Wysrodkowany naglowek
+     nad wyrownana do lewej kolumna kalkulatora dawal dwie osie i rozjezdzal uklad. */
+  .kalk-hero { max-width: 1200px; margin: 24px auto 28px; padding: 0 5%; }
+  .kalk-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.9rem, 4.6vw, 2.9rem);
+    line-height: 1.12;
+    margin-bottom: 14px;
+    color: var(--primary);
+    max-width: 20ch;
+  }
+  .kalk-hero .kalk-lead {
+    color: var(--text-body);
+    font-size: clamp(1rem, 2vw, 1.14rem);
+    line-height: 1.65;
+    max-width: 56ch;
+  }
+  .kalk-zaufanie {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 26px;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+  }
+  .kalk-zaufanie li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--primary);
+  }
+  .kalk-zaufanie svg { color: var(--accent); flex-shrink: 0; }
+
+  .kalk-wyjasnienie {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding: 0 5%;
+  }
+  .kalk-wyjasnienie > p {
+    max-width: 78ch;
+    background: var(--muted);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-body);
+  }
+  .kalk-wyjasnienie > p:last-child { margin-bottom: 0; }
+  .kalk-wyjasnienie strong { color: var(--primary); }
+
+  /* margin-bottom daje oddech przed sekcja kontaktu, ktora ma inne tlo
+     i bez tego przykleja sie do panelu kalkulatora */
+  .kalk-wrap { max-width: 1200px; margin: 0 auto 64px; padding: 0 5%; }
+  @media (max-width: 640px) { .kalk-wrap { margin-bottom: 40px; } }
+  .kalk-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
+  @media (min-width: 1000px) {
+    .kalk-grid { grid-template-columns: 1.15fr 1fr; gap: 40px; }
+    .kalk-wynik-col { position: sticky; top: 120px; }
+  }
+
+  .kalk-naglowek-narzedzia {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3vw, 1.65rem);
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+
+  .kalk-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  @media (max-width: 640px) { .kalk-panel { padding: 20px; } }
+
+  .kalk-krok { margin-bottom: 32px; }
+  .kalk-krok:last-child { margin-bottom: 0; }
+  .kalk-krok-nr {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .kalk-krok h3 {
+    display: flex;
+    align-items: center;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .kalk-podpowiedz {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    margin: 0 0 14px 36px;
+    line-height: 1.55;
+  }
+  @media (max-width: 640px) { .kalk-podpowiedz { margin-left: 0; } }
+
+  /* ── Karty wyboru ── */
+  .kalk-opcje { display: grid; gap: 10px; }
+  .kalk-opcje.dwie { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .kalk-opcja {
+    display: block;
+    position: relative;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px 14px 46px;
+    cursor: pointer;
+    transition: border-color .18s ease, background-color .18s ease;
+    min-height: 44px;
+    background: #fff;
+  }
+  .kalk-opcja:hover { border-color: var(--accent); }
+  .kalk-opcja input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .kalk-opcja .znacznik {
+    position: absolute;
+    left: 16px; top: 50%;
+    transform: translateY(-50%);
+    width: 20px; height: 20px;
+    border: 2px solid #C7CBD1;
+    border-radius: 50%;
+    transition: border-color .18s ease;
+  }
+  .kalk-opcja .znacznik::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: scale(0);
+    transition: transform .18s ease;
+  }
+  .kalk-opcja input:checked ~ .znacznik { border-color: var(--accent); }
+  .kalk-opcja input:checked ~ .znacznik::after { transform: scale(1); }
+  .kalk-opcja input:checked ~ .tresc .tytul { color: var(--accent); }
+  .kalk-opcja:has(input:checked) { border-color: var(--accent); background: var(--accent-light); }
+  .kalk-opcja input:focus-visible ~ .znacznik { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .kalk-opcja .tytul { display: block; font-weight: 500; color: var(--primary); font-size: 0.96rem; }
+  .kalk-opcja .opis { display: block; font-size: 0.83rem; color: var(--text-muted); margin-top: 3px; line-height: 1.5; }
+
+  /* ── Ilość ── */
+  .kalk-ilosc-row { display: flex; align-items: center; gap: 12px; margin-left: 36px; }
+  @media (max-width: 640px) { .kalk-ilosc-row { margin-left: 0; } }
+  .kalk-ilosc-row input[type="number"] {
+    width: 120px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--primary);
+    min-height: 48px;
+  }
+  .kalk-ilosc-row input[type="number"]:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+  .kalk-ilosc-suw { flex: 1; min-width: 100px; accent-color: var(--accent); height: 44px; }
+  .kalk-szybkie { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0 36px; }
+  @media (max-width: 640px) { .kalk-szybkie { margin-left: 0; } }
+  .kalk-szybkie button {
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 22px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    color: var(--text-body);
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 56px;
+    font-family: inherit;
+    transition: border-color .18s ease, color .18s ease;
+  }
+  .kalk-szybkie button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* Zgoda RODO: checkbox musi byc wygodny na telefonie */
+  #kalkulator-form input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); }
+  .kalk-szybkie button:hover { border-color: var(--accent); color: var(--accent); }
+
+  select.kalk-select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--primary);
+    background: #fff;
+    min-height: 48px;
+    font-family: inherit;
+  }
+  select.kalk-select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  /* ── Wynik ── */
+  .kalk-wynik { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .kalk-status {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 16px 20px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .kalk-status svg { flex-shrink: 0; margin-top: 1px; }
+  .kalk-status.ok { background: #ECFDF5; color: #065F46; }
+  .kalk-status.uwaga { background: #FFF7ED; color: #9A3412; }
+  .kalk-status.blok { background: #FEF2F2; color: #991B1B; }
+  .kalk-status.info { background: var(--accent-light); color: var(--accent); }
+
+  .kalk-wynik-body { padding: 24px 20px; }
+  .kalk-cena {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.9rem, 6vw, 2.6rem);
+    color: var(--primary);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .kalk-cena span.jedn { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+  .kalk-calosc {
+    margin-top: 10px;
+    font-size: 0.98rem;
+    color: var(--text-body);
+    font-variant-numeric: tabular-nums;
+  }
+  .kalk-zastrzezenie {
+    margin-top: 18px;
+    background: var(--muted);
+    border-left: 3px solid var(--primary);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+  .kalk-zastrzezenie strong { color: var(--primary); display: block; margin-bottom: 4px; letter-spacing: .01em; }
+
+  .kalk-krzywa { margin-top: 22px; }
+  .kalk-krzywa h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+  .kalk-krzywa table { width: 100%; border-collapse: collapse; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+  .kalk-krzywa th, .kalk-krzywa td { padding: 9px 6px; text-align: right; border-bottom: 1px solid var(--border); }
+  .kalk-krzywa th { color: var(--text-muted); font-weight: 500; font-size: 0.82rem; text-align: right; }
+  .kalk-krzywa th:first-child, .kalk-krzywa td:first-child { text-align: left; }
+  .kalk-krzywa tr.aktywny td { background: var(--accent-light); font-weight: 700; color: var(--accent); }
+  .kalk-krzywa .oszczedz { color: #065F46; font-weight: 500; }
+  .kalk-krzywa-opis { font-size: 0.83rem; color: var(--text-muted); margin-top: 10px; line-height: 1.55; }
+
+  .kalk-lista { margin-top: 20px; }
+  .kalk-lista h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+  .kalk-lista ul { margin: 0; padding: 0; }
+  .kalk-lista li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.89rem;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin-bottom: 3px;
+  }
+  .kalk-lista li::before { content: ''; position: absolute; left: 4px; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--text-muted); }
+
+  .kalk-cta { margin-top: 22px; }
+  .kalk-cta .submit-btn { width: 100%; }
+  .kalk-cta-note { text-align: center; font-size: 0.83rem; color: var(--text-muted); margin-top: 10px; line-height: 1.5; }
+
+  /* ── Ekran STOP ── */
+  .kalk-stop { text-align: left; }
+  .kalk-stop h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 14px;
+  }
+  .kalk-stop p { color: var(--text-body); line-height: 1.75; margin-bottom: 14px; font-size: 0.98rem; }
+  .kalk-stop .kalk-stop-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary); color: #fff;
+    padding: 13px 22px; border-radius: 10px;
+    font-weight: 500; font-size: 0.95rem;
+    min-height: 44px;
+    transition: background-color .18s ease;
+  }
+  .kalk-stop .kalk-stop-link:hover { background: var(--accent); }
+  .kalk-restart {
+    background: none; border: none;
+    color: var(--text-muted);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.88rem;
+    padding: 10px 0;
+    min-height: 44px;
+    font-family: inherit;
+  }
+  .kalk-restart:hover { color: var(--primary); }
+
+  /* ── Formularz pod kalkulatorem ── */
+  .kalk-form-sekcja { max-width: 900px; margin: 64px auto 0; padding: 0 5%; }
+  .kalk-form-sekcja > h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .kalk-form-sekcja > .podtytul { text-align: center; color: var(--text-body); margin-bottom: 28px; line-height: 1.65; }
+  .kalk-form-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  }
+  @media (max-width: 640px) { .kalk-form-box { padding: 20px; } }
+  .kalk-podsumowanie {
+    background: var(--muted);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-body);
+  }
+  .kalk-podsumowanie strong { color: var(--primary); }
+  .kalk-podsumowanie .pusty { color: var(--text-muted); font-style: italic; }
+
+  /* ── Warstwa treści pod formularzem ── */
+  .kalk-tresc { max-width: 860px; margin: 72px auto 0; padding: 0 5%; }
+  .kalk-tresc h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--primary);
+    margin: 48px 0 18px;
+    line-height: 1.25;
+  }
+  .kalk-tresc h2:first-child { margin-top: 0; }
+  .kalk-tresc p { color: var(--text-body); line-height: 1.8; margin-bottom: 18px; font-size: 1.02rem; }
+  .kalk-tresc strong { color: var(--primary); }
+  .kalk-tresc a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .kalk-tresc-lista { margin: 0 0 18px; padding: 0; }
+  .kalk-tresc-lista li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: var(--text-body);
+    line-height: 1.75;
+  }
+  .kalk-tresc-lista li::before {
+    content: '';
+    position: absolute; left: 6px; top: 12px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  ol.kalk-tresc-lista { counter-reset: krok; }
+  ol.kalk-tresc-lista li::before {
+    counter-increment: krok;
+    content: counter(krok);
+    width: auto; height: auto;
+    background: none;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+    top: 0; left: 0;
+  }
+  .kalk-tabela-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  .kalk-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    font-variant-numeric: tabular-nums;
+    min-width: 520px;
+  }
+  .kalk-tabela caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding-bottom: 10px;
+  }
+  .kalk-tabela th, .kalk-tabela td {
+    padding: 11px 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+  }
+  .kalk-tabela thead th { color: var(--text-muted); font-weight: 500; font-size: 0.84rem; }
+  .kalk-tabela th[scope="row"] { text-align: left; color: var(--primary); font-weight: 500; white-space: nowrap; }
+  .kalk-tabela thead th:first-child { text-align: left; }
+  .kalk-tabela tbody tr:hover td, .kalk-tabela tbody tr:hover th { background: var(--muted); }
+  .kalk-tresc-drobne { font-size: 0.87rem !important; color: var(--text-muted) !important; line-height: 1.65 !important; }
+  .faq-container { margin-top: 8px; }
+  /* Wzorzec FAQ z bloga daje summary 24px wysokosci, gdy pytanie miesci sie
+     w jednej linii. Za malo jak na cel dotykowy, wiec podnosimy lokalnie. */
+  .kalk-tresc .faq-item summary { min-height: 44px; gap: 16px; }
+  .kalk-tresc .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  /* ── Pasek z ceną na telefonie ── */
+  .kalk-pasek-mobile {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.14);
+    transform: translateY(100%);
+    transition: transform .22s ease;
+  }
+  .kalk-pasek-mobile.widoczny { transform: translateY(0); }
+  .kalk-pasek-tresc { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+  .kalk-pasek-tresc .etykieta { font-size: 0.72rem; opacity: .75; }
+  .kalk-pasek-tresc strong { font-size: 1.02rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .kalk-pasek-btn {
+    flex-shrink: 0;
+    background: #fff;
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  @media (min-width: 1000px) { .kalk-pasek-mobile { display: none !important; } }
+
+  /* ── Klocki wyboru wyrobu ── */
+  .kalk-grupa { margin-bottom: 18px; }
+  .kalk-grupa:last-child { margin-bottom: 0; }
+  .kalk-grupa-tytul {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .kalk-grupa-tytul .plakietka {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background: var(--accent);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .kalk-klocki { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  @media (max-width: 700px) { .kalk-klocki { grid-template-columns: repeat(2, 1fr); } }
+  .kalk-klocek {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 62px;
+    padding: 12px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.88rem;
+    line-height: 1.35;
+    color: var(--primary);
+    transition: border-color .18s ease, background-color .18s ease, color .18s ease;
+  }
+  .kalk-klocek:hover { border-color: var(--accent); }
+  .kalk-klocek input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .kalk-klocek:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+    font-weight: 500;
+  }
+  .kalk-klocek input:focus-visible ~ span { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 4px; }
+  .kalk-grupa.poza .kalk-klocek { border-style: dashed; color: var(--text-muted); }
+  .kalk-grupa.poza .kalk-klocek:has(input:checked) { color: #fff; border-style: solid; }
+
+  /* ── Pasek miesięcy ── */
+  #miesiac-pasek { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  @media (max-width: 700px) { #miesiac-pasek { grid-template-columns: repeat(4, 1fr); } }
+  .kalk-miesiac {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 52px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.82rem;
+    color: var(--text-body);
+    transition: border-color .18s ease, background-color .18s ease;
+  }
+  .kalk-miesiac:hover { border-color: var(--accent); }
+  .kalk-miesiac input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .kalk-miesiac .kropka { width: 7px; height: 7px; border-radius: 50%; display: block; }
+  .kalk-miesiac.wolne .kropka { background: #16A34A; }
+  .kalk-miesiac.zajete .kropka { background: #D97706; }
+  .kalk-miesiac:has(input:checked) { border-color: var(--accent); background: var(--accent-light); font-weight: 700; color: var(--primary); }
+  .kalk-miesiac input:focus-visible ~ span { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .kalk-legenda {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .kalk-legenda span { display: inline-flex; align-items: center; gap: 6px; }
+  .kalk-legenda .kropka { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .kalk-legenda .kropka.wolne { background: #16A34A; }
+  .kalk-legenda .kropka.zajete { background: #D97706; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://szwalnia-isabell.pl/" },
+    { "@type": "ListItem", "position": 2, "name": "Kalkulator wyceny szycia", "item": "https://szwalnia-isabell.pl/kalkulator-wyceny-szycia.html" }
+  ]
+}
+</script>
+
+<!-- FAQPage: tresc pytan i odpowiedzi MUSI byc identyczna z widoczna na stronie -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Czy cena z kalkulatora zawiera materiał?","acceptedAnswer":{"@type":"Answer","text":"Nie. Wyceniamy wyłącznie usługę szycia na materiale powierzonym, czyli takim, który dostarcza klient. Tkanina, podszewka, dodatki i galanteria są poza wyceną. Nie kupujemy tkanin i nie prowadzimy zleceń od zera, bo to inna organizacja pracy niż nasza."}},
+{"@type":"Question","name":"Jakie jest minimalne zamówienie?","acceptedAnswer":{"@type":"Answer","text":"Przyjmujemy zlecenia od 50 sztuk jednego modelu. Poniżej tej granicy koszt przygotowania produkcji rozkłada się na zbyt małą partię, więc cena za sztukę przestaje mieć sens dla obu stron. Jeśli planujesz większą serię w przyszłości, warto odezwać się wcześniej."}},
+{"@type":"Question","name":"Czy wycena z kalkulatora jest wiążąca?","acceptedAnswer":{"@type":"Answer","text":"Nie. To szacunek na podstawie typowych modeli, podawany w widełkach, i nie stanowi oferty w rozumieniu Kodeksu cywilnego. Ostateczną cenę podajemy po obejrzeniu dokumentacji i próbki tkaniny, zwykle w ciągu około 7 dni roboczych."}},
+{"@type":"Question","name":"W czym się specjalizujecie?","acceptedAnswer":{"@type":"Answer","text":"W odzieży damskiej wierzchniej: żakietach, kurtkach i płaszczach na podszewce, także w dużych rozmiarach 40-56. Szyjemy również odzież firmową i medyczną. Nie zajmujemy się natomiast produkcją lekkiej dzianiny w rodzaju t-shirtów i bluz, bo przy takich wyrobach nasze przygotowanie produkcji kosztuje tyle samo co przy skomplikowanych, a cena za sztukę wychodzi nieproporcjonalnie wysoka."}},
+{"@type":"Question","name":"Co znaczy szycie na materiale powierzonym i usługa CMT?","acceptedAnswer":{"@type":"Answer","text":"Materiał powierzony to tkanina dostarczona przez klienta. CMT (cut, make, trim) oznacza krojenie, szycie i wykończenie na materiale klienta, bez zakupu surowca przez szwalnię. Tak właśnie pracujemy. Model odwrotny, czyli pełna obsługa z zakupem tkanin, to inna usługa i jej nie prowadzimy."}},
+{"@type":"Question","name":"Czy przygotujecie konstrukcję i wykroje?","acceptedAnswer":{"@type":"Answer","text":"Tak, ale realizuje to nasz partner i jest wyceniane osobno. Wycena w kalkulatorze dotyczy samego szycia, więc jeśli nie masz jeszcze dokumentacji, doliczy się do niej koszt konstrukcji. Jeśli przywozisz gotowe wykroje, ten etap odpada."}},
+{"@type":"Question","name":"Dlaczego wasze ceny bywają wyższe niż w innych szwalniach?","acceptedAnswer":{"@type":"Answer","text":"Bo liczymy je z realnych kosztów produkcji, a nie z cenników rynkowych. Widełki są celowo szerokie i ostrożne, żeby nie obiecywać liczby, której później nie dotrzymamy. Jeśli szukasz najtańszej oferty na rynku, prawdopodobnie znajdziesz ją gdzie indziej, i lepiej dowiedzieć się tego od razu niż po trzech mailach."}},
+{"@type":"Question","name":"Gdzie się znajdujecie i czy trzeba przyjechać osobiście?","acceptedAnswer":{"@type":"Answer","text":"Szwalnia mieści się w Ząbkach pod Warszawą, przy ulicy Batorego 44, i działa od 1990 roku. Zlecenia obsługujemy w całej Polsce, a materiał można przesłać kurierem. Wizyta na miejscu bywa przydatna przy pierwszym zleceniu i przy zatwierdzaniu próbki, ale nie jest konieczna."}}
+]}
+</script>
+
+<meta property="og:image" content="https://szwalnia-isabell.pl/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://szwalnia-isabell.pl/kalkulator-wyceny-szycia.html">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.ico" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="canonical" href="https://szwalnia-isabell.pl/kalkulator-wyceny-szycia.html" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Przejdź do treści</a>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-hours">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Pon-Pt: 8:00-15:00
+      </span>
+      <div class="topbar-contact">
+        <a href="tel:+48730851555">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +48 730 851 555
+        </a>
+        <a href="mailto:kontakt@isabell.pl">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          kontakt@isabell.pl
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="/" class="logo"><img src="/assets/logo-szwalnia-isabell-v21.webp" alt="Szwalnia ISABELL" width="160" height="auto"></a>
+      <ul class="nav-links">
+        <li class="nav-dropdown">
+          <a href="/uslugi.html" class="nav-dropdown-trigger">Usługi <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="/uslugi/szycie-odziez-damska.html">Szycie odzieży damskiej</a>
+            <a href="/uslugi/odziez-firmowa.html">Odzież firmowa na zamówienie</a>
+            <a href="/uslugi/krojenie-wykonczenie.html">Krojenie i wykończenie</a>
+            <a href="/uslugi/male-serie.html">Małe serie</a>
+            <a href="/szwalnia-warszawa.html">Szwalnia Warszawa</a>
+            <a href="/szwalnia-zabki.html">Szwalnia Ząbki</a>
+          </div>
+        </li>
+        <li><a href="/realizacje.html">Realizacje</a></li>
+        <li><a href="/o-nas.html">O nas</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+      </ul>
+      <a href="#zapytanie" class="btn-nav">Wyślij zapytanie</a>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li class="mobile-dropdown">
+        <button class="mobile-dropdown-trigger">Usługi <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="/uslugi/szycie-odziez-damska.html">Szycie odzieży damskiej</a></li>
+          <li><a href="/uslugi/odziez-firmowa.html">Odzież firmowa</a></li>
+          <li><a href="/uslugi/krojenie-wykonczenie.html">Krojenie i wykończenie</a></li>
+          <li><a href="/uslugi/male-serie.html">Małe serie</a></li>
+          <li><a href="/szwalnia-warszawa.html">Szwalnia Warszawa</a></li>
+          <li><a href="/szwalnia-zabki.html">Szwalnia Ząbki</a></li>
+        </ul>
+      </li>
+      <li><a href="/realizacje.html">Realizacje</a></li>
+      <li><a href="/o-nas.html">O nas</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="#zapytanie" class="btn-nav">Wyślij zapytanie</a></li>
+    </ul>
+  </div>
+
+  <main id="main" style="padding-bottom: 80px;">
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+      <ul>
+        <li><a href="/">Strona główna</a></li>
+        <li><span class="separator">/</span></li>
+        <li aria-current="page">Kalkulator wyceny</li>
+      </ul>
+    </nav>
+
+    <div class="kalk-hero">
+      <h1>Kalkulator wyceny szycia odzieży</h1>
+      <p class="kalk-lead">
+        Sprawdź w minutę, ile kosztuje uszycie Twojej partii i czy w danym terminie mamy
+        moce, żeby ją przyjąć.
+      </p>
+      <ul class="kalk-zaufanie">
+        <li>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Bez podawania maila
+        </li>
+        <li>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Wynik od razu, bez czekania
+        </li>
+        <li>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5h18v9H3z"/><path d="M7 7.5v9M11 7.5v9M15 7.5v9"/></svg>
+          Materiał powierzony, od 50 sztuk
+        </li>
+      </ul>
+    </div>
+
+    <!-- Zastrzezenie oddzielone od hero: to nie jest drobny druk, tylko
+         wyjasnienie, dlaczego nasze liczby wygladaja tak, a nie inaczej. -->
+    <div class="kalk-wyjasnienie">
+      <p>
+        <strong>Wyceniamy samą usługę szycia na Twoim materiale.</strong> Widełki liczymy
+        z naszych realnych kosztów produkcji, a nie z cenników rynkowych, więc bywają wyższe
+        niż to, co znajdziesz gdzie indziej.
+      </p>
+      <p>
+        Wynik jest orientacyjny i zależy od stopnia skomplikowania modelu, ale zwykle mieści
+        się w podanych granicach. <strong>Jeśli ten przedział Ci odpowiada, jesteśmy w stanie
+        takie zlecenie przyjąć.</strong> Wtedy warto dopytać o szczegóły, bo warunki
+        współpracy doprecyzowujemy indywidualnie przy konkretnym projekcie.
+      </p>
+    </div>
+
+    <div class="kalk-wrap">
+      <!-- Pasek na telefon: cena zostaje na ekranie, gdy uzytkownik kreci
+           parametrami, bo wynik lezy pod szescioma krokami i inaczej nie widac,
+           co sie z cena dzieje. Na desktopie zbedny, bo wynik jest przyklejony obok. -->
+      <div class="kalk-pasek-mobile" id="pasek-mobile" hidden aria-hidden="true">
+        <div class="kalk-pasek-tresc">
+          <span class="etykieta">Szacunkowa cena</span>
+          <strong id="pasek-cena">-</strong>
+        </div>
+        <a href="#wynik-kotwica" class="kalk-pasek-btn">Szczegóły</a>
+      </div>
+
+      <!-- H2 nad narzedziem: domyka hierarchie naglowkow (kroki sa na H3)
+           i realizuje kolejnosc naglowkow zalecana w SEO.md -->
+      <h2 class="kalk-naglowek-narzedzia">Sprawdź cenę swojego zlecenia</h2>
+
+      <div class="kalk-grid">
+
+        <!-- ── PARAMETRY ── -->
+        <div>
+          <div class="kalk-panel" id="panel-parametry">
+
+            <div class="kalk-krok">
+              <h3><span class="kalk-krok-nr">1</span> Co masz już przygotowane?</h3>
+              <p class="kalk-podpowiedz">Od tego zależy, czy w ogóle jesteśmy właściwym adresem.</p>
+              <div class="kalk-opcje" role="radiogroup" aria-label="Co masz już przygotowane">
+                <label class="kalk-opcja">
+                  <input type="radio" name="material" value="material-i-wykroje">
+                  <span class="znacznik" aria-hidden="true"></span>
+                  <span class="tresc">
+                    <span class="tytul">Mam materiał i wykroje</span>
+                    <span class="opis">Potrzebuję tylko uszycia.</span>
+                  </span>
+                </label>
+                <label class="kalk-opcja">
+                  <input type="radio" name="material" value="material-bez-wykrojow">
+                  <span class="znacznik" aria-hidden="true"></span>
+                  <span class="tresc">
+                    <span class="tytul">Mam materiał, potrzebuję konstrukcji i wykrojów</span>
+                    <span class="opis">Wiem, co chcę uszyć, ale nie mam dokumentacji.</span>
+                  </span>
+                </label>
+                <label class="kalk-opcja">
+                  <input type="radio" name="material" value="nie-mam-nic">
+                  <span class="znacznik" aria-hidden="true"></span>
+                  <span class="tresc">
+                    <span class="tytul">Nie mam nic, chcę pełną obsługę z zakupem materiałów</span>
+                    <span class="opis">Szukam kogoś, kto poprowadzi całość.</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div id="reszta-krokow" hidden>
+
+              <div class="kalk-krok">
+                <h3><span class="kalk-krok-nr">2</span> Co chcesz uszyć?</h3>
+                <p class="kalk-podpowiedz">
+                  Specjalizujemy się w odzieży damskiej wierzchniej: żakietach, kurtkach i płaszczach
+                  na podszewce, także w dużych rozmiarach 40-56.
+                </p>
+                <div id="wyrob-klocki" role="radiogroup" aria-label="Rodzaj wyrobu"></div>
+              </div>
+
+              <div class="kalk-krok">
+                <h3><span class="kalk-krok-nr">3</span> Ile sztuk?</h3>
+                <p class="kalk-podpowiedz">
+                  Łącznie, we wszystkich rozmiarach i kolorach, ale w ramach jednego modelu.
+                  Szyjemy od 50 sztuk.
+                </p>
+                <div class="kalk-ilosc-row">
+                  <input type="number" id="ilosc" value="100" min="50" max="5000" step="1"
+                         inputmode="numeric" aria-label="Liczba sztuk">
+                  <input type="range" class="kalk-ilosc-suw" id="ilosc-suwak"
+                         value="100" min="50" max="1000" step="10" aria-label="Liczba sztuk, suwak">
+                </div>
+                <div class="kalk-szybkie">
+                  <button type="button" data-il="50">50</button>
+                  <button type="button" data-il="100">100</button>
+                  <button type="button" data-il="200">200</button>
+                  <button type="button" data-il="300">300</button>
+                  <button type="button" data-il="500">500</button>
+                </div>
+              </div>
+
+              <div class="kalk-krok">
+                <h3><span class="kalk-krok-nr">4</span> Czego potrzebujesz?</h3>
+                <div class="kalk-opcje" id="zakres-opcje" role="radiogroup" aria-label="Zakres usługi"></div>
+              </div>
+
+              <div class="kalk-krok">
+                <h3><span class="kalk-krok-nr">5</span> Jak skomplikowany jest model?</h3>
+                <div class="kalk-opcje" id="trudnosc-opcje" role="radiogroup" aria-label="Poziom skomplikowania"></div>
+              </div>
+
+              <div class="kalk-krok">
+                <h3><span class="kalk-krok-nr">6</span> Kiedy potrzebujesz gotowego towaru?</h3>
+                <p class="kalk-podpowiedz">
+                  Kolor pokazuje, jak wygląda obłożenie produkcji w danym okresie.
+                </p>
+                <div id="miesiac-pasek" role="radiogroup" aria-label="Miesiąc realizacji"></div>
+                <div class="kalk-legenda">
+                  <span><i class="kropka wolne"></i> zwykle swobodnie</span>
+                  <span><i class="kropka zajete"></i> większe obłożenie, warto zapytać wcześniej</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ── WYNIK ── -->
+        <div class="kalk-wynik-col">
+          <span id="wynik-kotwica" style="display:block;height:1px;margin-top:-90px;padding-top:90px;"></span>
+          <div class="kalk-wynik" id="wynik" aria-live="polite">
+            <div class="kalk-status info">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>Zacznij od pierwszego pytania, a wycena pojawi się tutaj.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── FORMULARZ ── -->
+    <section class="contact-section" id="zapytanie">
+      <div class="section-header">
+        <span class="section-badge">Kontakt</span>
+        <h2>Opowiedz o swoim projekcie</h2>
+        <p>Dane z kalkulatora są już w formularzu. Wystarczy dopisać kontakt.</p>
+      </div>
+
+      <div class="contact-split">
+        <div class="contact-left">
+          <div class="contact-photo">
+            <img src="/assets/michal-jalbrzykowski-isabell.webp" alt="Michał - kontakt ze Szwalnią ISABELL" loading="lazy" width="1201" height="1600">
+          </div>
+          <div class="contact-personal">
+            <p>Jestem Michał - <strong>trzecie pokolenie</strong> rodziny prowadzącej ISABELL. Odpowiadam za kontakt z klientami i koordynację zleceń.</p>
+            <div class="contact-trust">
+              <div class="contact-trust-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Odpowiedź zwykle w ciągu około 7 dni</span>
+              </div>
+              <div class="contact-trust-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span>Bez ukrytych kosztów</span>
+              </div>
+              <div class="contact-trust-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>kontakt@isabell.pl</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <div class="kalk-podsumowanie" id="podsumowanie">
+            <span class="pusty">Wypełnij kalkulator powyżej, a podsumowanie pojawi się tutaj.</span>
+          </div>
+
+          <form class="contact-form" id="kalkulator-form" action="https://hook.eu1.make.com/iuy4kuiieqqawf3bfw9iq0jxgjh75ggr" method="POST">
+          <!-- pola techniczne, wypełniane z kalkulatora -->
+          <input type="hidden" name="form_type" value="kalkulator">
+          <input type="hidden" name="wyrob" id="h-wyrob" value="">
+          <input type="hidden" name="ilosc_dokladna" id="h-ilosc" value="">
+          <input type="hidden" name="quantity" id="h-prog" value="">
+          <input type="hidden" name="zakres" id="h-zakres" value="">
+          <input type="hidden" name="trudnosc" id="h-trudnosc" value="">
+          <input type="hidden" name="miesiac_realizacji" id="h-miesiac" value="">
+          <input type="hidden" name="ma_material" id="h-material" value="">
+          <input type="hidden" name="wycena_od" id="h-od" value="">
+          <input type="hidden" name="wycena_do" id="h-do" value="">
+          <input type="hidden" name="wartosc_zlecenia" id="h-wartosc" value="">
+          <input type="hidden" name="wersja_cennika" id="h-wersja" value="">
+          <input type="hidden" name="service-type" id="h-service" value="">
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="k-name">Imię i nazwisko *</label>
+              <input type="text" id="k-name" name="name" class="input-field" placeholder="Jan Kowalski" autocomplete="name" required>
+            </div>
+            <div class="input-group">
+              <label for="k-company">Firma / Marka</label>
+              <input type="text" id="k-company" name="company" class="input-field" placeholder="Nazwa firmy" autocomplete="organization">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label for="k-email">Email *</label>
+              <input type="email" id="k-email" name="email" class="input-field" placeholder="kontakt@firma.pl" autocomplete="email" required>
+            </div>
+            <div class="input-group">
+              <label for="k-phone">Telefon (opcjonalnie)</label>
+              <input type="tel" id="k-phone" name="phone" class="input-field" placeholder="+48 ..." autocomplete="tel">
+            </div>
+          </div>
+          <div class="input-group" style="margin-bottom: 16px;">
+            <label for="k-description">Dodatkowe informacje</label>
+            <textarea id="k-description" name="description" class="input-field" rows="4"
+              placeholder="Tkanina, terminy, liczba rozmiarów i kolorów, cokolwiek, co warto wiedzieć."></textarea>
+          </div>
+          <div class="input-group" style="margin-bottom: 24px;">
+            <label class="checkbox-label" style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; line-height: 1.5; color: var(--text-muted);">
+              <input type="checkbox" name="privacy" required style="margin-top: 3px; flex-shrink: 0;">
+              <span>Wysyłając formularz wyrażasz zgodę na kontakt w celu obsługi zgłoszenia oraz na przetwarzanie danych osobowych zgodnie z <a href="/polityka-prywatnosci.html" target="_blank" style="color: var(--primary); text-decoration: underline;">Polityką Prywatności</a>.</span>
+            </label>
+          </div>
+            <button type="submit" class="submit-btn" style="width: 100%;">Wyślij zapytanie o wycenę</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ WARSTWA TRESCI: statycznie w HTML, zeby bylo co indeksowac ══
+         Kalkulator liczy w JS, wiec dla wyszukiwarki nie istnieje. Ponizsze
+         sekcje sa w zrodle i widoczne przy wylaczonym JavaScripcie. -->
+    <section class="kalk-tresc">
+
+      <h2>Ile kosztuje uszycie odzieży na zlecenie</h2>
+      <p>
+        Poniżej orientacyjne widełki za <strong>samą usługę szycia</strong> na materiale
+        powierzonym, netto, dla pełnego zakresu: krojenie, szycie, prasowanie, metkowanie
+        i pakowanie. Model o standardowym stopniu skomplikowania. Ceny nie zawierają
+        tkaniny ani dodatków.
+      </p>
+
+      <div class="kalk-tabela-wrap">
+        <table class="kalk-tabela">
+          <caption>Widełki cenowe za sztukę netto, w zależności od wielkości serii</caption>
+          <thead>
+            <tr>
+              <th scope="col">Wyrób</th>
+              <th scope="col">50 szt.</th>
+              <th scope="col">100 szt.</th>
+              <th scope="col">200 szt.</th>
+              <th scope="col">500 szt.</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr>
+                  <th scope="row">Żakiet na podszewce</th>
+                  <td>200 do 300 zł</td>
+                  <td>180 do 270 zł</td>
+                  <td>170 do 260 zł</td>
+                  <td>165 do 245 zł</td>
+                </tr>
+                <tr>
+                  <th scope="row">Płaszcz</th>
+                  <td>275 do 415 zł</td>
+                  <td>250 do 370 zł</td>
+                  <td>235 do 355 zł</td>
+                  <td>230 do 350 zł</td>
+                </tr>
+                <tr>
+                  <th scope="row">Kurtka pikowana</th>
+                  <td>200 do 300 zł</td>
+                  <td>180 do 270 zł</td>
+                  <td>170 do 260 zł</td>
+                  <td>165 do 245 zł</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sukienka</th>
+                  <td>95 do 145 zł</td>
+                  <td>85 do 125 zł</td>
+                  <td>75 do 115 zł</td>
+                  <td>70 do 110 zł</td>
+                </tr>
+                <tr>
+                  <th scope="row">Koszula / bluzka</th>
+                  <td>70 do 100 zł</td>
+                  <td>55 do 85 zł</td>
+                  <td>50 do 70 zł</td>
+                  <td>45 do 65 zł</td>
+                </tr>
+                <tr>
+                  <th scope="row">Kitel / fartuch lekarski</th>
+                  <td>100 do 150 zł</td>
+                  <td>85 do 125 zł</td>
+                  <td>75 do 115 zł</td>
+                  <td>70 do 110 zł</td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="kalk-tresc-drobne">
+        Widełki wyliczamy z realnych kosztów produkcji, a nie z cenników rynkowych, więc
+        bywają wyższe niż to, co znajdziesz gdzie indziej. Ostateczną cenę podajemy po
+        obejrzeniu dokumentacji i próbki tkaniny. Powyższe liczby nie stanowią oferty
+        w rozumieniu Kodeksu cywilnego.
+      </p>
+
+      <h2>Od czego zależy cena szycia</h2>
+      <p>
+        Dwie szwalnie mogą podać za ten sam model ceny różniące się dwukrotnie i obie będą
+        uczciwe. Różnica siedzi w tym, co składa się na wycenę.
+      </p>
+      <ul class="kalk-tresc-lista">
+        <li><strong>Liczba operacji przy szyciu.</strong> Żakiet na podszewce to kilkadziesiąt
+          operacji więcej niż prosta bluzka. To główny składnik ceny.</li>
+        <li><strong>Kompletność dokumentacji.</strong> Gotowy tech-pack i sprawdzone wykroje
+          skracają przygotowanie produkcji. Brak dokumentacji oznacza konstrukcję od zera,
+          wyceniane osobno.</li>
+        <li><strong>Rodzaj tkaniny.</strong> Materiały śliskie, elastyczne, pikowane albo
+          osypujące się szyje się wolniej i z większym marginesem na braki.</li>
+        <li><strong>Wielkość serii.</strong> Koszt przygotowania modelu jest stały, więc
+          rozkłada się na liczbę sztuk. Przy 200 sztukach na sztukę przypada czterokrotnie
+          mniej niż przy 50.</li>
+        <li><strong>Liczba rozmiarów i kolorów.</strong> Każdy dodatkowy rozmiar to osobne
+          stopniowanie, każdy kolor to osobne rozłożenie nakładu.</li>
+        <li><strong>Termin.</strong> Zlecenie wchodzące poza kolejnością kosztuje więcej,
+          bo przesuwa inne.</li>
+      </ul>
+
+      <h2>Dlaczego mała partia jest droga w przeliczeniu na sztukę</h2>
+      <p>
+        To pytanie wraca w co drugim zapytaniu, więc odpowiadamy wprost. Zanim uszyjemy
+        pierwszą sztukę, trzeba przejść dokumentację, przygotować wzornik, odszyć próbkę,
+        poprawić konstrukcję po przymiarce i ustawić maszyny. <strong>Ten nakład jest
+        identyczny przy 20 sztukach i przy 500.</strong>
+      </p>
+      <p>
+        Przy serii 50 sztuk rozkłada się na 50 wyrobów, przy 500 na dziesięć razy więcej.
+        Dlatego w tabeli powyżej cena spada wraz z ilością, a największy skok widać między
+        50 a 100 sztukami. Powyżej 200 sztuk różnica jest już niewielka, bo koszt
+        przygotowania przestaje mieć znaczenie, a zostaje sam czas szycia.
+      </p>
+      <p>
+        Z tego samego powodu <strong>przyjmujemy zlecenia od 50 sztuk jednego modelu</strong>.
+        Poniżej tej granicy cena za sztukę wychodzi nieproporcjonalnie wysoko dla klienta
+        i nadal nieopłacalnie dla nas, więc uczciwiej powiedzieć to od razu.
+      </p>
+
+      <h2>Jak przygotować się do wyceny</h2>
+      <p>
+        Im więcej z tej listy masz gotowe, tym szybciej i dokładniej wycenimy zlecenie.
+      </p>
+      <ol class="kalk-tresc-lista">
+        <li><strong>Rysunek techniczny albo zdjęcie wzoru</strong>, najlepiej z opisem szwów
+          i wykończeń.</li>
+        <li><strong>Wykroje</strong>, jeśli je masz. Jeśli nie, konstrukcję przygotuje nasz
+          partner i jest wyceniana osobno.</li>
+        <li><strong>Próbkę tkaniny</strong> albo jej dokładną specyfikację: skład, gramaturę,
+          szerokość beli.</li>
+        <li><strong>Tabelę rozmiarów</strong> i rozpiskę, ile sztuk w którym rozmiarze.</li>
+        <li><strong>Termin</strong>, na kiedy potrzebujesz gotowego towaru.</li>
+      </ol>
+      <p>
+        Szczegółowo rozpisaliśmy to we wpisie
+        <a href="/jak-przygotowac-tech-pack.html">jak przygotować tech-pack</a>, który
+        przyda się przy rozmowie z dowolną szwalnią, nie tylko z nami.
+      </p>
+
+      <h2>Najczęściej zadawane pytania</h2>
+      <div class="faq-container">
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            Czy cena z kalkulatora zawiera materiał?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">Nie. Wyceniamy wyłącznie usługę szycia na materiale powierzonym, czyli takim, który dostarcza klient. Tkanina, podszewka, dodatki i galanteria są poza wyceną. Nie kupujemy tkanin i nie prowadzimy zleceń od zera, bo to inna organizacja pracy niż nasza.</p>
+        </details>
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            Jakie jest minimalne zamówienie?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">Przyjmujemy zlecenia od 50 sztuk jednego modelu. Poniżej tej granicy koszt przygotowania produkcji rozkłada się na zbyt małą partię, więc cena za sztukę przestaje mieć sens dla obu stron. Jeśli planujesz większą serię w przyszłości, warto odezwać się wcześniej.</p>
+        </details>
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            Czy wycena z kalkulatora jest wiążąca?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">Nie. To szacunek na podstawie typowych modeli, podawany w widełkach, i nie stanowi oferty w rozumieniu Kodeksu cywilnego. Ostateczną cenę podajemy po obejrzeniu dokumentacji i próbki tkaniny, zwykle w ciągu około 7 dni roboczych.</p>
+        </details>
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            W czym się specjalizujecie?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">W odzieży damskiej wierzchniej: żakietach, kurtkach i płaszczach na podszewce, także w dużych rozmiarach 40-56. Szyjemy również odzież firmową i medyczną. Nie zajmujemy się natomiast produkcją lekkiej dzianiny w rodzaju t-shirtów i bluz, bo przy takich wyrobach nasze przygotowanie produkcji kosztuje tyle samo co przy skomplikowanych, a cena za sztukę wychodzi nieproporcjonalnie wysoka.</p>
+        </details>
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            Co znaczy szycie na materiale powierzonym i usługa CMT?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">Materiał powierzony to tkanina dostarczona przez klienta. CMT (cut, make, trim) oznacza krojenie, szycie i wykończenie na materiale klienta, bez zakupu surowca przez szwalnię. Tak właśnie pracujemy. Model odwrotny, czyli pełna obsługa z zakupem tkanin, to inna usługa i jej nie prowadzimy.</p>
+        </details>
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            Czy przygotujecie konstrukcję i wykroje?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">Tak, ale realizuje to nasz partner i jest wyceniane osobno. Wycena w kalkulatorze dotyczy samego szycia, więc jeśli nie masz jeszcze dokumentacji, doliczy się do niej koszt konstrukcji. Jeśli przywozisz gotowe wykroje, ten etap odpada.</p>
+        </details>
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            Dlaczego wasze ceny bywają wyższe niż w innych szwalniach?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">Bo liczymy je z realnych kosztów produkcji, a nie z cenników rynkowych. Widełki są celowo szerokie i ostrożne, żeby nie obiecywać liczby, której później nie dotrzymamy. Jeśli szukasz najtańszej oferty na rynku, prawdopodobnie znajdziesz ją gdzie indziej, i lepiej dowiedzieć się tego od razu niż po trzech mailach.</p>
+        </details>
+
+        <details class="faq-item" style="background: var(--surface); padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border); cursor: pointer;">
+          <summary style="font-weight: 700; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem;">
+            Gdzie się znajdujecie i czy trzeba przyjechać osobiście?
+          </summary>
+          <p style="margin-top: 16px; color: var(--text-body); line-height: 1.6;">Szwalnia mieści się w Ząbkach pod Warszawą, przy ulicy Batorego 44, i działa od 1990 roku. Zlecenia obsługujemy w całej Polsce, a materiał można przesłać kurierem. Wizyta na miejscu bywa przydatna przy pierwszym zleceniu i przy zatwierdzaniu próbki, ale nie jest konieczna.</p>
+        </details>
+
+      </div>
+
+      <h2>Powiązane materiały</h2>
+      <ul class="kalk-tresc-lista">
+        <li><a href="/ile-kosztuje-uszycie-partii-odziezy.html">Ile kosztuje uszycie partii odzieży na zlecenie</a>, czyli skąd biorą się różnice w wycenach między szwalniami</li>
+        <li><a href="/minimalne-zamowienie-szwalnia-moq.html">Minimalne zamówienie w szwalni (MOQ)</a>, jak je liczyć i kiedy da się negocjować</li>
+        <li><a href="/jak-przygotowac-tech-pack.html">Jak przygotować tech-pack</a>, komplet dokumentacji przed wysłaniem zapytania</li>
+        <li><a href="/szycie-z-powierzonego-materialu.html">Szycie z powierzonego materiału</a>, na czym polega ten model współpracy</li>
+        <li><a href="/uslugi/male-serie.html">Produkcja małych serii</a>, jak wygląda praca przy partiach od 50 sztuk</li>
+      </ul>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><img src="/assets/logo-szwalnia-isabell-v21.webp" alt="Szwalnia ISABELL" width="160" height="auto"></a>
+        <p>Rodzinna szwalnia z tradycją w Ząbkach pod Warszawą. Krojenie, szycie i wykończenie pod jednym dachem.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/isabell_sklep/" target="_blank" rel="noopener" aria-label="ISABELL na Instagramie">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100057096053968" target="_blank" rel="noopener" aria-label="ISABELL na Facebooku">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 2.5h-2.8a4.7 4.7 0 0 0-4.7 4.7v2.9H7v4h3v7.4h4v-7.4h3l.9-4h-3.9V7.7a1 1 0 0 1 1-1h2.5z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@Isabell_pl" target="_blank" rel="noopener" aria-label="ISABELL na YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.1 8.2a2.7 2.7 0 0 0-1.9-1.9C18.4 5.8 12 5.8 12 5.8s-6.4 0-8.2.5A2.7 2.7 0 0 0 1.9 8.2 28 28 0 0 0 1.4 12a28 28 0 0 0 .5 3.8 2.7 2.7 0 0 0 1.9 1.9c1.8.5 8.2.5 8.2.5s6.4 0 8.2-.5a2.7 2.7 0 0 0 1.9-1.9 28 28 0 0 0 .5-3.8 28 28 0 0 0-.5-3.8z"/><path d="M10.2 15.1 15.4 12l-5.2-3.1z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@isabell_sklep" target="_blank" rel="noopener" aria-label="ISABELL na TikToku">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.3 2.8v12.6a3.4 3.4 0 1 1-3.4-3.4c.3 0 .7 0 1 .1"/><path d="M13.3 2.8c.4 2.4 2.3 4.2 4.8 4.4"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Usługi</h4>
+        <ul>
+          <li><a href="/uslugi/szycie-odziez-damska.html">Szycie odzieży damskiej</a></li>
+          <li><a href="/uslugi/odziez-firmowa.html">Odzież firmowa</a></li>
+          <li><a href="/uslugi/krojenie-wykonczenie.html">Krojenie i wykończenie</a></li>
+          <li><a href="/uslugi/male-serie.html">Małe serie</a></li>
+          <li><a href="/szwalnia-warszawa.html">Szwalnia Warszawa</a></li>
+          <li><a href="/szwalnia-zabki.html">Szwalnia Ząbki</a></li>
+          <li><a href="/kalkulator-wyceny-szycia.html">Kalkulator wyceny</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Strony informacyjne</h4>
+        <ul>
+          <li><a href="/realizacje.html">Realizacje</a></li>
+          <li><a href="/o-nas.html">O nas</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/kariera.html">Kariera</a></li>
+          <li><a href="/wspolpraca.html">Współpraca</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Z bloga</h4>
+        <ul>
+          <li><a href="/ile-kosztuje-uszycie-partii-odziezy.html">Ile kosztuje uszycie partii</a></li>
+          <li><a href="/minimalne-zamowienie-szwalnia-moq.html">Minimalne zamówienie (MOQ)</a></li>
+          <li><a href="/jak-znalezc-szwalnie-dla-marki.html">Jak znaleźć szwalnię dla marki</a></li>
+          <li><a href="/produkcja-malych-serii.html">Produkcja małych serii</a></li>
+          <li><a href="/odziez-firmowa-poradnik.html">Odzież firmowa - poradnik</a></li>
+          <li><a href="/szwalnia-polska-vs-chiny.html">Polska vs Chiny: gdzie szyć</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li>Ząbki, ul. Batorego 44</li>
+          <li>Pon-Pt: 8:00-15:00</li>
+          <li><a href="mailto:kontakt@isabell.pl">kontakt@isabell.pl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Szwalnia ISABELL. Wszelkie prawa zastrzeżone.</p>
+      <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
+      document.documentElement.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.documentElement.classList.remove('menu-open');
+      });
+    });
+    const mobileDropdownTrigger = document.querySelector('.mobile-dropdown-trigger');
+    if (mobileDropdownTrigger) {
+      mobileDropdownTrigger.addEventListener('click', () => {
+        mobileDropdownTrigger.closest('.mobile-dropdown').classList.toggle('active');
+      });
+    }
+  </script>
+
+  <!-- ── SILNIK KALKULATORA ── -->
+  <script>
+  (function () {
+    'use strict';
+
+    var CFG = null;
+    var stan = {
+      material: null, wyrob: null, ilosc: 100,
+      zakres: 'pelne', trudnosc: 'standard', miesiac: null
+    };
+    var startZgloszony = false;
+    var zakresRuszonyRecznie = false;
+
+    var MIESIACE = ['styczeń','luty','marzec','kwiecień','maj','czerwiec',
+                    'lipiec','sierpień','wrzesień','październik','listopad','grudzień'];
+
+    function ga(nazwa, params) {
+      if (typeof gtag === 'function') gtag('event', nazwa, params || {});
+    }
+
+    /* ── Liczenie. Interpolacja LOGARYTMICZNA miedzy punktami z cennika.
+       Zadnego wzoru kosztowego na froncie, wylacznie punkty z pliku. ── */
+    function cenaZaSztuke(punkty, n) {
+      var il = Object.keys(punkty).map(Number).sort(function (a, b) { return a - b; });
+      if (n <= il[0]) return punkty[il[0]];
+      if (n >= il[il.length - 1]) return punkty[il[il.length - 1]];
+      for (var i = 0; i < il.length - 1; i++) {
+        var a = il[i], b = il[i + 1];
+        if (n >= a && n <= b) {
+          var t = (Math.log(n) - Math.log(a)) / (Math.log(b) - Math.log(a));
+          return punkty[a] + (punkty[b] - punkty[a]) * t;
+        }
+      }
+      return punkty[il[il.length - 1]];
+    }
+    function z5(x) { return Math.round(x / 5) * 5; }
+
+    /* Ilosc, przy ktorej zlecenie przekracza prog wartosci.
+       Liczone ITERACYJNIE: cena spada wraz z iloscia, wiec proste prog/cena
+       zawsze zaniza wynik i klient dostaje liczbe, ktora nadal nie przechodzi. */
+    function sensownaIlosc(p, mnoznik) {
+      for (var n = CFG.progi.moq; n <= 5000; n += 5) {
+        if (z5(cenaZaSztuke(p.punktyCenowe, n) * mnoznik) * n >= CFG.progi.minimalnaWartoscZlecenia) return n;
+      }
+      return null;
+    }
+
+    function progEtykieta(n) {
+      var e = null;
+      CFG.progi.progIlosciFormularz.forEach(function (p) {
+        if (n >= p.od && (p.do === null || n <= p.do)) e = p.etykieta;
+      });
+      return e;
+    }
+
+    function policz() {
+      if (stan.material === 'nie-mam-nic') return { status: 'brak-materialu' };
+      if (!stan.wyrob) return { status: 'niekompletne' };
+
+      var p = CFG.produkty[stan.wyrob];
+      var n = Number(stan.ilosc);
+      if (!(n > 0)) return { status: 'niekompletne' };
+
+      var ostrz = [];
+      if (stan.miesiac && CFG.sezonowosc.miesiaceOgraniczonychMocy.indexOf(Number(stan.miesiac)) >= 0) {
+        ostrz.push({ ikona: 'kalendarz', tekst: CFG.sezonowosc.komunikat });
+      }
+      if (stan.material === 'material-bez-wykrojow') {
+        ostrz.push({ ikona: 'nozyczki', tekst: 'Konstrukcja i wykroje powstają u naszego partnera i są wyceniane osobno. Poniższa wycena obejmuje samo szycie.' });
+      }
+      /* Prog skali: powyzej tej ilosci zlecenie przestaje miescic sie
+         w jednym cyklu produkcyjnym. Nie blokujemy, bo duza seria to dobry
+         klient, ale nie wolno milczaco obiecac terminu, ktorego nie dowieziemy. */
+      if (p.progSkali && n > p.progSkali) {
+        ostrz.push({ ikona: 'warstwy', tekst: 'Zlecenie tej wielkości wypełnia nasz kalendarz produkcji na dłużej niż jeden cykl. '
+          + 'Jest wykonalne, ale wymaga rozłożenia na partie i ustalenia harmonogramu z wyprzedzeniem, '
+          + 'więc przy takiej skali warto odezwać się wcześniej.' });
+      }
+
+      /* Wyroby poza oferta: t-shirty, bluzy i pozycja workowa "inne".
+         Nie maja punktow cenowych, wiec kazda liczba bylaby zmyslona. */
+      if (p.wycena === 'brak') {
+        return {
+          status: n < p.minimalnaIlosc ? 'poza-oferta' : 'poza-oferta-kontakt',
+          nazwa: p.nazwa, powod: p.powod, minimalnaIlosc: p.minimalnaIlosc,
+          prog: progEtykieta(n), ostrzezenia: ostrz
+        };
+      }
+
+      var mnoznik = CFG.mnozniki.zakres[stan.zakres] * CFG.mnozniki.trudnosc[stan.trudnosc];
+
+      /* MOQ 50 sztuk, jednolite dla calego kalkulatora. Ponizej tej granicy
+         nie pokazujemy zadnej ceny, bo nie mamy dla niej punktow w cenniku,
+         a ekstrapolacja w dol bylaby zmyslaniem. Zgodne z komunikatem
+         "od 50 sztuk", ktory stoi na calej stronie. */
+      if (n < CFG.progi.moq) {
+        return {
+          status: 'ponizej-moq', nazwa: p.nazwa,
+          moq: CFG.progi.moq, ostrzezenia: ostrz
+        };
+      }
+
+      var cena = z5(cenaZaSztuke(p.punktyCenowe, n) * mnoznik);
+      var w = CFG.widelki;
+      var od = z5(cena * (1 - w)), doo = z5(cena * (1 + w));
+      var wartosc = cena * n;
+
+      /* Ponizej progu wartosci cene POKAZUJEMY, ale uczciwie uprzedzamy,
+         ze przy tej skali cena jednostkowa jest wyzsza. Decyzja wlasciciela
+         z 07.08.2026: nie odrzucamy w kalkulatorze, odrzucamy w rozmowie. */
+      var niskaWartosc = wartosc < CFG.progi.minimalnaWartoscZlecenia;
+
+      return {
+        status: 'ok',
+        niskaWartosc: niskaWartosc,
+        nazwa: p.nazwa,
+        cena: cena, od: od, do: doo,
+        wartoscOd: od * n, wartoscDo: doo * n,
+        prog: progEtykieta(n),
+        sugerowanaIlosc: niskaWartosc ? sensownaIlosc(p, mnoznik) : null,
+        ostrzezenia: ostrz,
+        krzywa: Object.keys(p.punktyCenowe).map(Number).sort(function (a, b) { return a - b; })
+          .map(function (q) { return { ilosc: q, cena: z5(p.punktyCenowe[q] * mnoznik) }; })
+      };
+    }
+
+    /* ── Render ── */
+    /* Ikony niosa znaczenie, nie sa ozdoba. Kazdy komunikat dostaje taka,
+       ktora mowi o czym jest: kalendarz przy terminie, nozyczki przy krojeniu,
+       belka tkaniny przy materiale, warstwy przy wielkosci serii. */
+    var S0 = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+    var IKONY = {
+      // zlecenie miesci sie w profilu produkcji
+      ok: S0 + '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+      // seria mniejsza niz typowa: slupki rosnace
+      uwaga: S0 + '<line x1="5" y1="21" x2="5" y2="14"/><line x1="12" y1="21" x2="12" y2="10"/><line x1="19" y1="21" x2="19" y2="4"/></svg>',
+      // poza profilem produkcji
+      blok: S0 + '<circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>',
+      info: S0 + '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+      // termin realizacji: kalendarz
+      kalendarz: S0 + '<rect x="3" y="4.5" width="18" height="16" rx="2"/><line x1="16" y1="2.5" x2="16" y2="6.5"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+      // konstrukcja i wykroje: nozyczki krawieckie
+      nozyczki: S0 + '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>',
+      // material powierzony: belka tkaniny
+      tkanina: S0 + '<path d="M3 7.5h18v9H3z"/><path d="M7 7.5v9M11 7.5v9M15 7.5v9"/></svg>',
+      // wielkosc serii: warstwy
+      warstwy: S0 + '<polygon points="12 2 2 7.5 12 13 22 7.5 12 2"/><polyline points="2 16.5 12 22 22 16.5"/><polyline points="2 12 12 17.5 22 12"/></svg>'
+    };
+    /* typ steruje kolorem paska, ikona moze byc inna niz domyslna dla typu */
+    function pasek(typ, tekst, ikona) {
+      return '<div class="kalk-status ' + typ + '">' + (IKONY[ikona] || IKONY[typ])
+        + '<span>' + tekst + '</span></div>';
+    }
+    function zl(x) { return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+    function blokZastrzezenie() {
+      return '<div class="kalk-zastrzezenie">'
+        + '<strong>CENA NIE ZAWIERA MATERIAŁÓW ANI DODATKÓW.</strong>'
+        + 'To wycena samej usługi szycia. Tkaninę, dodatki i galanterię dostarczasz Ty.'
+        + '</div>';
+    }
+
+    function blokKrzywa(r) {
+      var akt = Number(stan.ilosc);
+      var bazowa = r.krzywa[0].cena;
+      var h = '<div class="kalk-krzywa"><h4>Jak cena zmienia się przy większym zamówieniu</h4>'
+        + '<table><thead><tr><th>Ilość</th><th>Cena za sztukę</th><th>Różnica</th></tr></thead><tbody>';
+      r.krzywa.forEach(function (row, i) {
+        var blisko = i === r.krzywa.length - 1
+          ? akt >= row.ilosc
+          : akt >= row.ilosc && akt < r.krzywa[i + 1].ilosc;
+        var roz = i === 0 ? '' : '-' + Math.round((1 - row.cena / bazowa) * 100) + '%';
+        h += '<tr class="' + (blisko ? 'aktywny' : '') + '">'
+          + '<td>' + row.ilosc + ' szt.</td>'
+          + '<td>' + row.cena + ' zł</td>'
+          + '<td class="oszczedz">' + roz + '</td></tr>';
+      });
+      h += '</tbody></table><p class="kalk-krzywa-opis">Przy większej serii koszt przygotowania '
+        + 'modelu rozkłada się na więcej sztuk, dlatego cena jednostkowa spada. Powyżej 200 sztuk '
+        + 'różnica jest już niewielka.</p></div>';
+      return h;
+    }
+
+    function blokCzynniki() {
+      return '<div class="kalk-lista"><h4>Od czego zależy ostateczna cena</h4><ul>'
+        + '<li>trudność kroju i liczba operacji przy szyciu</li>'
+        + '<li>jakość i kompletność dokumentacji, którą dostarczysz</li>'
+        + '<li>rodzaj tkaniny, bo niektóre szyje się wolniej</li>'
+        + '<li>liczba rozmiarów i kolorów w zamówieniu</li>'
+        + '<li>termin, jeśli jest napięty</li>'
+        + '</ul></div>';
+    }
+
+    function blokCta(tekst) {
+      return '<div class="kalk-cta">'
+        + '<a href="#zapytanie" class="submit-btn" style="display:flex;align-items:center;justify-content:center;text-align:center;">'
+        + (tekst || 'Chcę dokładną wycenę') + '</a>'
+        + '<p class="kalk-cta-note">Dane z kalkulatora są już w formularzu. Wystarczy dopisać kontakt.</p>'
+        + '</div>';
+    }
+
+    function render() {
+      var r = policz();
+      var el = document.getElementById('wynik');
+      var h = '';
+
+      if (r.status === 'niekompletne') {
+        h = pasek('info', stan.material
+          ? 'Wybierz rodzaj wyrobu, a wycena pojawi się tutaj.'
+          : 'Zacznij od pierwszego pytania, a wycena pojawi się tutaj.');
+        el.innerHTML = h;
+        wypelnijFormularz(r);
+        return;
+      }
+
+      if (r.status === 'brak-materialu') {
+        h = pasek('blok', 'Zakres poza profilem produkcji.', 'tkanina')
+          + '<div class="kalk-wynik-body kalk-stop">'
+          + '<h2>Pracujemy wyłącznie na materiale powierzonym</h2>'
+          + '<p>Nie kupujemy tkanin i nie prowadzimy zleceń od zera, bo to zupełnie inna '
+          + 'organizacja pracy niż nasza.</p>'
+          + '<p>Jeśli dopiero zaczynasz, przygotowaliśmy artykuł o tym, co warto mieć przed '
+          + 'wysłaniem zapytania do jakiejkolwiek szwalni. Oszczędzi Ci to kilku tygodni '
+          + 'i sporo pieniędzy.</p>'
+          + '<a class="kalk-stop-link" href="/jak-przygotowac-tech-pack.html">Przeczytaj: jak przygotować tech-pack</a>'
+          + '<div><button type="button" class="kalk-restart" id="restart">Wróć i zmień odpowiedź</button></div>'
+          + '</div>';
+        el.innerHTML = h;
+        document.getElementById('restart').addEventListener('click', function () {
+          document.querySelectorAll('input[name="material"]').forEach(function (i) { i.checked = false; });
+          stan.material = null;
+          document.getElementById('reszta-krokow').hidden = true;
+          render();
+          document.getElementById('panel-parametry').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        ga('calculator_no_material');
+        wypelnijFormularz(r);
+        return;
+      }
+
+      if (r.status === 'poza-oferta' || r.status === 'poza-oferta-kontakt') {
+        var doKontaktu = r.status === 'poza-oferta-kontakt';
+        h = pasek(doKontaktu ? 'uwaga' : 'blok',
+              doKontaktu ? 'Wyrób spoza oferty. Przy tej skali wycena indywidualna.'
+                         : 'Wyrób spoza bieżącej oferty.')
+          + '<div class="kalk-wynik-body kalk-stop">'
+          + '<h2>' + r.nazwa + '</h2>'
+          + '<p>Specjalizujemy się w odzieży damskiej wierzchniej: żakietach, kurtkach '
+          + 'i płaszczach na podszewce. Przy wyrobach lekkich i prostych nasze przygotowanie '
+          + 'produkcji kosztuje tyle samo, co przy skomplikowanych, więc cena za sztukę '
+          + 'wychodzi nieproporcjonalnie wysoko i nie chcemy Cię w to wpuszczać.</p>'
+          + (doKontaktu
+              ? '<p>Przy zamówieniu tej wielkości sytuacja wygląda inaczej, bo koszt przygotowania '
+                + 'rozkłada się na dużą partię. Napisz do nas, sprawdzimy to indywidualnie.</p>'
+                + blokCta('Napisz do nas o tym zleceniu')
+              : '<p>Wracamy do tematu przy większych seriach, orientacyjnie od '
+                + r.minimalnaIlosc + ' sztuk. Jeśli planujesz taką partię, odezwij się.</p>'
+                + '<a class="kalk-stop-link" href="/minimalne-zamowienie-szwalnia-moq.html">Więcej o minimalnym zamówieniu</a>')
+          + '</div>';
+        el.innerHTML = h;
+        ga('calculator_poza_oferta', { wyrob: stan.wyrob, ilosc: stan.ilosc });
+        wypelnijFormularz(r);
+        return;
+      }
+
+      if (r.status === 'ponizej-moq') {
+        h = pasek('uwaga', 'Minimalna wielkość serii: ' + r.moq + ' sztuk jednego modelu.', 'warstwy')
+          + '<div class="kalk-wynik-body kalk-stop">'
+          + '<h2>Poniżej ' + r.moq + ' sztuk nie schodzimy</h2>'
+          + '<p>Zanim uszyjemy pierwszą sztukę, przechodzimy dokumentację, robimy wzornik, '
+          + 'odszywamy próbkę, poprawiamy konstrukcję i ustawiamy maszyny. To kosztuje tyle samo '
+          + 'przy 20 sztukach, co przy 500, więc przy bardzo małej partii cena za sztukę wyszłaby '
+          + 'nieproporcjonalnie wysoko dla Ciebie i nadal nieopłacalnie dla nas.</p>'
+          + '<p>Ustaw ilość na <strong>' + r.moq + ' sztuk lub więcej</strong>, a policzymy wycenę. '
+          + 'Jeśli planujesz większą partię dopiero w przyszłości, odezwij się, chętnie pogadamy.</p>'
+          + '<a class="kalk-stop-link" href="/minimalne-zamowienie-szwalnia-moq.html">Więcej o minimalnym zamówieniu</a>'
+          + '</div>';
+        el.innerHTML = h;
+        ga('calculator_moq_block', { wyrob: stan.wyrob, ilosc: stan.ilosc });
+        wypelnijFormularz(r);
+        return;
+      }
+
+      /* ── Wynik z cena ── */
+      var mala = r.niskaWartosc;
+      h = pasek(mala ? 'uwaga' : 'ok',
+            mala ? 'Niewielka partia. Koszt przygotowania mocno podbija cenę sztuki.'
+                 : 'Parametry mieszczą się w standardowym zakresie produkcji.');
+
+      r.ostrzezenia.forEach(function (o) { h += pasek('info', o.tekst, o.ikona); });
+
+      h += '<div class="kalk-wynik-body">'
+        + '<div class="kalk-cena">' + r.od + ' do ' + r.do + ' zł <span class="jedn">za sztukę, netto</span></div>'
+        + '<p class="kalk-calosc">Całe zlecenie: około <strong>' + zl(r.wartoscOd) + ' do ' + zl(r.wartoscDo) + ' zł</strong> netto</p>'
+        + blokZastrzezenie();
+
+      if (mala && r.sugerowanaIlosc) {
+        h += '<div class="kalk-zastrzezenie" style="border-left-color:#EA580C;">'
+          + '<strong>Dlaczego przy tej ilości sztuka kosztuje więcej</strong>'
+          + 'Przygotowanie modelu do produkcji kosztuje tyle samo niezależnie od wielkości serii: '
+          + 'dokumentacja, wzornik, próbka, ustawienie maszyn. Przy około '
+          + '<strong>' + r.sugerowanaIlosc + ' sztukach</strong> ten koszt rozkłada się na tyle, '
+          + 'że cena jednostkowa robi się wyraźnie korzystniejsza. Zapytać możesz oczywiście już teraz.'
+          + '</div>';
+      }
+
+      h += blokKrzywa(r)
+        + blokCzynniki()
+        + '<div class="kalk-zastrzezenie" style="margin-top:18px;">'
+        + 'To jest szacunek na podstawie typowych modeli. Ostateczną cenę podajemy po obejrzeniu '
+        + 'dokumentacji i próbki tkaniny, zwykle w ciągu około 7 dni roboczych. Wycena nie stanowi oferty '
+        + 'w rozumieniu Kodeksu cywilnego.'
+        + '</div>'
+        + blokCta('Chcę dokładną wycenę')
+        + '</div>';
+
+      el.innerHTML = h;
+      ga('calculator_result', {
+        wyrob: stan.wyrob, prog_ilosci: r.prog, niska_wartosc: mala ? 'tak' : 'nie'
+      });
+      wypelnijFormularz(r);
+    }
+
+    /* Pasek na telefonie. Pokazujemy go tylko wtedy, gdy jest co pokazac
+       (jest cena) i gdy wynik zjechal poza ekran. */
+    var wynikWidoczny = true;
+    function aktualizujPasek(r) {
+      var pasekEl = document.getElementById('pasek-mobile');
+      if (!pasekEl) return;
+      var maCene = r && r.od && r.status === 'ok';
+      if (!maCene) {
+        pasekEl.classList.remove('widoczny');
+        pasekEl.hidden = true;
+        pasekEl.setAttribute('aria-hidden', 'true');
+        return;
+      }
+      document.getElementById('pasek-cena').textContent = r.od + ' do ' + r.do + ' zł/szt.';
+      pasekEl.hidden = false;
+      pasekEl.setAttribute('aria-hidden', 'false');
+      pasekEl.classList.toggle('widoczny', !wynikWidoczny);
+    }
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (wpisy) {
+        wynikWidoczny = wpisy[0].isIntersecting;
+        var pasekEl = document.getElementById('pasek-mobile');
+        if (pasekEl && !pasekEl.hidden) pasekEl.classList.toggle('widoczny', !wynikWidoczny);
+      }, { threshold: 0.15 });
+      document.addEventListener('DOMContentLoaded', function () {
+        var w = document.getElementById('wynik');
+        if (w) obs.observe(w);
+      });
+      var wNow = document.getElementById('wynik');
+      if (wNow) obs.observe(wNow);
+    }
+
+    /* ── Przekazanie do formularza ── */
+    function wypelnijFormularz(r) {
+      aktualizujPasek(r);
+      var set = function (id, v) { var e = document.getElementById(id); if (e) e.value = v || ''; };
+      var nazwaWyrobu = stan.wyrob && CFG.produkty[stan.wyrob] ? CFG.produkty[stan.wyrob].nazwa : '';
+      var mies = stan.miesiac ? MIESIACE[Number(stan.miesiac) - 1] : '';
+
+      /* Ktos moze wyslac formularz bez dotkniecia kalkulatora. Zamiast pustych
+         pol wysylamy jawna informacje, zeby w Airtable dalo sie odroznic
+         "nie wypelnil" od "cos sie zgubilo po drodze". */
+      var brak = 'nie wypełniono kalkulatora';
+      set('h-wyrob', nazwaWyrobu || brak);
+      set('h-ilosc', stan.wyrob ? stan.ilosc : brak);
+      set('h-prog', stan.wyrob ? progEtykieta(Number(stan.ilosc)) : '');
+      set('h-zakres', CFG.zakresy[stan.zakres]);
+      set('h-trudnosc', CFG.trudnosc[stan.trudnosc]);
+      set('h-miesiac', mies);
+      set('h-material', stan.material === 'material-i-wykroje' ? 'ma materiał i wykroje'
+        : stan.material === 'material-bez-wykrojow' ? 'ma materiał, potrzebuje wykrojów'
+        : stan.material === 'nie-mam-nic' ? 'nie ma materiału' : '');
+      set('h-wersja', CFG.wersja);
+      set('h-od', r && r.od ? r.od : '');
+      set('h-do', r && r.do ? r.do : '');
+      set('h-wartosc', r && r.wartoscOd ? r.wartoscOd + ' do ' + r.wartoscDo : '');
+      set('h-service', nazwaWyrobu ? 'Kalkulator: ' + nazwaWyrobu : 'Kalkulator, bez wyceny');
+
+      var box = document.getElementById('podsumowanie');
+      if (!stan.wyrob) {
+        box.innerHTML = '<span class="pusty">Wypełnij kalkulator powyżej, a podsumowanie pojawi się tutaj.</span>';
+        return;
+      }
+      var linie = '<strong>' + nazwaWyrobu + '</strong>, ' + stan.ilosc + ' szt., '
+        + CFG.zakresy[stan.zakres].toLowerCase() + ', trudność ' + stan.trudnosc
+        + (mies ? ', termin: ' + mies : '');
+      if (r && r.od) {
+        linie += '<br>Widziana wycena: <strong>' + r.od + ' do ' + r.do + ' zł za sztukę</strong>, '
+          + 'całość około ' + zl(r.wartoscOd) + ' do ' + zl(r.wartoscDo) + ' zł netto.';
+      }
+      linie += '<br><span style="color:var(--text-muted);font-size:0.85rem;">Cennik ' + CFG.wersja + '</span>';
+      box.innerHTML = linie;
+    }
+
+    /* ── Budowa kontrolek z cennika ── */
+    /* Grupy wyrobow. Kolejnosc jest celowa: specjalizacja idzie pierwsza,
+       pozycje spoza oferty na koncu i wizualnie inaczej, zeby bylo widac,
+       ze to nie jest to, czym sie zajmujemy. */
+    var GRUPY = [
+      { tytul: 'Odzież damska wierzchnia', plakietka: 'nasza specjalizacja',
+        wyroby: ['zakiet', 'kurtka-pikowana', 'plaszcz'] },
+      { tytul: 'Odzież damska lekka', wyroby: ['bluzka', 'sukienka', 'spodnie'] },
+      { tytul: 'Odzież medyczna i robocza',
+        wyroby: ['bluza-medyczna', 'spodnie-medyczne', 'kitel', 'fartuch-roboczy'] },
+      { tytul: 'Pozostałe', poza: true, wyroby: ['t-shirt', 'bluza', 'inne'] }
+    ];
+    var SKROTY = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+
+    function zbuduj() {
+      var box = document.getElementById('wyrob-klocki');
+      var uzyte = {};
+      GRUPY.forEach(function (g) {
+        var dostepne = g.wyroby.filter(function (k) { return CFG.produkty[k]; });
+        if (!dostepne.length) return;
+        var h = '<div class="kalk-grupa' + (g.poza ? ' poza' : '') + '">'
+          + '<div class="kalk-grupa-tytul">' + g.tytul
+          + (g.plakietka ? '<span class="plakietka">' + g.plakietka + '</span>' : '')
+          + '</div><div class="kalk-klocki">';
+        dostepne.forEach(function (k) {
+          uzyte[k] = true;
+          h += '<label class="kalk-klocek">'
+            + '<input type="radio" name="wyrob" value="' + k + '">'
+            + '<span>' + CFG.produkty[k].nazwa + '</span></label>';
+        });
+        box.insertAdjacentHTML('beforeend', h + '</div></div>');
+      });
+      // wyroby spoza zdefiniowanych grup, gdyby cennik urosl
+      var reszta = Object.keys(CFG.produkty).filter(function (k) { return !uzyte[k]; });
+      if (reszta.length) {
+        var h2 = '<div class="kalk-grupa"><div class="kalk-grupa-tytul">Inne</div><div class="kalk-klocki">';
+        reszta.forEach(function (k) {
+          h2 += '<label class="kalk-klocek"><input type="radio" name="wyrob" value="' + k + '">'
+            + '<span>' + CFG.produkty[k].nazwa + '</span></label>';
+        });
+        box.insertAdjacentHTML('beforeend', h2 + '</div></div>');
+      }
+
+      var pasek = document.getElementById('miesiac-pasek');
+      MIESIACE.forEach(function (m, i) {
+        var nr = i + 1;
+        var zajete = CFG.sezonowosc.miesiaceOgraniczonychMocy.indexOf(nr) >= 0;
+        pasek.insertAdjacentHTML('beforeend',
+          '<label class="kalk-miesiac ' + (zajete ? 'zajete' : 'wolne') + '">'
+          + '<input type="radio" name="miesiac" value="' + nr + '">'
+          + '<span class="kropka" aria-hidden="true"></span>'
+          + '<span>' + SKROTY[i] + '</span></label>');
+      });
+
+      var opisyZakresu = {
+        'szycie': 'Przywozisz gotowe wykroje, my szyjemy.',
+        'szycie-krojenie': 'Przywozisz materiał i dokumentację, kroimy u siebie.',
+        'pelne': 'Krojenie, szycie, prasowanie, obcinanie nitek, metkowanie i pakowanie.'
+      };
+      var boxZ = document.getElementById('zakres-opcje');
+      Object.keys(CFG.zakresy).forEach(function (k) {
+        boxZ.insertAdjacentHTML('beforeend',
+          '<label class="kalk-opcja"><input type="radio" name="zakres" value="' + k + '"'
+          + (k === stan.zakres ? ' checked' : '') + '>'
+          + '<span class="znacznik" aria-hidden="true"></span><span class="tresc">'
+          + '<span class="tytul">' + CFG.zakresy[k] + '</span>'
+          + '<span class="opis">' + (opisyZakresu[k] || '') + '</span></span></label>');
+      });
+
+      var opisyTrudnosci = {
+        'prosty': 'Proste cięcia, bez podszewki, minimum detali. Na przykład prosta sukienka albo bluzka bez zapięć.',
+        'standard': 'Typowy model z podszewką albo zapięciem, kilka detali. To wybiera większość klientów.',
+        'zlozony': 'Pikowanie, wiele elementów, trudna tkanina, nietypowe wykończenia albo detale wymagające ręcznej pracy.'
+      };
+      var boxT = document.getElementById('trudnosc-opcje');
+      Object.keys(CFG.trudnosc).forEach(function (k) {
+        boxT.insertAdjacentHTML('beforeend',
+          '<label class="kalk-opcja"><input type="radio" name="trudnosc" value="' + k + '"'
+          + (k === stan.trudnosc ? ' checked' : '') + '>'
+          + '<span class="znacznik" aria-hidden="true"></span><span class="tresc">'
+          + '<span class="tytul">' + CFG.trudnosc[k] + '</span>'
+          + '<span class="opis">' + (opisyTrudnosci[k] || '') + '</span></span></label>');
+      });
+    }
+
+    function pierwszaInterakcja() {
+      if (startZgloszony) return;
+      startZgloszony = true;
+      ga('calculator_start');
+    }
+
+    function podepnij() {
+      document.querySelectorAll('input[name="material"]').forEach(function (i) {
+        i.addEventListener('change', function () {
+          pierwszaInterakcja();
+          stan.material = this.value;
+          document.getElementById('reszta-krokow').hidden = (this.value === 'nie-mam-nic');
+
+          /* Kto ma gotowe wykroje, ten nie potrzebuje krojenia. Ustawiamy zakres
+             pod deklaracje z kroku 1, zeby nie zawyzac wyceny usluga, ktorej
+             klient nie zamawia. Zmienic moze recznie w kroku 4. */
+          if (!zakresRuszonyRecznie) {
+            var sugerowany = this.value === 'material-i-wykroje' ? 'szycie' : 'pelne';
+            var opcja = document.querySelector('input[name="zakres"][value="' + sugerowany + '"]');
+            if (opcja) { opcja.checked = true; stan.zakres = sugerowany; }
+          }
+          render();
+        });
+      });
+
+      var pole = document.getElementById('ilosc');
+      var suwak = document.getElementById('ilosc-suwak');
+      function ustawIlosc(v, zrodlo) {
+        v = Math.max(1, Math.min(5000, Number(v) || 1));
+        stan.ilosc = v;
+        if (zrodlo !== 'pole') pole.value = v;
+        if (zrodlo !== 'suwak') suwak.value = Math.min(1000, v);
+        render();
+      }
+      pole.addEventListener('input', function () { pierwszaInterakcja(); ustawIlosc(this.value, 'pole'); });
+      suwak.addEventListener('input', function () { pierwszaInterakcja(); ustawIlosc(this.value, 'suwak'); });
+      document.querySelectorAll('.kalk-szybkie button').forEach(function (b) {
+        b.addEventListener('click', function () { pierwszaInterakcja(); ustawIlosc(this.dataset.il); });
+      });
+
+      document.addEventListener('change', function (e) {
+        if (e.target.name === 'wyrob') { pierwszaInterakcja(); stan.wyrob = e.target.value; render(); }
+        if (e.target.name === 'miesiac') { stan.miesiac = e.target.value; render(); }
+        if (e.target.name === 'zakres') {
+          zakresRuszonyRecznie = true;   // od teraz nie nadpisujemy jego wyboru
+          stan.zakres = e.target.value; render();
+        }
+        if (e.target.name === 'trudnosc') { stan.trudnosc = e.target.value; render(); }
+      });
+
+      var form = document.getElementById('kalkulator-form');
+      if (form) {
+        form.addEventListener('submit', function () {
+          ga('calculator_to_form', { wyrob: stan.wyrob, prog_ilosci: progEtykieta(Number(stan.ilosc)) });
+        });
+      }
+    }
+
+    fetch('/assets/pricing-config.json')
+      .then(function (r) { return r.json(); })
+      .then(function (cfg) {
+        CFG = cfg;
+        zbuduj();
+        podepnij();
+        render();
+      })
+      .catch(function () {
+        document.getElementById('wynik').innerHTML = pasek('blok',
+          'Nie udało się wczytać cennika. Odśwież stronę albo napisz na kontakt@isabell.pl');
+      });
+  })();
+  </script>
+
+  <script src="/assets/form-handler.js"></script>
+</body>
+</html>

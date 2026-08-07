@@ -1,0 +1,234 @@
+{
+  "wersja": "2026-08-e",
+  "wygenerowano": "punkty cenowe od 50 szt oraz prog skali per wyrob, model wewnetrzny + narzut 10%, zaokraglenie do 5 zl",
+  "uwaga": "Ceny netto, wyłącznie usługa szycia. NIE zawierają materiałów ani dodatków.",
+  "produkty": {
+    "bluzka": {
+      "nazwa": "Koszula / bluzka",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 85,
+        "100": 70,
+        "200": 60,
+        "300": 60,
+        "500": 55,
+        "1000": 55
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 95,
+      "progSkali": 1040
+    },
+    "spodnie": {
+      "nazwa": "Spodnie",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 120,
+        "100": 105,
+        "200": 95,
+        "300": 90,
+        "500": 90,
+        "1000": 85
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 60,
+      "progSkali": 640
+    },
+    "sukienka": {
+      "nazwa": "Sukienka",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 120,
+        "100": 105,
+        "200": 95,
+        "300": 90,
+        "500": 90,
+        "1000": 85
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 60,
+      "progSkali": 640
+    },
+    "zakiet": {
+      "nazwa": "Żakiet na podszewce",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 250,
+        "100": 225,
+        "200": 215,
+        "300": 210,
+        "500": 205,
+        "1000": 205
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 50,
+      "progSkali": 280
+    },
+    "kurtka-pikowana": {
+      "nazwa": "Kurtka pikowana",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 250,
+        "100": 225,
+        "200": 215,
+        "300": 210,
+        "500": 205,
+        "1000": 205
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 50,
+      "progSkali": 280
+    },
+    "plaszcz": {
+      "nazwa": "Płaszcz",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 345,
+        "100": 310,
+        "200": 295,
+        "300": 290,
+        "500": 290,
+        "1000": 285
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 50,
+      "progSkali": 200
+    },
+    "bluza-medyczna": {
+      "nazwa": "Bluza medyczna / scrub",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 80,
+        "100": 65,
+        "200": 55,
+        "300": 55,
+        "500": 50,
+        "1000": 50
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 105,
+      "progSkali": 1150
+    },
+    "spodnie-medyczne": {
+      "nazwa": "Spodnie medyczne",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 110,
+        "100": 90,
+        "200": 80,
+        "300": 80,
+        "500": 75,
+        "1000": 75
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 70,
+      "progSkali": 750
+    },
+    "kitel": {
+      "nazwa": "Kitel / fartuch lekarski",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 125,
+        "100": 105,
+        "200": 95,
+        "300": 90,
+        "500": 90,
+        "1000": 85
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 60,
+      "progSkali": 630
+    },
+    "fartuch-roboczy": {
+      "nazwa": "Fartuch roboczy / odzież usługowa",
+      "wycena": "punkty",
+      "punktyCenowe": {
+        "50": 90,
+        "100": 75,
+        "200": 65,
+        "300": 65,
+        "500": 60,
+        "1000": 60
+      },
+      "minimalnaIlosc": 50,
+      "sensownaOd": 90,
+      "progSkali": 950
+    },
+    "t-shirt": {
+      "nazwa": "T-shirt / koszulka",
+      "wycena": "brak",
+      "powod": "ponizej-progu-oplacalnosci",
+      "minimalnaIlosc": 260
+    },
+    "bluza": {
+      "nazwa": "Bluza / hoodie",
+      "wycena": "brak",
+      "powod": "ponizej-progu-oplacalnosci",
+      "minimalnaIlosc": 105
+    },
+    "inne": {
+      "nazwa": "Inny wyrób, nie ma go na liście",
+      "wycena": "brak",
+      "powod": "spoza-listy",
+      "minimalnaIlosc": 50
+    }
+  },
+  "mnozniki": {
+    "zakres": {
+      "szycie": 0.79,
+      "szycie-krojenie": 0.88,
+      "pelne": 1
+    },
+    "trudnosc": {
+      "prosty": 0.87,
+      "standard": 1,
+      "zlozony": 1.25
+    }
+  },
+  "zakresy": {
+    "szycie": "Samo szycie (dostarczasz gotowe wykroje)",
+    "szycie-krojenie": "Krojenie i szycie",
+    "pelne": "Krojenie, szycie i wykończenie"
+  },
+  "trudnosc": {
+    "prosty": "Prosty (proste cięcia, bez detali)",
+    "standard": "Standard",
+    "zlozony": "Złożony (pikowanie, wiele detali, trudna tkanina)"
+  },
+  "progi": {
+    "minimalnaWartoscZlecenia": 6000,
+    "progIlosciFormularz": [
+      {
+        "od": 0,
+        "do": 49,
+        "etykieta": "do 50 szt."
+      },
+      {
+        "od": 50,
+        "do": 199,
+        "etykieta": "50-200 szt."
+      },
+      {
+        "od": 200,
+        "do": 499,
+        "etykieta": "200-500 szt."
+      },
+      {
+        "od": 500,
+        "do": null,
+        "etykieta": "500+ szt."
+      }
+    ],
+    "moq": 50
+  },
+  "sezonowosc": {
+    "miesiaceOgraniczonychMocy": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "komunikat": "W tym okresie kalendarz produkcji bywa gęściej zapełniony. Nie znaczy to, że nie przyjmiemy zlecenia, ale warto odezwać się wcześniej niż zwykle."
+  },
+  "widelki": 0.2,
+  "opisProgSkali": "Ilosc, powyzej ktorej zlecenie wymaga rozlozenia w czasie. Do pokazania ostrzezenia, NIE do blokowania wyceny."
+}
