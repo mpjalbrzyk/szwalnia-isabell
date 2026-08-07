@@ -76,17 +76,40 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 - ✅ **Pomiar jest uczciwy.** Do 30.07 każde wysłanie formularza tworzyło **dwa** rekordy w Airtable i dwa maile. Naprawione. Historia sprzed 30.07 jest **zawyżona** i czeka na odduplikowanie.
 - ✅ **Trzy typy zgłoszeń mierzone osobno w GA4:** `generate_lead`, `job_application`, `partner_application`, plus `contact_click`. Kalkulator liczy się jako `generate_lead` z `form_source=/kalkulator-wyceny-szycia.html`. Wymiar „Strona formularza" **nie działa wstecz**, historia od 30.07.
 - ✅ **`/kariera.html`, `/wspolpraca.html`, `/kalkulator-wyceny-szycia.html` LIVE.**
+- ✅ **POMIAR DOMKNIĘTY 07.08 (audyt GA4/GTM).** **GTM nie istnieje i to decyzja** — wszystko na `gtag.js` na 37/37 stron, dla statycznej strony bez e-commerce GTM to zbędna warstwa. Właściwa usługa GA4 to **„Szwalnia ISABELL" (530061872)**, nie `isabell.pl` (422659936, sklep DTC) — obie siedzą w koncie 298400248 na `mpjecommerce@gmail.com`. Domknięte: GA4 **połączony z Search Console** (raporty „Zapytania" i „Ruch z bezpłatnych wyników" działają, historia zaciągnęła się od razu), kluczowe zdarzenia uzupełnione o `job_application`/`partner_application`/`contact_click`, odznaczone martwe `close_convert_lead`/`qualify_lead`, zarejestrowane **wymiary kalkulatora** (`wyrob`, `ilosc`, `prog_ilosci`, `niska_wartosc`). Wymiary i kluczowe zdarzenia **nie działają wstecz**, historia od 07.08.
 - ⏳ **Pit stop pomiarowy: 2026-08-19** — eksport GSC (Performance + Coverage) + GA4. Pierwszy pomiar z kalkulatorem w indeksie.
+
+**Pomiar bazowy 07.08 (28 dni, 10.07-06.08), źródło: API GSC + GA4 Data API:** 264 użytkowników, 433 sesje, 1 018 odsłon. Kanały: Organic 264, Direct 98, **AI Assistant 56 (~13% ruchu)**, Referral 11, Social 3. Lejek: `form_start` 22 → `generate_lead` 10 = **45% ukończenia**. GSC: **170 kliknięć, 6 595 wyświetleń, CTR 2,58%, śr. poz. 10,76**, 183 unikalne frazy. Trend rosnący: początek lipca 1-8 kliknięć dziennie, początek sierpnia 10-13, pozycja z ~12 na ~9.
+
+> ⚠️ **Nie czytać liczb GSC z raportu Search Console w GA4.** Pokazuje ~30 kliknięć i CTR 0,86% wobec 170 i 2,58% z API — bo dopasowuje tylko sesje, które GA4 potrafi powiązać ze stroną wejścia. Zaniża ~5×. Liczby raportowe brać z `gsc-archiwum/`, raport w GA4 służy wyłącznie do wiązania fraz z zachowaniem na stronie.
+
+**Co pomiar 07.08 pokazał o treści (materiał wyjściowy do wpisów 21-27):**
+- ✅ **Long-tail działa.** „szwalnia małe ilości" → `/uslugi/male-serie.html`, **pozycja 3,1, CTR 25,6%**. „szwalnia od 1 sztuki" → `/minimalne-zamowienie-szwalnia-moq.html`, **pozycja 4,2**, wpis o MOQ prawidłowo przechwytuje i tłumaczy próg 50 szt. Ten mechanizm działa, nie ruszać.
+- 🔧 **Największa niewykorzystana fraza: „szwalnie odzieży ciężkiej" — 500 wyświetleń, pozycja 7,3, ZERO kliknięć.** Druga fraza witryny po „szwalnia". Google pokazywał na nią stronę główną, której tytuł mówił o czymś innym. **07.08 przepisany title i meta** (patrz niżej). Michał potwierdził, że odzież ciężka to realna oferta.
+- 🔧 **Strona główna zbiera 3 820 z 6 595 wyświetleń (58%) przy CTR 1,8%** (2 677 wyświetleń przypisanych do konkretnych fraz, 124 frazy, CTR 0,64%). Łapie ogólne frazy na pozycjach 9-15 i nie zamienia ich na kliknięcia. **07.08 przepisany title/meta**, efekt do sprawdzenia na pit stopie 19.08.
+
+**Zmiana title/meta strony głównej, 07.08 (wariant wybrany przez Michała, „przez konkretne wyroby"):**
+```
+title: Szwalnia odzieży: kurtki, żakiety, odzież firmowa | Warszawa   (60 zn.)
+meta:  Szyjemy odzież ciężką i lekką: kurtki zimowe, żakiety, sukienki,
+       odzież firmowa. Rodzinna szwalnia w Ząbkach k. Warszawy od 1990.
+       Małe serie od 50 szt.                                        (151 zn.)
+```
+Zmienione w czterech miejscach `index.html`: `<title>`, `description`, `og:title`, `og:description`. **Z meta świadomie usunięto „Bezpłatna wycena w 48h"** — obietnica nierozstrzygnięta, więc nie obiecujemy żadnego terminu, zamiast zgadywać. Punkt odniesienia do porównania: CTR strony głównej **1,8%**, fraza „odzież ciężka" **0 kliknięć z 499 wyświetleń**.
+- 🟡 **`/uslugi/odziez-firmowa.html`: 509 wyświetleń, 6 kliknięć (CTR 1,2%).** Druga strona wg wyświetleń, najsłabszy CTR z dużych.
+- ⚪ **~230 wyświetleń to ruch brandowy obcej marki** („isabell", „isabella", „isabelle sukienki", „isabelle butik rzeszów") — 0 kliknięć, intencja cudza. Odjąć od bazy przy liczeniu CTR, nie optymalizować.
 
 **Backlog, kolejność ustalona 07.08:**
 1. 📋 **Wpisy blogowe 21-27** (NASTĘPNY TASK) — domknięcie planu 27 tematów. Tematy w `Wpisy-blogowe/blog-szwalnia-isabell-plan.md`. **Uwaga na kanibalizację:** temat 26 „Koszt produkcji jednej sztuki odzieży" nachodzi na wpis o kosztach i na kalkulator, trzeba rozjechać intencje albo zmienić temat.
 2. 📋 **Odduplikowanie tabeli leadów** — przed pit stopem 19.08, żeby porównanie „przed i po" miało sens.
-3. 📋 **Dostęp GSC po API** — uprawnienie dla `mpjalbrzyk@gmail.com` nadane 07.08 w property `sc-domain:szwalnia-isabell.pl`, ale API wciąż zwracało 403 (propagacja). Sprawdzić. Instrukcja i plan archiwizacji: `_briefy/gsc-api-instrukcja.md`.
-4. 📋 **Archiwizacja GSC** — dane znikają po 16 miesiącach. Materiał z okresu indeksacji 4→25 stron przestanie być dostępny w połowie 2027.
-5. 📋 Strona autora Michała (czeka na bio + cytat); opinie Google (2 → kilkanaście).
-6. 📋 `validThrough` w trzech `JobPosting` wygasa **2026-10-31**, odświeżać co kwartał.
-7. 📋 **Reautoryzacja Gmail w Make do 2026-10-12** — po tej dacie maile ze zgłoszeń przestaną przychodzić.
-8. 📋 Strona współpracy ma ok. 18 ekranów telefonu; dalsze skrócenie = decyzja redakcyjna.
+3. 📋 **Odzież ciężka: treść na stronie** — Michał potwierdził 07.08, że **to jest ich oferta** (kurtki zimowe pikowane, żakiety — są na zdjęciach w realizacjach). Title/meta już to nazywa, ale **słowo „odzież ciężka" nadal nie pada w treści żadnej strony**, a pozycji 7,3 sam tytuł nie podniesie. Wpleść w istniejącą sekcję o kurtkach, bez dopisywania nowych obietnic.
+4. 📋 **Rozjazd czasu odpowiedzi** — po zmianie meta została **jedna** wzmianka: `index.html:125` „Odpowiedź w 24 h, bezpłatna wycena w 48 h" w pasku zaufania pod hero. Reszta serwisu mówi „~7 dni roboczych". Michał sprawdza realny czas, potem ujednolicić.
+- ✅ **Dostęp GSC + GA4 po API: NAPRAWIONY 07.08.** Przyczyną nie była propagacja ani złe konto człowieka. Serwer MCP łączy się jako **konto usługi `gsc-mcp@isabell-gsc.iam.gserviceaccount.com`** (projekt `isabell-gsc`, klucz w `~/.config/gsc-mcp/service-account.json`, chmod 600, poza repo) — i to konto nie było dodane do property szwalni. Dodane z uprawnieniem Pełne w GSC oraz rolą Przeglądający w GA4, włączone Analytics Data API. Klucz nie wygasa, więc nadaje się pod crona. Skrypt archiwizacji: **`gsc-archiwum/seo-archiwum.py`** (cały katalog w `.gitignore`, bo repo jest publiczne i Vercel serwuje wszystko, co do niego wjedzie). Uruchomienie: `python3 seo-archiwum.py --miesiac 2026-07`. Eksport miesięczny robić **najwcześniej 4 dnia następnego miesiąca** — GSC ma 2-3 dni opóźnienia.
+6. 📋 **Archiwizacja GSC** — dane znikają po 16 miesiącach. Materiał z okresu indeksacji 4→25 stron przestanie być dostępny w połowie 2027.
+7. 📋 Strona autora Michała (czeka na bio + cytat); opinie Google (2 → kilkanaście).
+8. 📋 `validThrough` w trzech `JobPosting` wygasa **2026-10-31**, odświeżać co kwartał.
+9. 📋 **Reautoryzacja Gmail w Make do 2026-10-12** — po tej dacie maile ze zgłoszeń przestaną przychodzić.
+10. 📋 Strona współpracy ma ok. 18 ekranów telefonu; dalsze skrócenie = decyzja redakcyjna.
 - ❄️ Umowy powierzenia (DPA) z Make i Airtable — **świadomie odłożone 31.07**. Szczegóły w `_briefy/rodo-podkladka-wspolpraca.md`.
 - ❄️ `baseSalary` w ofertach pracy — **świadomie odrzucone**. Nie wracać bez decyzji Michała.
 - ❄️ Karta wyceny w PDF z kalkulatora — odłożona, nie blokuje.
