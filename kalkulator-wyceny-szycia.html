@@ -1767,9 +1767,58 @@
 
       var form = document.getElementById('kalkulator-form');
       if (form) {
+        /* Podsumowanie doklejamy do pola "description", bo TO pole jest juz
+           zmapowane w Make do kolumny Notes w Airtable i do tresci maila.
+           Dzieki temu komplet danych z kalkulatora dociera bez ruszania
+           produkcyjnej automatyzacji, ktora obsluguje wszystkie leady.
+
+           capture: true jest konieczne. form-handler.js podpina sie w fazie
+           bubble, a jego listener rejestruje sie wczesniej (nasz czeka na
+           wczytanie cennika). W fazie capture jestesmy pierwsi, wiec handler
+           zbiera juz uzupelniona wartosc. */
         form.addEventListener('submit', function () {
           ga('calculator_to_form', { wyrob: stan.wyrob, prog_ilosci: progEtykieta(Number(stan.ilosc)) });
-        });
+
+          var pole = document.getElementById('k-description');
+          if (!pole || pole.dataset.uzupelnione === '1') return;
+
+          var r = policz();
+          var l = [];
+          l.push('===== DANE Z KALKULATORA =====');
+
+          if (!stan.wyrob) {
+            l.push('Kalkulator nie zostal wypelniony, zapytanie wyslane z samej strony kalkulatora.');
+          } else {
+            l.push('Wyrob: ' + CFG.produkty[stan.wyrob].nazwa);
+            l.push('Ilosc: ' + stan.ilosc + ' szt. (przedzial: ' + (progEtykieta(Number(stan.ilosc)) || '-') + ')');
+            l.push('Zakres: ' + CFG.zakresy[stan.zakres]);
+            l.push('Trudnosc: ' + CFG.trudnosc[stan.trudnosc]);
+            if (stan.miesiac) l.push('Termin: ' + MIESIACE[Number(stan.miesiac) - 1]);
+            l.push('Co ma klient: ' + (stan.material === 'material-i-wykroje' ? 'material i wykroje'
+              : stan.material === 'material-bez-wykrojow' ? 'material, brakuje wykrojow'
+              : stan.material === 'nie-mam-nic' ? 'nie ma materialu' : '-'));
+
+            if (r && r.status === 'ok') {
+              l.push('WIDZIANA WYCENA: ' + r.od + ' do ' + r.do + ' zl/szt. netto');
+              l.push('Wartosc calosci: ' + zl(r.wartoscOd) + ' do ' + zl(r.wartoscDo) + ' zl netto');
+              if (r.niskaWartosc) l.push('UWAGA: niewielka partia, cena jednostkowa podwyzszona.');
+            } else if (r && r.status === 'ponizej-moq') {
+              l.push('WYNIK: ponizej minimum ' + r.moq + ' szt., ceny nie pokazano.');
+            } else if (r && (r.status === 'poza-oferta' || r.status === 'poza-oferta-kontakt')) {
+              l.push('WYNIK: wyrob spoza oferty, ceny nie pokazano.');
+            } else if (r && r.status === 'brak-materialu') {
+              l.push('WYNIK: brak materialu, ceny nie pokazano.');
+            }
+            if (r && r.ostrzezenia && r.ostrzezenia.length) {
+              r.ostrzezenia.forEach(function (o) { l.push('Ostrzezenie: ' + o.tekst); });
+            }
+          }
+          l.push('Cennik: ' + (CFG ? CFG.wersja : '-') + ' | Zrodlo: ' + window.location.pathname);
+
+          var wpisaneRecznie = pole.value.trim();
+          pole.value = (wpisaneRecznie ? wpisaneRecznie + '\n\n' : '') + l.join('\n');
+          pole.dataset.uzupelnione = '1';
+        }, true);
       }
     }
 
