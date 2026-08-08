@@ -101,7 +101,13 @@ meta:  Szyjemy na zlecenie kurtki, płaszcze, żakiety, sukienki
 - ⚪ **~230 wyświetleń to ruch brandowy obcej marki** („isabell", „isabella", „isabelle sukienki", „isabelle butik rzeszów") — 0 kliknięć, intencja cudza. Odjąć od bazy przy liczeniu CTR, nie optymalizować.
 
 **Backlog, kolejność ustalona 07.08:**
-1. 📋 **Wpisy blogowe 21-27** (NASTĘPNY TASK) — domknięcie planu 27 tematów. Tematy w `Wpisy-blogowe/blog-szwalnia-isabell-plan.md`. **Uwaga na kanibalizację:** temat 26 „Koszt produkcji jednej sztuki odzieży" nachodzi na wpis o kosztach i na kalkulator, trzeba rozjechać intencje albo zmienić temat.
+1. 📋 **Wpisy blogowe: zostały DWA (23 i 25).** Plan skrócony z 27 do 25 tematów decyzją Michała 08.08.
+   - ✅ **#21 `/jaka-odziez-firmowa-dla-pracownikow.html`** — LIVE 08.08. Bluzy/polo/kurtki, gramatury i składy. Klaster firmowy jest **pozycjonerski, bez zrealizowanych zleceń** (patrz pamięć projektu).
+   - ✅ **#22 `/stopniowanie-rozmiarowe-wykroju.html`** — LIVE 08.08. Nisza pusta: cały TOP 10 to wizytówki 200-400 słów. Zero kwot w tekście, intencja cenowa zostaje przy #2.
+   - 📋 **#23 Metkowanie odzieży** — NASTĘPNY. Ma pokrycie w ofercie (`/uslugi/krojenie-wykonczenie.html`: „Metkowanie i pakowanie", metki żakardowe). Rozjechać z tech packiem, który wymienia metkę główną, care label i hangtag jako pozycje dokumentacji.
+   - 📋 **#25 Maszyny szwalnicze** — ostatni. **Uwaga:** park maszynowy jest już wyliczony w `szwalnia-vs-krawiec.html` (overlocki, renderki, dziurkarki, ryglówki). Wejść od strony „co która maszyna robi z wyrobem", nie od listy sprzętu.
+   - ❌ **#24 i #26 SKREŚLONE 08.08.** #24 („szwalnia produkcyjna vs zakład krawiecki") powielał opublikowany #3. #26 („koszt jednej sztuki") zjadałby #2 i kalkulator. Nie wracać.
+   - Po publikacji obu: **stop na nowe wpisy, czekamy na indeksację.**
 2. ❄️ **Odduplikowanie tabeli leadów — ODPUSZCZONE (decyzja Michała 08.08).** Duplikaty sprzed 30.07 zostają w tabeli, nie przeszkadzają w pracy. Pamiętać tylko przy czytaniu historii.
 3. ✅ **Odzież ciężka: ZAMKNIĘTE 08.08 przez sprostowanie, nie przez treść.** Fraza odpada jako cel (patrz punkt o niewykorzystanych frazach wyżej), meta poprawione. **Nie wracać do tematu bez nowej decyzji Michała.**
 4. ✅ **Rozjazd czasu odpowiedzi: ZAMKNIĘTY 07.08.** Michał podał realne terminy — odpowiedź 48 h, wycena do 7 dni. Ujednolicone w trzech miejscach (patrz §1). Sprawdzone: zero pozostałości „24 h" jako naszej obietnicy.

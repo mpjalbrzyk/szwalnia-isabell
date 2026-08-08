@@ -62,9 +62,9 @@
 | 21 | Krojownia w szwalni: co warto wiedzieć | _(do ustalenia)_ | krojownia szwalnia | Marka | Bonus 2027+ | 💡 BACKLOG | [ ] |
 | 22 | Stopniowanie rozmiarowe: co to jest i ile kosztuje | _(do ustalenia)_ | stopniowanie rozmiarowe | Nowa Marka | Bonus | 💡 BACKLOG | [ ] |
 | 23 | Metkowanie odzieży: rodzaje metek i zastosowanie | _(do ustalenia)_ | metkowanie odzieży | Nowa Marka | Bonus | 💡 BACKLOG | [ ] |
-| 24 | Szwalnia produkcyjna vs zakład krawiecki | _(do ustalenia)_ | szwalnia produkcyjna | Nowa Marka | Bonus | 💡 BACKLOG | [ ] |
+| 24 | ~~Szwalnia produkcyjna vs zakład krawiecki~~ | - | - | - | - | ❌ SKREŚLONY 08.08 (kanibalizacja z #3) | - |
 | 25 | Maszyny szwalnicze do odzieży damskiej | _(do ustalenia)_ | maszyny szwalnicze odzież | Marka | Bonus | 💡 BACKLOG | [ ] |
-| 26 | Koszt produkcji jednej sztuki odzieży | _(do ustalenia)_ | koszt produkcji odzieży | Nowa Marka | Bonus | 💡 BACKLOG | [ ] |
+| 26 | ~~Koszt produkcji jednej sztuki odzieży~~ | - | - | - | - | ❌ SKREŚLONY 08.08 (kanibalizacja z #2 i kalkulatorem) | - |
 | 27 | Odzież firmowa: bluzy vs polo vs kurtki | _(do ustalenia)_ | odzież firmowa wybór | Korpo Buyer | Bonus | 💡 BACKLOG | [ ] |
 
 ---
@@ -137,9 +137,9 @@ Wszystkie na żywo. Linki bezpośrednie (kolejność wg daty publikacji):
 - [ ] **Post 21 — Krojownia w szwalni** · fraza `krojownia szwalnia` · Marka — może być rozszerzeniem /uslugi/krojenie-wykonczenie
 - [ ] **Post 22 — Stopniowanie rozmiarowe** · fraza `stopniowanie rozmiarowe` · Nowa Marka — niszowy, dobry na featured snippet
 - [ ] **Post 23 — Metkowanie odzieży** · fraza `metkowanie odzieży` · Nowa Marka — cross-link do krojenie-wykonczenie
-- [ ] **Post 24 — Szwalnia produkcyjna vs zakład krawiecki** · fraza `szwalnia produkcyjna` · Nowa Marka — ⚠️ podobny do #3, uważać na duplikację
+- ❌ **Post 24 — SKREŚLONY 08.08 (decyzja Michała).** Intencja pokryta przez opublikowany #3 „Szwalnia vs krawiec". Nie wracać.
 - [ ] **Post 25 — Maszyny szwalnicze do odzieży damskiej** · fraza `maszyny szwalnicze odzież` · Marka — ekspercki, buduje authority
-- [ ] **Post 26 — Koszt produkcji jednej sztuki odzieży** · fraza `koszt produkcji odzieży` · Nowa Marka — cross-link do #2
+- ❌ **Post 26 — SKREŚLONY 08.08 (decyzja Michała).** Intencję cenową obsługują #2 i kalkulator wycen. Nie wracać.
 - [ ] **Post 27 — Odzież firmowa: bluzy vs polo vs kurtki** · fraza `odzież firmowa wybór` · Korpo Buyer — cross-link do #5
 
 ---
