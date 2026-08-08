@@ -1224,3 +1224,36 @@ textarea.input-field {
     margin-bottom: 40px;
   }
 }
+
+/* ── Stopka autora we wpisach blogowych ── */
+.post-meta {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  max-width: 780px;
+  margin: 0 auto;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.post-meta-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+@media (max-width: 560px) {
+  .post-meta {
+    font-size: 0.95rem;
+    gap: 8px 10px;
+    padding-top: 22px;
+  }
+  .post-meta-avatar {
+    width: 34px;
+    height: 34px;
+  }
+}

@@ -603,8 +603,8 @@ TEMPLATE = r'''<!DOCTYPE html>
   <header style="padding: 48px 5% 40px;">
     <div class="blog-post-header">
       <h1 style="font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: var(--primary); line-height: 1.2; margin-bottom: 32px;">{title}</h1>
-      <div style="font-size: 1.05rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 14px; max-width: 780px; margin: 0 auto; padding-top: 28px; border-top: 1px solid var(--border);">
-        <img src="/assets/michal-jalbrzykowski-isabell.webp" alt="Michał Jałbrzykowski, Szwalnia ISABELL" width="40" height="40" style="width: 40px; height: 40px; border-radius: 50%%; object-fit: cover; flex-shrink: 0;" loading="lazy">
+      <div class="post-meta">
+        <img src="/assets/michal-jalbrzykowski-avatar.webp" alt="Michał Jałbrzykowski, Szwalnia ISABELL" width="40" height="40" class="post-meta-avatar" loading="lazy">
         <span><strong>{author}</strong></span>
         <span>•</span>
         <span>Opublikowano: {date}</span>
