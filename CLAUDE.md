@@ -86,24 +86,24 @@ Funkcje bloga: **paginacja 12 wpisów/stronę**, daty publikacji jako **cotygodn
 
 **Co pomiar 07.08 pokazał o treści (materiał wyjściowy do wpisów 21-27):**
 - ✅ **Long-tail działa.** „szwalnia małe ilości" → `/uslugi/male-serie.html`, **pozycja 3,1, CTR 25,6%**. „szwalnia od 1 sztuki" → `/minimalne-zamowienie-szwalnia-moq.html`, **pozycja 4,2**, wpis o MOQ prawidłowo przechwytuje i tłumaczy próg 50 szt. Ten mechanizm działa, nie ruszać.
-- 🔧 **Największa niewykorzystana fraza: „szwalnie odzieży ciężkiej" — 500 wyświetleń, pozycja 7,3, ZERO kliknięć.** Druga fraza witryny po „szwalnia". Google pokazywał na nią stronę główną, której tytuł mówił o czymś innym. **07.08 przepisany title i meta** (patrz niżej). Michał potwierdził, że odzież ciężka to realna oferta.
+- ⛔ **„szwalnie odzieży ciężkiej" — 500 wyświetleń, pozycja 7,3, ZERO kliknięć. NIE OPTYMALIZOWAĆ POD TĘ FRAZĘ.** Sesja 07.08 zapisała, że „Michał potwierdził, że odzież ciężka to realna oferta" — **to było nieporozumienie, sprostowane 08.08.** Potwierdzenie dotyczyło kurtek i płaszczy, a nie „odzieży ciężkiej" w znaczeniu branżowym. W branży **odzież ciężka = kaletnictwo, obuwie, odzież motocyklowa** — czyli dokładnie to, od czego `uslugi/szycie-odziez-damska.html:225` sam odsyła klienta („branże dla szwalni wysoce specjalistycznych"). **08.08 usunięto „odzież ciężką i lekką" z `description` i `og:description`** w `index.html`; na jej miejsce weszły konkretne wyroby: kurtki, płaszcze, żakiety, sukienki, odzież firmowa. Fraza zostaje niewykorzystana **świadomie** — intencja jest cudza, a kliknięcia z niej i tak by nie skonwertowały.
 - 🔧 **Strona główna zbiera 3 820 z 6 595 wyświetleń (58%) przy CTR 1,8%** (2 677 wyświetleń przypisanych do konkretnych fraz, 124 frazy, CTR 0,64%). Łapie ogólne frazy na pozycjach 9-15 i nie zamienia ich na kliknięcia. **07.08 przepisany title/meta**, efekt do sprawdzenia na pit stopie 19.08.
 
-**Zmiana title/meta strony głównej, 07.08 (wariant wybrany przez Michała, „przez konkretne wyroby"):**
+**Title/meta strony głównej — stan kanoniczny po korekcie 08.08:**
 ```
-title: Szwalnia odzieży: kurtki, żakiety, odzież firmowa | Warszawa   (60 zn.)
-meta:  Szyjemy odzież ciężką i lekką: kurtki zimowe, żakiety, sukienki,
-       odzież firmowa. Rodzinna szwalnia w Ząbkach k. Warszawy od 1990.
-       Małe serie od 50 szt.                                        (151 zn.)
+title: Szwalnia odzieży: kurtki, żakiety, odzież firmowa | Warszawa   (59 zn.)
+meta:  Szyjemy na zlecenie kurtki, płaszcze, żakiety, sukienki
+       i odzież firmową. Rodzinna szwalnia w Ząbkach k. Warszawy
+       od 1990. Małe serie od 50 sztuk.                            (145 zn.)
 ```
-Zmienione w czterech miejscach `index.html`: `<title>`, `description`, `og:title`, `og:description`. **Z meta świadomie usunięto „Bezpłatna wycena w 48h"** — obietnica nierozstrzygnięta, więc nie obiecujemy żadnego terminu, zamiast zgadywać. Punkt odniesienia do porównania: CTR strony głównej **1,8%**, fraza „odzież ciężka" **0 kliknięć z 499 wyświetleń**.
+`<title>` i `og:title` bez zmian od 07.08. **`description` i `og:description` poprawione 08.08** — wypadło „odzież ciężką i lekką" (patrz punkt wyżej), weszły płaszcze. **Z meta świadomie usunięto „Bezpłatna wycena w 48h"** — nie obiecujemy terminu w snippecie. Punkt odniesienia do porównania na pit stopie: CTR strony głównej **1,8%**.
 - 🟡 **`/uslugi/odziez-firmowa.html`: 509 wyświetleń, 6 kliknięć (CTR 1,2%).** Druga strona wg wyświetleń, najsłabszy CTR z dużych.
 - ⚪ **~230 wyświetleń to ruch brandowy obcej marki** („isabell", „isabella", „isabelle sukienki", „isabelle butik rzeszów") — 0 kliknięć, intencja cudza. Odjąć od bazy przy liczeniu CTR, nie optymalizować.
 
 **Backlog, kolejność ustalona 07.08:**
 1. 📋 **Wpisy blogowe 21-27** (NASTĘPNY TASK) — domknięcie planu 27 tematów. Tematy w `Wpisy-blogowe/blog-szwalnia-isabell-plan.md`. **Uwaga na kanibalizację:** temat 26 „Koszt produkcji jednej sztuki odzieży" nachodzi na wpis o kosztach i na kalkulator, trzeba rozjechać intencje albo zmienić temat.
-2. 📋 **Odduplikowanie tabeli leadów** — przed pit stopem 19.08, żeby porównanie „przed i po" miało sens.
-3. 📋 **Odzież ciężka: treść na stronie** — Michał potwierdził 07.08, że **to jest ich oferta** (kurtki zimowe pikowane, żakiety — są na zdjęciach w realizacjach). Title/meta już to nazywa, ale **słowo „odzież ciężka" nadal nie pada w treści żadnej strony**, a pozycji 7,3 sam tytuł nie podniesie. Wpleść w istniejącą sekcję o kurtkach, bez dopisywania nowych obietnic.
+2. ❄️ **Odduplikowanie tabeli leadów — ODPUSZCZONE (decyzja Michała 08.08).** Duplikaty sprzed 30.07 zostają w tabeli, nie przeszkadzają w pracy. Pamiętać tylko przy czytaniu historii.
+3. ✅ **Odzież ciężka: ZAMKNIĘTE 08.08 przez sprostowanie, nie przez treść.** Fraza odpada jako cel (patrz punkt o niewykorzystanych frazach wyżej), meta poprawione. **Nie wracać do tematu bez nowej decyzji Michała.**
 4. ✅ **Rozjazd czasu odpowiedzi: ZAMKNIĘTY 07.08.** Michał podał realne terminy — odpowiedź 48 h, wycena do 7 dni. Ujednolicone w trzech miejscach (patrz §1). Sprawdzone: zero pozostałości „24 h" jako naszej obietnicy.
 - ✅ **Dostęp GSC + GA4 po API: NAPRAWIONY 07.08.** Przyczyną nie była propagacja ani złe konto człowieka. Serwer MCP łączy się jako **konto usługi `gsc-mcp@isabell-gsc.iam.gserviceaccount.com`** (projekt `isabell-gsc`, klucz w `~/.config/gsc-mcp/service-account.json`, chmod 600, poza repo) — i to konto nie było dodane do property szwalni. Dodane z uprawnieniem Pełne w GSC oraz rolą Przeglądający w GA4, włączone Analytics Data API. Klucz nie wygasa, więc nadaje się pod crona. Skrypt archiwizacji: **`gsc-archiwum/seo-archiwum.py`** (cały katalog w `.gitignore`, bo repo jest publiczne i Vercel serwuje wszystko, co do niego wjedzie). Uruchomienie: `python3 seo-archiwum.py --miesiac 2026-07`. Eksport miesięczny robić **najwcześniej 4 dnia następnego miesiąca** — GSC ma 2-3 dni opóźnienia.
 6. 📋 **Archiwizacja GSC** — dane znikają po 16 miesiącach. Materiał z okresu indeksacji 4→25 stron przestanie być dostępny w połowie 2027.

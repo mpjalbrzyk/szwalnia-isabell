@@ -20,6 +20,7 @@ HERO = {
     "jak-zamowic-odziez-firmowa-hr": "firmowa-bluzy-z-logo.webp",
     "probka-przeszyciowa-szwalnia": "male-serie-testowanie-prototyp-odziez.webp",
     "szycie-polska-oplacalnosc-2026": "szwlania-z-pokolenia-na-pokolenie.webp",
+    "jaka-odziez-firmowa-dla-pracownikow": "Blogi/odziez-firmowa-bluzy-polo-kurtki-hero.webp",
 }
 
 P_STYLE = "margin-bottom: 24px; line-height: 1.8; color: var(--text-body); font-size: 1.1rem;"
