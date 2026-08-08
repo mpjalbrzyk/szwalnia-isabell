@@ -114,6 +114,11 @@ meta:  Szyjemy na zlecenie kurtki, płaszcze, żakiety, sukienki
 
    ⚠️ **DŁUG: grafika śródtekstowa do `/rodzaje-sciegow-maszyny-szwalnicze.html`** — nie powstała, bo skończyły się kredyty Higgsfield (08.08). Michał doładowuje. Ma pokazywać różnicę między podwinięciem renderką (dwie równoległe linie) a szwem overlockowym. Prompt w historii sesji; preset: `nano_banana_pro`, 3:2, 2k, plik `assets/Blogi/`, 1440×966 webp.
 
+2. 📋 **FAZA TREŚCI NA WRZESIEŃ 2026 (notatka Michała, przyjęta 08.08).** Ruszamy **po pit stopie 01.09**, na danych, nie na przypuszczeniach. Dwa wąskie kierunki, **selektywnie, świadomie NIE budujemy klastra:**
+   - **Proof-content, 2-3 wpisy** — proces produkcji w ujęciu „co to znaczy dla marki": prasowanie i stabilizacja wyrobu, kontrola procesu, wykończenia. Cel: **E-E-A-T i cytowalność przez modele AI** (AI Assistant to już ~13% ruchu, patrz pomiar 07.08). **Uwaga: temat maszyn jest już zajęty** przez `/rodzaje-sciegow-maszyny-szwalnicze.html` z 08.08, więc proof-content musi wejść od innej strony niż park maszynowy.
+   - **Top-of-funnel, 3-5 wpisów** — „jak założyć markę odzieżową" **widziane od strony produkcji**, czyli to, czego nie napisze agencja marketingowa: od pomysłu do pierwszej partii, co musisz mieć przed pierwszą rozmową ze szwalnią, ile trwa dojście do pierwszej sprzedaży. Szersza góra lejka niż dotychczasowe long-taile.
+   - **Zasada nadrzędna:** każdy nowy temat przechodzi przez tę samą kontrolę anty-kanibalizacji co wpisy 22, 25 i 27. Przy 23 opublikowanych wpisach ryzyko zjadania własnych stron jest już realne i to ono, a nie liczba wpisów, wyznacza limit.
+
 2. ❄️ **Odduplikowanie tabeli leadów — ODPUSZCZONE (decyzja Michała 08.08).** Duplikaty sprzed 30.07 zostają w tabeli, nie przeszkadzają w pracy. Pamiętać tylko przy czytaniu historii.
 3. ✅ **Odzież ciężka: ZAMKNIĘTE 08.08 przez sprostowanie, nie przez treść.** Fraza odpada jako cel (patrz punkt o niewykorzystanych frazach wyżej), meta poprawione. **Nie wracać do tematu bez nowej decyzji Michała.**
 4. ✅ **Rozjazd czasu odpowiedzi: ZAMKNIĘTY 07.08.** Michał podał realne terminy — odpowiedź 48 h, wycena do 7 dni. Ujednolicone w trzech miejscach (patrz §1). Sprawdzone: zero pozostałości „24 h" jako naszej obietnicy.
