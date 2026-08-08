@@ -59,13 +59,13 @@
 | 18 | Jak zamówić odzież firmową: krok po kroku dla działu HR | `jak-zamowic-odziez-firmowa-hr` | zamówienie odzież firmowa krok po kroku | Korpo Buyer | F3 / Q4 | 🔲 DO NAPISANIA | [ ] |
 | 19 | Próbka przeszyciowa: dlaczego jest ważna i jak wygląda proces | `probka-przeszyciowa-szwalnia` | próbka przeszyciowa szwalnia | Nowa Marka | F3 / Q4 | 🔲 DO NAPISANIA | [ ] |
 | 20 | Dlaczego szycie odzieży w Polsce się opłaca w 2026 roku | `szycie-polska-oplacalnosc-2026` | szycie w Polsce opłacalność | Marka Odzieżowa | F3 / Q4 | 🔲 DO NAPISANIA | [ ] |
-| 21 | Krojownia w szwalni: co warto wiedzieć | _(do ustalenia)_ | krojownia szwalnia | Marka | Bonus 2027+ | 💡 BACKLOG | [ ] |
-| 22 | Stopniowanie rozmiarowe: co to jest i ile kosztuje | _(do ustalenia)_ | stopniowanie rozmiarowe | Nowa Marka | Bonus | 💡 BACKLOG | [ ] |
-| 23 | Metkowanie odzieży: rodzaje metek i zastosowanie | _(do ustalenia)_ | metkowanie odzieży | Nowa Marka | Bonus | 💡 BACKLOG | [ ] |
+| 21 | Krojownia w szwalni: co warto wiedzieć | _(do ustalenia)_ | krojownia szwalnia | Marka | **DO NAPISANIA** | 📋 ZOSTAŁ | [ ] |
+| 22 | Stopniowanie rozmiarowe: jak z jednego wykroju powstaje cała rozmiarówka | `stopniowanie-rozmiarowe-wykroju` | stopniowanie rozmiarowe | Nowa Marka | 08.08.2026 | ✅ OPUBLIKOWANY | [x] |
+| 23 | Metkowanie odzieży: rodzaje metek i zastosowanie | _(do ustalenia)_ | metkowanie odzieży | Nowa Marka | **DO NAPISANIA** | 📋 ZOSTAŁ | [ ] |
 | 24 | ~~Szwalnia produkcyjna vs zakład krawiecki~~ | - | - | - | - | ❌ SKREŚLONY 08.08 (kanibalizacja z #3) | - |
-| 25 | Maszyny szwalnicze do odzieży damskiej | _(do ustalenia)_ | maszyny szwalnicze odzież | Marka | Bonus | 💡 BACKLOG | [ ] |
+| 25 | Overlock, stębnówka, renderka: co która maszyna robi z ubraniem | `rodzaje-sciegow-maszyny-szwalnicze` | rodzaje ściegów, maszyny szwalnicze | Marka | 08.08.2026 | ✅ OPUBLIKOWANY | [x] |
 | 26 | ~~Koszt produkcji jednej sztuki odzieży~~ | - | - | - | - | ❌ SKREŚLONY 08.08 (kanibalizacja z #2 i kalkulatorem) | - |
-| 27 | Odzież firmowa: bluzy vs polo vs kurtki | _(do ustalenia)_ | odzież firmowa wybór | Korpo Buyer | Bonus | 💡 BACKLOG | [ ] |
+| 27 | Bluzy, polo czy kurtki dla pracowników? Jak wybrać odzież firmową | `jaka-odziez-firmowa-dla-pracownikow` | odzież firmowa dla pracowników | Korpo Buyer | 08.08.2026 | ✅ OPUBLIKOWANY | [x] |
 
 ---
 

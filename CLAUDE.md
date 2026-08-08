@@ -101,13 +101,16 @@ meta:  Szyjemy na zlecenie kurtki, płaszcze, żakiety, sukienki
 - ⚪ **~230 wyświetleń to ruch brandowy obcej marki** („isabell", „isabella", „isabelle sukienki", „isabelle butik rzeszów") — 0 kliknięć, intencja cudza. Odjąć od bazy przy liczeniu CTR, nie optymalizować.
 
 **Backlog, kolejność ustalona 07.08:**
-1. 📋 **Wpisy blogowe: zostały DWA (23 i 25).** Plan skrócony z 27 do 25 tematów decyzją Michała 08.08.
-   - ✅ **#21 `/jaka-odziez-firmowa-dla-pracownikow.html`** — LIVE 08.08. Bluzy/polo/kurtki, gramatury i składy. Klaster firmowy jest **pozycjonerski, bez zrealizowanych zleceń** (patrz pamięć projektu).
+1. 📋 **Wpisy blogowe: 23 z 25 opublikowane, zostały DWA.** Plan skrócony z 27 do 25 decyzją Michała 08.08.
+   - ✅ **#27 `/jaka-odziez-firmowa-dla-pracownikow.html`** — LIVE 08.08. Bluzy/polo/kurtki, gramatury i składy. Klaster firmowy jest **pozycjonerski, bez zrealizowanych zleceń** (patrz pamięć projektu). Uczciwie mówi, że przy 50 szt. gotowa baza wychodzi taniej.
    - ✅ **#22 `/stopniowanie-rozmiarowe-wykroju.html`** — LIVE 08.08. Nisza pusta: cały TOP 10 to wizytówki 200-400 słów. Zero kwot w tekście, intencja cenowa zostaje przy #2.
-   - 📋 **#23 Metkowanie odzieży** — NASTĘPNY. Ma pokrycie w ofercie (`/uslugi/krojenie-wykonczenie.html`: „Metkowanie i pakowanie", metki żakardowe). Rozjechać z tech packiem, który wymienia metkę główną, care label i hangtag jako pozycje dokumentacji.
-   - 📋 **#25 Maszyny szwalnicze** — ostatni. **Uwaga:** park maszynowy jest już wyliczony w `szwalnia-vs-krawiec.html` (overlocki, renderki, dziurkarki, ryglówki). Wejść od strony „co która maszyna robi z wyrobem", nie od listy sprzętu.
-   - ❌ **#24 i #26 SKREŚLONE 08.08.** #24 („szwalnia produkcyjna vs zakład krawiecki") powielał opublikowany #3. #26 („koszt jednej sztuki") zjadałby #2 i kalkulator. Nie wracać.
-   - Po publikacji obu: **stop na nowe wpisy, czekamy na indeksację.**
+   - ✅ **#25 `/rodzaje-sciegow-maszyny-szwalnicze.html`** — LIVE 08.08. **Odrzucono strukturę z researchu** („audyt szwalni", teza „brak renderki to sygnał alarmowy") — postawiłaby ISABELL pod kryterium, którego nie spełnia (specjalizacja w tkaninach, renderka to maszyna do dzianin). Oś to technologia ściegu.
+   - 📋 **#23 Metkowanie odzieży** — ma pokrycie w ofercie (`/uslugi/krojenie-wykonczenie.html`: „Metkowanie i pakowanie", metki żakardowe). Rozjechać z tech packiem, który wymienia metkę główną, care label i hangtag jako pozycje dokumentacji. Silny wątek prawny: rozporządzenie UE 1007/2011, symbole ISO 3758.
+   - 📋 **#21 Krojownia w szwalni** — **przed pisaniem rozstrzygnąć, czy nie kanibalizuje `/uslugi/krojenie-wykonczenie.html`.** Plan sam to sygnalizuje („może być rozszerzeniem podstrony usług"). Jeśli tak, skreślić jak #24 i #26.
+   - ❌ **#24 i #26 SKREŚLONE 08.08.** #24 powielał opublikowany #3, #26 zjadałby #2 i kalkulator. Nie wracać.
+
+   ⚠️ **DŁUG: grafika śródtekstowa do `/rodzaje-sciegow-maszyny-szwalnicze.html`** — nie powstała, bo skończyły się kredyty Higgsfield (08.08). Michał doładowuje. Ma pokazywać różnicę między podwinięciem renderką (dwie równoległe linie) a szwem overlockowym. Prompt w historii sesji; preset: `nano_banana_pro`, 3:2, 2k, plik `assets/Blogi/`, 1440×966 webp.
+
 2. ❄️ **Odduplikowanie tabeli leadów — ODPUSZCZONE (decyzja Michała 08.08).** Duplikaty sprzed 30.07 zostają w tabeli, nie przeszkadzają w pracy. Pamiętać tylko przy czytaniu historii.
 3. ✅ **Odzież ciężka: ZAMKNIĘTE 08.08 przez sprostowanie, nie przez treść.** Fraza odpada jako cel (patrz punkt o niewykorzystanych frazach wyżej), meta poprawione. **Nie wracać do tematu bez nowej decyzji Michała.**
 4. ✅ **Rozjazd czasu odpowiedzi: ZAMKNIĘTY 07.08.** Michał podał realne terminy — odpowiedź 48 h, wycena do 7 dni. Ujednolicone w trzech miejscach (patrz §1). Sprawdzone: zero pozostałości „24 h" jako naszej obietnicy.
