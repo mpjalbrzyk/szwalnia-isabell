@@ -24,6 +24,7 @@ HERO = {
     "stopniowanie-rozmiarowe-wykroju": "Blogi/stopniowanie-rozmiarowe-wykroj-hero.webp",
     "rodzaje-sciegow-maszyny-szwalnicze": "Blogi/maszyny-szwalnicze-sciegi-hero.webp",
     "metkowanie-odziezy-co-musi-byc-na-metce": "Blogi/metkowanie-odziezy-metki-hero.webp",
+    "szwalnia-z-wlasna-krojownia": "Blogi/szwalnia-z-wlasna-krojownia-hero.webp",
 }
 
 P_STYLE = "margin-bottom: 24px; line-height: 1.8; color: var(--text-body); font-size: 1.1rem;"
