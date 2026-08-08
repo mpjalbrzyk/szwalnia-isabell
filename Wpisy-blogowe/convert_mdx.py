@@ -22,6 +22,7 @@ HERO = {
     "szycie-polska-oplacalnosc-2026": "szwlania-z-pokolenia-na-pokolenie.webp",
     "jaka-odziez-firmowa-dla-pracownikow": "Blogi/odziez-firmowa-bluzy-polo-kurtki-hero.webp",
     "stopniowanie-rozmiarowe-wykroju": "Blogi/stopniowanie-rozmiarowe-wykroj-hero.webp",
+    "rodzaje-sciegow-maszyny-szwalnicze": "Blogi/maszyny-szwalnicze-sciegi-hero.webp",
 }
 
 P_STYLE = "margin-bottom: 24px; line-height: 1.8; color: var(--text-body); font-size: 1.1rem;"
