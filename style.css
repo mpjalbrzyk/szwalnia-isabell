@@ -1274,3 +1274,100 @@ textarea.input-field {
     height: 34px;
   }
 }
+
+/* ========================================
+   BANNER KALKULATORA (wstawiany w treść wpisów)
+   ======================================== */
+.kalk {
+  background: var(--primary);
+  border-radius: 16px;
+  padding: 28px 30px;
+  margin: 44px 0;
+  /* Kolumna tresci wpisu ma realnie 450-620 px (max-width 720 minus procentowy
+     padding liczony od <main>), wiec uklad poziomy sciskalby tekst do ~250 px.
+     Dlatego baner jest zawsze pionowy: naglowek, wizualizacja, opis, CTA. */
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.kalk__text { display: contents; }
+.kalk .kalk__eyebrow {
+  order: 1;
+  display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 10px;
+}
+.kalk .kalk__title {
+  order: 2;
+  font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.42rem;
+  color: #fff; margin: 0 0 16px; line-height: 1.25;
+}
+.kalk .kalk__desc { order: 4; margin: 0 0 18px; color: rgba(255,255,255,0.78); font-size: 1rem; line-height: 1.6; }
+.kalk .kalk__btn {
+  order: 5;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 16px 32px; border-radius: 8px;
+  background: #fff; color: var(--primary);
+  font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem;
+  text-decoration: none; white-space: nowrap; margin-bottom: 16px;
+  transition: background 0.2s, transform 0.2s;
+}
+.kalk .kalk__btn { justify-self: start; }
+.kalk .kalk__btn:hover { background: #E4E7EC; transform: translateY(-1px); }
+.kalk .kalk__btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.kalk .kalk__proof { order: 6; display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; }
+.kalk .kalk__proof li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.88rem; line-height: 1.4; color: rgba(255,255,255,0.92);
+}
+.kalk .kalk__proof svg { flex-shrink: 0; color: #fff; opacity: 0.9; }
+
+.kalk .kalk__ui {
+  order: 3; width: 100%; margin-bottom: 20px;
+  background: #fff; border-radius: 12px; padding: 16px 16px 18px;
+  box-shadow: 0 12px 34px rgba(0,0,0,0.28);
+}
+.kalk__ui-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.kalk .kalk__ui-step { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: var(--text-muted); text-transform: uppercase; }
+.kalk__ui-bar { display: flex; gap: 3px; }
+.kalk__ui-bar i { width: 13px; height: 4px; border-radius: 2px; background: var(--border); display: block; }
+.kalk__ui-bar i.on { background: var(--accent); }
+.kalk .kalk__ui-q { font-size: 0.94rem; font-weight: 700; color: var(--primary); margin: 0 0 12px; }
+.kalk__ui-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.kalk .kalk__ui-opt {
+  border: 1px solid var(--border); border-radius: 8px; padding: 12px 8px;
+  text-align: center; font-size: 0.82rem; font-weight: 500;
+  color: var(--text-body); background: transparent;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  animation: kalkSelect 8s infinite;
+}
+.kalk__ui-opt svg { color: var(--text-muted); animation: kalkSelectIcon 8s infinite; }
+.kalk__ui-opt:nth-child(1), .kalk__ui-opt:nth-child(1) svg { animation-delay: 0s; }
+.kalk__ui-opt:nth-child(2), .kalk__ui-opt:nth-child(2) svg { animation-delay: 2s; }
+.kalk__ui-opt:nth-child(3), .kalk__ui-opt:nth-child(3) svg { animation-delay: 4s; }
+.kalk__ui-opt:nth-child(4), .kalk__ui-opt:nth-child(4) svg { animation-delay: 6s; }
+
+@keyframes kalkSelect {
+  0%   { border-color: var(--accent); background: var(--accent-light); color: var(--primary); }
+  22%  { border-color: var(--accent); background: var(--accent-light); color: var(--primary); }
+  27%  { border-color: var(--border);  background: transparent;        color: var(--text-body); }
+  100% { border-color: var(--border);  background: transparent;        color: var(--text-body); }
+}
+@keyframes kalkSelectIcon {
+  0%   { color: var(--accent); }
+  22%  { color: var(--accent); }
+  27%  { color: var(--text-muted); }
+  100% { color: var(--text-muted); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kalk__ui-opt, .kalk__ui-opt svg { animation: none; }
+  .kalk__ui-opt:nth-child(1) { border-color: var(--accent); background: var(--accent-light); color: var(--primary); }
+  .kalk__ui-opt:nth-child(1) svg { color: var(--accent); }
+  .kalk .kalk__btn { transition: none; }
+  .kalk .kalk__btn:hover { transform: none; }
+}
+
+@media (max-width: 640px) {
+  .kalk { padding: 26px 22px; }
+  .kalk .kalk__title { font-size: 1.3rem; }
+  .kalk .kalk__btn { width: 100%; }
+  .kalk .kalk__proof { gap: 8px 18px; }
+}
