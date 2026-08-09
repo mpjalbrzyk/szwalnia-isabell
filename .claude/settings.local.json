@@ -69,7 +69,12 @@
       "Bash(python3 -m http.server 8080)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/index.html)",
       "Bash(grep -n -A2 -i \"^#\\\\{1,4\\\\}.*\\\\b2[1-7]\\\\b\\\\|^| *2[1-7]\\\\|^2[1-7]\\\\.\" blog-szwalnia-isabell-plan.md)",
-      "Bash(python3 -)"
+      "Bash(python3 -)",
+      "Bash(curl -s -o /dev/null -w \"kalkulator-wyceny: %{http_code}\\\\n\" https://szwalnia-isabell.pl/kalkulator-wyceny.html)",
+      "Bash(curl -s -o /dev/null -w \"kalkulator: %{http_code}\\\\n\" https://szwalnia-isabell.pl/kalkulator.html)",
+      "Bash(curl -s https://szwalnia-isabell.pl/sitemap.xml)",
+      "Bash(curl -s https://szwalnia-isabell.pl/)",
+      "mcp__gsc__list_properties"
     ]
   }
 }

@@ -525,7 +525,7 @@ TEMPLATE = r'''<!DOCTYPE html>
   "description": "{desc_json}",
   "datePublished": "{date}",
   "dateModified": "{updated}",
-  "author": {{"@type": "Organization", "name": "Szwalnia ISABELL", "url": "https://szwalnia-isabell.pl"}},
+  "author": {{"@type": "Person", "name": "Michał Jałbrzykowski", "jobTitle": "Koordynacja produkcji (3. pokolenie)", "worksFor": {{"@type": "Organization", "name": "Szwalnia ISABELL", "url": "https://szwalnia-isabell.pl"}}}},
   "publisher": {{"@type": "Organization", "name": "Szwalnia ISABELL", "logo": {{"@type": "ImageObject", "url": "https://szwalnia-isabell.pl/assets/og-cover.png"}}}},
   "mainEntityOfPage": "{url}",
   "image": "https://szwalnia-isabell.pl/assets/og-cover.png"
@@ -606,7 +606,7 @@ TEMPLATE = r'''<!DOCTYPE html>
       <h1 style="font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: var(--primary); line-height: 1.2; margin-bottom: 32px;">{title}</h1>
       <div class="post-meta">
         <img src="/assets/michal-jalbrzykowski-avatar.webp" alt="Michał Jałbrzykowski, Szwalnia ISABELL" width="40" height="40" class="post-meta-avatar" loading="lazy">
-        <span><strong>{author}</strong></span>
+        <span><a href="/michal-jalbrzykowski.html" class="post-meta-author"><strong>{author}</strong></a></span>
         <span>•</span>
         <span>Opublikowano: {date}</span>
         <span>•</span>
@@ -694,7 +694,7 @@ TEMPLATE = r'''<!DOCTYPE html>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Szwalnia ISABELL. Wszelkie prawa zastrzeżone.</p>
+      <p>© 2026 Szwalnia ISABELL. Wszelkie prawa zastrzeżone. | Made by <a href="https://www.mpjalbrzyk.pl/" class="footer-author" target="_blank" rel="noopener">@mpjalbrzyk</a></p>
       <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
     </div>
   </footer>
