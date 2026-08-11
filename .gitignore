@@ -20,3 +20,14 @@ pakiet-publiczny/
 # Archiwum eksportow z Search Console
 gsc-archiwum/
 _demo-kalkulator-banner.html
+
+# Dokumentacja wewnetrzna. Byla publiczna pod szwalnia-isabell.pl/CLAUDE.md
+# (HTTP 200, robots.txt ma Allow dla wszystkich botow). Zawiera ID uslug GA4,
+# konto uslugi GSC, dane pomiarowe, liczby leadow i decyzje biznesowe.
+# Deploy = git push, wiec .gitignore jest JEDYNA bariera przed publikacja.
+CLAUDE.md
+
+# Zrodla wpisow (.mdx), konwerter i plan redakcyjny z backlogiem tematow.
+# Gotowe wpisy .html w roocie zostaja publiczne - to one sa strona.
+Wpisy-blogowe/
+blog-szwalnia-isabell-plan.md
