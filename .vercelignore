@@ -1,0 +1,45 @@
+# Lustro .gitignore dla wdrozen z CLI (`vercel deploy`, `vercel --prod`).
+#
+# DLACZEGO TO ISTNIEJE (nie kasowac jako duplikat .gitignore):
+# Vercel ma wlasna, STALA liste domyslnych wykluczen (.git, node_modules,
+# .DS_Store, sam plik .gitignore) i NIE czyta tresci .gitignore. Dokumentacja
+# mowi wprost: bez .vercelignore na serwer ida WSZYSTKIE pliki katalogu.
+# Czyli jedno `vercel --prod` opublikowaloby model kosztowy, briefy RODO
+# i archiwum GSC pod szwalnia-isabell.pl. Wdrozen z gita to nie dotyczy,
+# bo tam plikow spoza repo po prostu nie ma - ten plik chroni sciezke CLI.
+#
+# ZASADA: kazdy nowy wpis w .gitignore dopisac rowniez tutaj.
+
+.DS_Store
+
+# Dokumentacja wewnetrzna i konfiguracja narzedzi.
+# CLAUDE.md wisial publicznie pod /CLAUDE.md do 11.08.2026.
+CLAUDE.md
+.claude/
+
+# Zrodla wpisow (.mdx), konwerter i plan redakcyjny z backlogiem tematow.
+# Gotowe wpisy .html w roocie zostaja publiczne - to one sa strona.
+Wpisy-blogowe/
+blog-szwalnia-isabell-plan.md
+
+# Model kosztowy. Zawiera place, faktury, czasy operacji i stawki.
+# Wyciek = odtworzenie struktury kosztow zakladu przez kazdego chetnego.
+model/
+
+# Pakiet wdrozeniowy kalkulatora (STRATEGIA.md, SPECYFIKACJA.md, testy).
+# Do repo idzie WYLACZNIE assets/pricing-config.json.
+pakiet-publiczny/
+
+# Archiwum eksportow z Search Console i Google Business Profile.
+gsc-archiwum/
+gsc-lipiec/
+
+# Materialy robocze do grafik (kandydaci, pliki przed optymalizacja).
+_grafiki-kandydaci/
+grafiki-do-optymalizacji/
+
+# Briefy, w tym podkladka RODO.
+_briefy/
+
+# Robocze.
+_demo-kalkulator-banner.html
