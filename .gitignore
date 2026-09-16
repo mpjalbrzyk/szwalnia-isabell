@@ -31,3 +31,8 @@ CLAUDE.md
 # Gotowe wpisy .html w roocie zostaja publiczne - to one sa strona.
 Wpisy-blogowe/
 blog-szwalnia-isabell-plan.md
+
+# Kopia dokumentacji dla Codex (ten sam zakres co CLAUDE.md: ID uslug GA4,
+# konto uslugi GSC, dane pomiarowe, decyzje biznesowe). Musi byc ignorowana
+# z tego samego powodu co CLAUDE.md, inaczej git add -A opublikuje ja na Vercelu.
+AGENTS.md
