@@ -6,6 +6,8 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'});
+  try { var z = (localStorage.getItem('isabell_zgoda') || '').split('|'); if (z[0] === 'tak' && Date.now() - z[1] < 31536e6) gtag('consent', 'update', {analytics_storage: 'granted'}); } catch (e) {}
   gtag('js', new Date());
   gtag('config', 'G-WGN33C5N6D');
 </script>
@@ -178,7 +180,7 @@
     <!-- TREŚĆ POLITYKI PRYWATNOŚCI -->
     <article class="legal-content">
       
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px;">Ostatnia aktualizacja: 27 lipca 2026</p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px;">Ostatnia aktualizacja: 28 września 2026</p>
 
       <h2>1. Administrator danych osobowych</h2>
       <p>Administratorem Twoich danych osobowych jest:</p>
@@ -247,9 +249,17 @@
       <p>Na stronie korzystamy z usługi Google Analytics 4 świadczonej przez Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irlandia) w celu analizy ruchu na stronie i poprawy jej funkcjonowania.</p>
       <p>Google Analytics zbiera dane takie jak: adres IP (anonimizowany), typ przeglądarki i systemu operacyjnego, źródło odwiedzin, czas spędzony na stronie, odwiedzone podstrony.</p>
       <p><strong>Cel przetwarzania:</strong> analiza statystyczna ruchu na stronie, optymalizacja treści.</p>
-      <p><strong>Podstawa prawna:</strong> art. 6 ust. 1 lit. a RODO (zgoda wyrażona przez akceptację plików cookies analitycznych w bannerze cookie).</p>
+      <p><strong>Podstawa prawna:</strong> art. 6 ust. 1 lit. a RODO (zgoda wyrażona przez kliknięcie „Akceptuję” w banerze cookies).</p>
+      <p><strong>Bez zgody:</strong> korzystamy z trybu zgody Google (Consent Mode). Jeśli nie wyrazisz zgody, Google Analytics nie zapisuje na Twoim urządzeniu plików cookies i nie nadaje Ci identyfikatora. Do Google trafiają wtedy wyłącznie zanonimizowane sygnały o wizycie, bez możliwości powiązania ich z Tobą.</p>
       <p><strong>Okres przechowywania:</strong> dane analityczne są przechowywane przez Google przez okres 14 miesięcy.</p>
       <p>Więcej informacji o przetwarzaniu danych przez Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--accent);">https://policies.google.com/privacy</a></p>
+
+      <h3>Nagrania sesji i mapy cieplne (Microsoft Clarity)</h3>
+      <p>Jeśli wyrazisz zgodę, korzystamy z usługi Microsoft Clarity świadczonej przez Microsoft Ireland Operations Limited (One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irlandia). Clarity zapisuje przebieg wizyty na stronie: ruchy kursora, kliknięcia, przewijanie, odwiedzone podstrony, typ urządzenia i przeglądarki oraz przybliżoną lokalizację. Treści wpisywane w pola formularzy są maskowane i nie trafiają do Clarity.</p>
+      <p><strong>Cel przetwarzania:</strong> wykrywanie błędów i miejsc, w których strona jest niezrozumiała lub niewygodna, oraz poprawa jej działania.</p>
+      <p><strong>Podstawa prawna:</strong> art. 6 ust. 1 lit. a RODO (zgoda wyrażona przez kliknięcie „Akceptuję” w banerze cookies). Bez zgody skrypt Clarity nie jest w ogóle ładowany.</p>
+      <p><strong>Okres przechowywania:</strong> nagrania i dane Clarity są przechowywane przez Microsoft przez okres do 13 miesięcy.</p>
+      <p>Więcej informacji: <a href="https://privacy.microsoft.com/pl-pl/privacystatement" target="_blank" rel="noopener" style="color: var(--accent);">https://privacy.microsoft.com/pl-pl/privacystatement</a></p>
 
       <h3>Google Search Console</h3>
       <p>Korzystamy z Google Search Console w celu monitorowania widoczności strony w wyszukiwarce Google. Narzędzie to przetwarza zagregowane dane dotyczące zapytań wyszukiwania, pozycji strony w wynikach i kliknięć. Google Search Console nie zbiera danych osobowych użytkowników strony w sposób umożliwiający ich identyfikację.</p>
@@ -261,23 +271,24 @@
       <p><strong>Okres przechowywania:</strong> logi serwera są przechowywane przez Vercel zgodnie z ich polityką prywatności, zazwyczaj przez okres do 30 dni.</p>
       <p>Więcej informacji: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener" style="color: var(--accent);">https://vercel.com/legal/privacy-policy</a></p>
 
-      <h2>3. Pliki cookies</h2>
+      <h2 id="cookies">3. Pliki cookies</h2>
 
       <h3>Czym są pliki cookies</h3>
       <p>Pliki cookies (ciasteczka) to małe pliki tekstowe zapisywane na Twoim urządzeniu podczas odwiedzania strony internetowej. Służą do prawidłowego funkcjonowania strony, analizy ruchu i zapamiętywania preferencji.</p>
 
       <h3>Zarządzanie zgodą na cookies</h3>
-      <p>Na stronie korzystamy z narzędzia CookieYes do zarządzania zgodami na pliki cookies. Przy pierwszej wizycie na stronie wyświetlany jest baner informujący o stosowanych cookies. Masz możliwość zaakceptowania wszystkich cookies, odrzucenia opcjonalnych lub dokonania indywidualnego wyboru kategorii.</p>
+      <p>Przy pierwszej wizycie na stronie wyświetlany jest baner informujący o stosowanych cookies analitycznych. Możesz je zaakceptować albo odrzucić, oba wybory są równie łatwe. Do czasu decyzji cookies analityczne nie są zapisywane.</p>
       <p>Swoją zgodę możesz w każdej chwili zmienić lub wycofać, klikając w link „Ustawienia cookies” w stopce strony.</p>
 
       <h3>Kategorie plików cookies</h3>
-      <p><strong>Niezbędne (zawsze aktywne):</strong> zapewniają podstawowe funkcjonowanie strony i zapamiętują Twoje preferencje dotyczące cookies. Nie wymagają zgody.</p>
+      <p><strong>Niezbędne (zawsze aktywne):</strong> zapamiętują Twoją decyzję dotyczącą cookies. Nie wymagają zgody.</p>
       <ul>
-        <li>CookieYes - przechowuje informację o wyrażonej zgodzie na cookies (12 miesięcy)</li>
+        <li><code>isabell_zgoda</code> (pamięć przeglądarki, localStorage) - informacja o akceptacji lub odrzuceniu cookies analitycznych (12 miesięcy)</li>
       </ul>
       <p><strong>Analityczne (wymagają zgody):</strong> pomagają nam zrozumieć, jak odwiedzający korzystają ze strony.</p>
       <ul>
-        <li>Google Analytics 4 - analiza ruchu na stronie, anonimizacja IP (14 miesięcy)</li>
+        <li>Google Analytics 4 (<code>_ga</code>, <code>_ga_*</code>) - analiza ruchu na stronie, anonimizacja IP (do 14 miesięcy)</li>
+        <li>Microsoft Clarity (<code>_clck</code> do 12 miesięcy, <code>_clsk</code> 1 dzień) - nagrania sesji i mapy cieplne</li>
       </ul>
 
       <h3>Jak zablokować cookies w przeglądarce</h3>
@@ -294,8 +305,8 @@
       <p>Twoje dane osobowe mogą być przekazywane następującym kategoriom odbiorców:</p>
       <ul>
         <li><strong>Google Ireland Limited</strong> - w ramach usług Google Analytics 4 i Google Search Console,</li>
+        <li><strong>Microsoft Ireland Operations Limited</strong> - w ramach usługi Microsoft Clarity (tylko po wyrażeniu zgody),</li>
         <li><strong>Vercel Inc.</strong> - w ramach usługi hostingowej,</li>
-        <li><strong>CookieYes Limited</strong> - w ramach usługi zarządzania zgodami na cookies,</li>
         <li><strong>Make.com</strong> - w ramach usługi automatyzacji, która przekazuje treść wysłanych formularzy (kontaktowych, rekrutacyjnych i partnerskich) do naszej bazy zgłoszeń; dane przetwarzane są na serwerach w Unii Europejskiej. Zasady przetwarzania danych przez dostawcę: <a href="https://www.make.com/en/privacy-notice" target="_blank" rel="noopener" style="color: var(--accent);">nota o prywatności Make</a>,</li>
         <li><strong>Airtable Inc.</strong> - w ramach bazy danych, w której rejestrujemy i obsługujemy zgłoszenia z formularzy. Zasady przetwarzania danych przez dostawcę: <a href="https://www.airtable.com/company/privacy" target="_blank" rel="noopener" style="color: var(--accent);">polityka prywatności Airtable</a> oraz <a href="https://www.airtable.com/company/dpa" target="_blank" rel="noopener" style="color: var(--accent);">umowa powierzenia przetwarzania (DPA)</a>,</li>
         <li><strong>dostawcy poczty e-mail</strong> - w zakresie niezbędnym do prowadzenia korespondencji.</li>
@@ -303,7 +314,7 @@
       <p>Nie sprzedajemy, nie udostępniamy i nie przekazujemy Twoich danych osobowych podmiotom trzecim w celach marketingowych.</p>
 
       <h2>5. Przekazywanie danych poza EOG</h2>
-      <p>W związku z korzystaniem z usług Google (Analytics, Search Console), hostingu Vercel oraz bazy zgłoszeń Airtable dane mogą być przekazywane do Stanów Zjednoczonych. Przekazanie odbywa się na podstawie standardowych klauzul umownych (SCC) zatwierdzonych przez Komisję Europejską oraz, w stosownych przypadkach, na podstawie decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony (EU-US Data Privacy Framework).</p>
+      <p>W związku z korzystaniem z usług Google (Analytics, Search Console), Microsoft Clarity, hostingu Vercel oraz bazy zgłoszeń Airtable dane mogą być przekazywane do Stanów Zjednoczonych. Przekazanie odbywa się na podstawie standardowych klauzul umownych (SCC) zatwierdzonych przez Komisję Europejską oraz, w stosownych przypadkach, na podstawie decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony (EU-US Data Privacy Framework).</p>
 
       <h2>6. Twoje prawa</h2>
       <p>Zgodnie z RODO przysługują Ci następujące prawa:</p>
@@ -435,5 +446,6 @@
   
 
 </script>
+<script src="/assets/consent.js" defer></script>
 </body>
 </html>
