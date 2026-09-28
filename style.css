@@ -1093,6 +1093,9 @@ textarea.input-field {
    ======================================== */
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary { list-style: none; outline: none; }
+/* Cel dotykowy 44 px (WCAG 2.5.5) bez zmiany wygladu karty: pole klikniecia
+   rozciagniete o 10 px w gore i w dol, ujemny margines oddaje to miejsce. */
+.faq-item summary { margin: -10px 0; padding: 10px 0; }
 .faq-item summary::after {
   content: "";
   display: inline-block;
