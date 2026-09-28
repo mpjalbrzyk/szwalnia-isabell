@@ -3,8 +3,33 @@
     {
       "source": "/assets/(.*)\\.(webp|png|jpg|jpeg|gif|svg|ico|woff2|woff|ttf)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/ile-kosztuje-uszycie-odziezy-w-szwalni",
+      "destination": "/ile-kosztuje-uszycie-partii-odziezy.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/10-pytan-do-szwalni.html",
+      "destination": "/jak-wybrac-szwalnie-10-pytan.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/uslugi/:slug(krojenie-wykonczenie|male-serie|odziez-firmowa|szycie-odziez-damska)/?",
+      "destination": "/uslugi/:slug.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/:slug(bledy-zlecanie-szycia|blog|cmt-full-service-szycia|ile-kosztuje-uszycie-partii-odziezy|ile-trwa-produkcja-odziezy|jak-przygotowac-tech-pack|jak-wybrac-material-kurtki-zakiety|jak-wybrac-szwalnie-10-pytan|jak-zamowic-odziez-firmowa-hr|jak-znalezc-szwalnie-dla-marki|jaka-odziez-firmowa-dla-pracownikow|kalkulator-wyceny-szycia|kariera|kontakt|kontrola-jakosci-szwalnia|metkowanie-odziezy-co-musi-byc-na-metce|michal-jalbrzykowski|minimalne-zamowienie-szwalnia-moq|o-nas|odziez-firmowa-poradnik|odziez-firmowa-vs-merch|polityka-prywatnosci|probka-przeszyciowa-szwalnia|produkcja-malych-serii|realizacje|rodzaje-sciegow-maszyny-szwalnicze|stopniowanie-rozmiarowe-wykroju|szwalnia-pod-warszawa-lokalizacja|szwalnia-polska-vs-chiny|szwalnia-vs-krawiec|szwalnia-warszawa|szwalnia-z-wlasna-krojownia|szwalnia-zabki|szycie-polska-oplacalnosc-2026|szycie-z-powierzonego-materialu|uslugi|wspolpraca)/?",
+      "destination": "/:slug.html",
+      "statusCode": 301
     }
   ]
 }

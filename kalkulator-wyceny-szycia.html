@@ -1253,6 +1253,17 @@
       if (typeof gtag === 'function') gtag('event', nazwa, params || {});
     }
 
+    /* Zdarzenia wynikowe wysylamy raz na wyrob w ramach wizyty. render()
+       leci przy kazdym ruchu suwaka, wiec bez tego jedna osoba dawala
+       kilkadziesiat calculator_result (do 27.09.2026 zawyzone ~10x). */
+    var wyslaneZdarzenia = {};
+    function gaRaz(nazwa, params) {
+      var klucz = nazwa + '|' + (stan.wyrob || '');
+      if (wyslaneZdarzenia[klucz]) return;
+      wyslaneZdarzenia[klucz] = true;
+      ga(nazwa, params);
+    }
+
     /* ── Liczenie. Interpolacja LOGARYTMICZNA miedzy punktami z cennika.
        Zadnego wzoru kosztowego na froncie, wylacznie punkty z pliku. ── */
     function cenaZaSztuke(punkty, n) {
@@ -1468,7 +1479,7 @@
           render();
           document.getElementById('panel-parametry').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-        ga('calculator_no_material');
+        gaRaz('calculator_no_material');
         wypelnijFormularz(r);
         return;
       }
@@ -1493,7 +1504,7 @@
                 + '<a class="kalk-stop-link" href="/minimalne-zamowienie-szwalnia-moq.html">Więcej o minimalnym zamówieniu</a>')
           + '</div>';
         el.innerHTML = h;
-        ga('calculator_poza_oferta', { wyrob: stan.wyrob, ilosc: stan.ilosc });
+        gaRaz('calculator_poza_oferta', { wyrob: stan.wyrob, ilosc: stan.ilosc });
         wypelnijFormularz(r);
         return;
       }
@@ -1511,7 +1522,7 @@
           + '<a class="kalk-stop-link" href="/minimalne-zamowienie-szwalnia-moq.html">Więcej o minimalnym zamówieniu</a>'
           + '</div>';
         el.innerHTML = h;
-        ga('calculator_moq_block', { wyrob: stan.wyrob, ilosc: stan.ilosc });
+        gaRaz('calculator_moq_block', { wyrob: stan.wyrob, ilosc: stan.ilosc });
         wypelnijFormularz(r);
         return;
       }
@@ -1550,7 +1561,7 @@
         + '</div>';
 
       el.innerHTML = h;
-      ga('calculator_result', {
+      gaRaz('calculator_result', {
         wyrob: stan.wyrob, prog_ilosci: r.prog, niska_wartosc: mala ? 'tak' : 'nie'
       });
       wypelnijFormularz(r);
