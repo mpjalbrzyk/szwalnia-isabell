@@ -138,18 +138,18 @@
 
   <!-- SEKCJA 2: BENTO GALLERY -->
   <section class="bento-gallery">
-    <div class="gallery-tile">
+    <a href="/uslugi/krojenie-wykonczenie.html" class="gallery-tile">
       <img src="/assets/proces-krojownia-nowoczesna.webp" srcset="/assets/proces-krojownia-nowoczesna-800.webp 800w, /assets/proces-krojownia-nowoczesna.webp 1600w" sizes="(max-width: 992px) 100vw, 33vw" alt="Nowoczesna krojownia ISABELL - automatyczny cutter i tkaniny przygotowane do krojenia" width="1600" height="893" decoding="async">
       <span class="tile-badge">Proces</span>
-    </div>
-    <div class="gallery-tile">
+    </a>
+    <a href="/realizacje.html" class="gallery-tile">
       <img src="/assets/realizacje-seria-bordowych-zakietow.webp" srcset="/assets/realizacje-seria-bordowych-zakietow-800.webp 800w, /assets/realizacje-seria-bordowych-zakietow.webp 1600w" sizes="(max-width: 992px) 100vw, 33vw" alt="Seria bordowych żakietów damskich uszyta w szwalni ISABELL" width="1600" height="893" decoding="async">
       <span class="tile-badge">Realizacje</span>
-    </div>
-    <div class="gallery-tile">
+    </a>
+    <a href="/uslugi/szycie-odziez-damska.html" class="gallery-tile">
       <img src="/assets/detale-stebnowka-zakiet-makro.webp" srcset="/assets/detale-stebnowka-zakiet-makro-800.webp 800w, /assets/detale-stebnowka-zakiet-makro.webp 1600w" sizes="(max-width: 992px) 100vw, 33vw" alt="Precyzyjne stebnowanie klapy żakietu - detal wykonania w szwalni ISABELL" width="1600" height="893" decoding="async">
       <span class="tile-badge">Detale</span>
-    </div>
+    </a>
   </section>
 
   <!-- SEKCJA 3: TRUST BAR -->
@@ -283,49 +283,49 @@
     </div>
     <div class="realizacje-grid">
       <!-- Rząd 1: portret żakietu + kurtka zimowa + detal (KEEP) -->
-      <div class="realizacja-tile realizacja-tall">
+      <a href="/realizacje.html" class="realizacja-tile realizacja-tall">
         <img src="/assets/Realizacje/zakiet-damski-niebieski-portret.webp" alt="Żakiet damski kobaltowy - szycie żakietów na zlecenie, Szwalnia ISABELL" loading="lazy">
         <div class="realizacja-overlay">
           <span class="tile-badge">Żakiety</span>
           <h3>Żakiet kobaltowy - zbliżenie</h3>
         </div>
-      </div>
-      <div class="realizacja-tile realizacja-tall">
+      </a>
+      <a href="/realizacje.html" class="realizacja-tile realizacja-tall">
         <img src="/assets/Realizacje/kurtka-zimowa-brazowa-pikowana.webp" alt="Kurtka zimowa pikowana brązowa - produkcja kurtek damskich na zlecenie" loading="lazy">
         <div class="realizacja-overlay">
           <span class="tile-badge">Kurtki zimowe</span>
           <h3>Kurtka pikowana - czekolada</h3>
         </div>
-      </div>
-      <div class="realizacja-tile realizacja-tall">
+      </a>
+      <a href="/realizacje.html" class="realizacja-tile realizacja-tall">
         <img src="/assets/detale-1-hero-do-przyciecia-800.webp" srcset="/assets/detale-1-hero-do-przyciecia-400.webp 400w, /assets/detale-1-hero-do-przyciecia-800.webp 800w" sizes="(max-width: 768px) 100vw, 33vw" alt="Detale krawiectwa - precyzyjne szwy i wykończenia w Szwalni ISABELL" loading="lazy" style="object-position: center 20%;">
         <div class="realizacja-overlay">
           <span class="tile-badge">Detale</span>
           <h3>Precyzja w każdym detalu</h3>
         </div>
-      </div>
+      </a>
       <!-- Rząd 2: kurtka wiosenna + kurtka zimowa + kurtka wiosenna detal -->
-      <div class="realizacja-tile realizacja-tall">
+      <a href="/realizacje.html" class="realizacja-tile realizacja-tall">
         <img src="/assets/Realizacje/kurtka-wiosenna-bezowa.webp" alt="Kurtka wiosenna beżowa damska - szycie odzieży wiosennej na zamówienie" loading="lazy">
         <div class="realizacja-overlay">
           <span class="tile-badge">Kurtki wiosenne</span>
           <h3>Kurtka wiosenna - pudrowy beż</h3>
         </div>
-      </div>
-      <div class="realizacja-tile realizacja-tall">
+      </a>
+      <a href="/realizacje.html" class="realizacja-tile realizacja-tall">
         <img src="/assets/Realizacje/kurtka-zimowa-szara-pikowana.webp" alt="Kurtka zimowa pikowana szara z kapturem - produkcja odzieży wierzchniej" loading="lazy">
         <div class="realizacja-overlay">
           <span class="tile-badge">Kurtki zimowe</span>
           <h3>Kurtka pikowana - grafitowy szary</h3>
         </div>
-      </div>
-      <div class="realizacja-tile realizacja-tall">
+      </a>
+      <a href="/realizacje.html" class="realizacja-tile realizacja-tall">
         <img src="/assets/Realizacje/kurtka-wiosenna-oliwkowa-detal.webp" alt="Detal kołnierza kurtki wiosennej z pepitką - rzemiosło Szwalnia ISABELL" loading="lazy">
         <div class="realizacja-overlay">
           <span class="tile-badge">Detale</span>
           <h3>Detal kołnierza z pepitką</h3>
         </div>
-      </div>
+      </a>
     </div>
     <div class="section-cta">
       <a href="/realizacje.html" class="btn-ghost">Zobacz wszystkie realizacje →</a>
@@ -626,12 +626,24 @@
       document.documentElement.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
     });
 
-    // Close mobile menu on link click
+    // Zamknij menu po kliknieciu linku. Kotwice na tej samej stronie (np. #kontakt)
+    // przewijamy sami w nastepnej klatce, juz po zdjeciu blokady scrolla: przewiniecie
+    // w tym samym kroku co zmiana overflow bywa gubione i wyglada jak martwy klik.
     mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
         mobileMenu.classList.remove('active');
         document.documentElement.classList.remove('menu-open');
+        const hash = link.getAttribute('href') || '';
+        const target = hash.length > 1 && hash.charAt(0) === '#' ? document.getElementById(hash.slice(1)) : null;
+        if (target) {
+          e.preventDefault();
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (location.hash !== hash) history.pushState(null, '', hash);
+          });
+        }
       });
     });
 

@@ -464,6 +464,87 @@
     align-items: center;
   }
   @media (min-width: 1000px) { .kalk-pasek-mobile { display: none !important; } }
+  a.kalk-pasek-tresc { color: #fff; text-decoration: none; flex: 1; }
+  @media (max-width: 374px) {
+    .kalk-pasek-tresc strong { white-space: normal; font-size: 0.95rem; }
+    .kalk-pasek-btn { padding: 11px 14px; }
+  }
+
+  /* ── Przejscie z wyniku do formularza (20.10.2026) ──
+     Do 19.10 jedyne CTA stalo na samym dole dlugiego wyniku (pod tabela,
+     lista czynnikow i zastrzezeniem), a na desktopie przyklejona kolumna
+     wyniku jest wyzsza niz ekran, wiec przycisk byl poza widokiem. */
+  .kalk-cta-glowne {
+    margin-top: 18px;
+    padding: 18px;
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    background: var(--accent-light);
+  }
+  .kalk-cta-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+  }
+  .kalk-cta-btn svg { flex-shrink: 0; }
+  .kalk-cta-dowody {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .kalk-cta-dowody li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--primary);
+  }
+  .kalk-cta-dowody svg { color: var(--accent); flex-shrink: 0; }
+  .kalk-cta-glowne .kalk-cta-note { text-align: left; margin-top: 10px; }
+
+  /* Podsumowanie nad formularzem: uzytkownik ma WIDZIEC, ze jego konfiguracja
+     dotarla do formularza, zanim zacznie wpisywac kontakt. */
+  #podsumowanie, #panel-parametry { scroll-margin-top: 110px; }
+  .kalk-podsumowanie { border: 1.5px solid transparent; transition: border-color .3s ease, background-color .3s ease; }
+  .kalk-podsumowanie.podswietl { border-color: var(--accent); background: var(--accent-light); }
+  .kalk-podsumowanie-naglowek {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .kalk-podsumowanie-naglowek strong { font-size: 0.98rem; }
+  .kalk-podsumowanie-naglowek a {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .kalk-konfig {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 14px;
+    margin: 0;
+  }
+  .kalk-konfig dt { color: var(--text-muted); font-size: 0.85rem; }
+  .kalk-konfig dd { margin: 0; color: var(--primary); font-weight: 500; }
+  .kalk-konfig dd.cena { font-weight: 700; }
+  .kalk-podsumowanie-stopka { margin: 10px 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+  @media (max-width: 420px) {
+    .kalk-konfig { grid-template-columns: 1fr; gap: 0; }
+    .kalk-konfig dd { margin-bottom: 6px; }
+  }
 
   /* ── Klocki wyboru wyrobu ── */
   .kalk-grupa { margin-bottom: 18px; }
@@ -477,15 +558,20 @@
     color: var(--text-muted);
     margin-bottom: 8px;
   }
+  /* 20.10.2026: plakietka byla wypelniona pastylka i w Clarity zbierala
+     tapniecia jak przycisk. Teraz to zwykly dopisek przy naglowku grupy. */
   .kalk-grupa-tytul .plakietka {
     text-transform: none;
     letter-spacing: 0;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 500;
-    background: var(--accent);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 20px;
+    font-style: italic;
+    color: var(--accent);
+    background: none;
+    padding: 0 0 0 8px;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+    cursor: default;
   }
   .kalk-klocki { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   @media (max-width: 700px) { .kalk-klocki { grid-template-columns: repeat(2, 1fr); } }
@@ -543,6 +629,24 @@
   .kalk-miesiac.wolne .kropka { background: #16A34A; }
   .kalk-miesiac.zajete .kropka { background: #D97706; }
   .kalk-miesiac:has(input:checked) { border-color: var(--accent); background: var(--accent-light); font-weight: 700; color: var(--primary); }
+  /* 20.10.2026: wybor miesiaca byl za slabo widoczny (tlo 8% granatu),
+     w Clarity martwe tapniecia na "maj". Klasa .wybrany ustawiana z JS
+     dziala tez w przegladarkach bez :has(). */
+  .kalk-miesiac.wybrany { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 700; }
+  .kalk-miesiac.wybrany .kropka { box-shadow: 0 0 0 2px #fff; }
+  .kalk-wybor-info {
+    margin: 10px 0 0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--primary);
+    font-size: 0.87rem;
+    line-height: 1.55;
+  }
+  .kalk-wybor-info[hidden] { display: none; }
+  .kalk-wybor-info a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+  /* Na desktopie wynik jest przyklejony obok, wiec skrot do wyniku zbedny */
+  @media (min-width: 1000px) { #wyrob-info { display: none; } }
   .kalk-miesiac input:focus-visible ~ span { outline: 2px solid var(--accent); outline-offset: 4px; }
   .kalk-legenda {
     display: flex; flex-wrap: wrap; gap: 16px;
@@ -717,12 +821,15 @@
       <!-- Pasek na telefon: cena zostaje na ekranie, gdy uzytkownik kreci
            parametrami, bo wynik lezy pod szescioma krokami i inaczej nie widac,
            co sie z cena dzieje. Na desktopie zbedny, bo wynik jest przyklejony obok. -->
+      <!-- 20.10.2026: przycisk prowadzi prosto do formularza (wczesniej "Szczegoly"
+           wracalo do wyniku i nikt z paska nie trafial do formularza). Szczegoly
+           zostaja pod tapnieciem w cene. -->
       <div class="kalk-pasek-mobile" id="pasek-mobile" hidden aria-hidden="true">
-        <div class="kalk-pasek-tresc">
-          <span class="etykieta">Szacunkowa cena</span>
+        <a href="#wynik-kotwica" class="kalk-pasek-tresc">
+          <span class="etykieta">Szacunkowa cena, szczegóły</span>
           <strong id="pasek-cena">-</strong>
-        </div>
-        <a href="#wynik-kotwica" class="kalk-pasek-btn">Szczegóły</a>
+        </a>
+        <a href="#podsumowanie" class="kalk-pasek-btn" data-kalk-cta="pasek">Wyślij do wyceny</a>
       </div>
 
       <!-- H2 nad narzedziem: domyka hierarchie naglowkow (kroki sa na H3)
@@ -775,6 +882,7 @@
                   na podszewce, także w dużych rozmiarach 40-56.
                 </p>
                 <div id="wyrob-klocki" role="radiogroup" aria-label="Rodzaj wyrobu"></div>
+                <p class="kalk-wybor-info" id="wyrob-info" aria-live="polite" hidden></p>
               </div>
 
               <div class="kalk-krok">
@@ -818,6 +926,7 @@
                   <span><i class="kropka wolne"></i> zwykle swobodnie</span>
                   <span><i class="kropka zajete"></i> większe obłożenie, warto zapytać wcześniej</span>
                 </div>
+                <p class="kalk-wybor-info" id="miesiac-info" aria-live="polite" hidden></p>
               </div>
 
             </div>
@@ -1439,11 +1548,33 @@
         + '</ul></div>';
     }
 
-    function blokCta(tekst) {
+    /* Kazdy przycisk do formularza ma data-kalk-cta = miejsce, z ktorego
+       kliknieto. Po tym atrybucie lapie go nasluch calculator_to_form w podepnij().
+       Kotwica #podsumowanie, nie #zapytanie: uzytkownik laduje na swojej
+       konfiguracji i pierwszych polach, a nie na naglowku sekcji. */
+    var STRZALKA = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+
+    function blokCta(tekst, miejsce) {
       return '<div class="kalk-cta">'
-        + '<a href="#zapytanie" class="submit-btn" style="display:flex;align-items:center;justify-content:center;text-align:center;">'
-        + (tekst || 'Chcę dokładną wycenę') + '</a>'
+        + '<a href="#podsumowanie" class="submit-btn kalk-cta-btn" data-kalk-cta="' + (miejsce || 'wynik-dol') + '">'
+        + (tekst || 'Wyślij ten model do wyceny') + STRZALKA + '</a>'
         + '<p class="kalk-cta-note">Dane z kalkulatora są już w formularzu. Wystarczy dopisać kontakt.</p>'
+        + '</div>';
+    }
+
+    /* Glowne CTA bezposrednio pod widelkami. Mikro-dowody zgodne z kanonem
+       z CLAUDE.md §1: odpowiedz 48 h, bezplatna wycena do 7 dni roboczych. */
+    function blokCtaGlowne() {
+      var S = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+      return '<div class="kalk-cta-glowne">'
+        + '<a href="#podsumowanie" class="submit-btn kalk-cta-btn" data-kalk-cta="wynik-gora">'
+        + 'Wyślij ten model do wyceny' + STRZALKA + '</a>'
+        + '<ul class="kalk-cta-dowody">'
+        + '<li>' + S + '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Odpowiedź do 48 h</li>'
+        + '<li>' + S + '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Bezpłatna wycena do 7 dni roboczych</li>'
+        + '<li>' + S + '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Bez zobowiązań</li>'
+        + '</ul>'
+        + '<p class="kalk-cta-note">Wyrób, ilość, termin i widełki przeniesiemy do formularza. Dopiszesz tylko kontakt.</p>'
         + '</div>';
     }
 
@@ -1486,6 +1617,25 @@
         return;
       }
 
+      /* "Inny wyrob" nie jest lekka dzianina, wiec tekst o t-shirtach i bluzach
+         do niego nie pasowal. Status i progi bez zmian, inna jest tylko tresc. */
+      if ((r.status === 'poza-oferta' || r.status === 'poza-oferta-kontakt') && r.powod === 'spoza-listy') {
+        h = pasek('uwaga', 'Wyrób spoza listy. Wycena indywidualna.')
+          + '<div class="kalk-wynik-body kalk-stop">'
+          + '<h2>Opisz nam swój wyrób</h2>'
+          + '<p>Nie mamy go w cenniku, więc kalkulator nie poda widełek. Specjalizujemy się w odzieży '
+          + 'damskiej wierzchniej: żakietach, kurtkach i płaszczach na podszewce. Pracujemy na '
+          + 'materiale powierzonym, od ' + r.minimalnaIlosc + ' sztuk jednego modelu.</p>'
+          + '<p>Napisz w formularzu, co to za wyrób, z jakiej tkaniny i w jakiej ilości. '
+          + 'Sprawdzimy, czy pasuje do naszej produkcji, i odpowiemy w ciągu 48 h.</p>'
+          + blokCta('Napisz do nas o tym wyrobie', 'inny-wyrob')
+          + '</div>';
+        el.innerHTML = h;
+        gaRaz('calculator_poza_oferta', { wyrob: stan.wyrob, ilosc: stan.ilosc });
+        wypelnijFormularz(r);
+        return;
+      }
+
       if (r.status === 'poza-oferta' || r.status === 'poza-oferta-kontakt') {
         var doKontaktu = r.status === 'poza-oferta-kontakt';
         h = pasek(doKontaktu ? 'uwaga' : 'blok',
@@ -1500,7 +1650,7 @@
           + (doKontaktu
               ? '<p>Przy zamówieniu tej wielkości sytuacja wygląda inaczej, bo koszt przygotowania '
                 + 'rozkłada się na dużą partię. Napisz do nas, sprawdzimy to indywidualnie.</p>'
-                + blokCta('Napisz do nas o tym zleceniu')
+                + blokCta('Napisz do nas o tym zleceniu', 'poza-oferta')
               : '<p>Wracamy do tematu przy większych seriach, orientacyjnie od '
                 + r.minimalnaIlosc + ' sztuk. Jeśli planujesz taką partię, odezwij się.</p>'
                 + '<a class="kalk-stop-link" href="/minimalne-zamowienie-szwalnia-moq.html">Więcej o minimalnym zamówieniu</a>')
@@ -1540,6 +1690,7 @@
       h += '<div class="kalk-wynik-body">'
         + '<div class="kalk-cena">' + r.od + ' do ' + r.do + ' zł <span class="jedn">za sztukę, netto</span></div>'
         + '<p class="kalk-calosc">Całe zlecenie: około <strong>' + zl(r.wartoscOd) + ' do ' + zl(r.wartoscDo) + ' zł</strong> netto</p>'
+        + blokCtaGlowne()
         + blokZastrzezenie();
 
       if (mala && r.sugerowanaIlosc) {
@@ -1559,7 +1710,7 @@
         + 'dokumentacji i próbki tkaniny, zwykle w ciągu około 7 dni roboczych. Wycena nie stanowi oferty '
         + 'w rozumieniu Kodeksu cywilnego.'
         + '</div>'
-        + blokCta('Chcę dokładną wycenę')
+        + blokCta('Wyślij ten model do wyceny', 'wynik-dol')
         + '</div>';
 
       el.innerHTML = h;
@@ -1571,7 +1722,22 @@
 
     /* Pasek na telefonie. Pokazujemy go tylko wtedy, gdy jest co pokazac
        (jest cena) i gdy wynik zjechal poza ekran. */
+    /* Od 20.10.2026 pasek chowa sie tez, gdy na ekranie jest formularz
+       (zaslanial przycisk wysylki, a jego CTA prowadzi wlasnie tam) oraz po
+       wyslaniu formularza (form-handler.js podmienia tresc formularza). */
     var wynikWidoczny = true;
+    var formWidoczny = false;
+    function formWyslany() {
+      return !document.querySelector('#kalkulator-form button[type="submit"]');
+    }
+    function odswiezPasek() {
+      var pasekEl = document.getElementById('pasek-mobile');
+      if (!pasekEl || pasekEl.hidden) return;
+      var pokaz = !wynikWidoczny && !formWidoczny && !formWyslany();
+      pasekEl.classList.toggle('widoczny', pokaz);
+      pasekEl.setAttribute('aria-hidden', pokaz ? 'false' : 'true');
+      pasekEl.querySelectorAll('a').forEach(function (a) { a.tabIndex = pokaz ? 0 : -1; });
+    }
     function aktualizujPasek(r) {
       var pasekEl = document.getElementById('pasek-mobile');
       if (!pasekEl) return;
@@ -1580,30 +1746,66 @@
         pasekEl.classList.remove('widoczny');
         pasekEl.hidden = true;
         pasekEl.setAttribute('aria-hidden', 'true');
+        pasekEl.querySelectorAll('a').forEach(function (a) { a.tabIndex = -1; });
         return;
       }
       document.getElementById('pasek-cena').textContent = r.od + ' do ' + r.do + ' zł/szt.';
       pasekEl.hidden = false;
-      pasekEl.setAttribute('aria-hidden', 'false');
-      pasekEl.classList.toggle('widoczny', !wynikWidoczny);
+      odswiezPasek();
     }
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function (wpisy) {
-        wynikWidoczny = wpisy[0].isIntersecting;
-        var pasekEl = document.getElementById('pasek-mobile');
-        if (pasekEl && !pasekEl.hidden) pasekEl.classList.toggle('widoczny', !wynikWidoczny);
+        wpisy.forEach(function (w) {
+          if (w.target.id === 'wynik') wynikWidoczny = w.isIntersecting;
+          if (w.target.id === 'zapytanie') formWidoczny = w.isIntersecting;
+        });
+        odswiezPasek();
       }, { threshold: 0.15 });
-      document.addEventListener('DOMContentLoaded', function () {
-        var w = document.getElementById('wynik');
-        if (w) obs.observe(w);
+      ['wynik', 'zapytanie'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) obs.observe(el);
       });
-      var wNow = document.getElementById('wynik');
-      if (wNow) obs.observe(wNow);
     }
 
     /* ── Przekazanie do formularza ── */
+    /* Informacja zwrotna tuz pod klikanym elementem. Na telefonie wynik lezy
+       pod szescioma krokami, wiec wybor wyrobu albo miesiaca nie zmienial
+       niczego na ekranie i Clarity notowal martwe tapniecia (20.10.2026). */
+    function infoWyboru(r) {
+      var wi = document.getElementById('wyrob-info');
+      if (wi) {
+        var p = stan.wyrob && CFG.produkty[stan.wyrob];
+        if (!p || !r || r.status === 'brak-materialu' || r.status === 'niekompletne') {
+          wi.hidden = true;
+        } else {
+          var t = 'Wybrano: <strong>' + p.nazwa + '</strong>. ';
+          if (r.status === 'ok') t += 'Szacunek: ' + r.od + ' do ' + r.do + ' zł/szt. ';
+          else if (r.status === 'ponizej-moq') t += 'Szyjemy od ' + r.moq + ' sztuk. ';
+          else t += 'Ten wyrób wyceniamy indywidualnie. ';
+          wi.innerHTML = t + '<a href="#wynik-kotwica">Zobacz wynik</a>';
+          wi.hidden = false;
+        }
+      }
+      var mi = document.getElementById('miesiac-info');
+      if (mi) {
+        if (!stan.miesiac) { mi.hidden = true; }
+        else {
+          var nr = Number(stan.miesiac);
+          var zaj = CFG.sezonowosc.miesiaceOgraniczonychMocy.indexOf(nr) >= 0;
+          mi.innerHTML = 'Termin: <strong>' + MIESIACE[nr - 1] + '</strong>, '
+            + (zaj ? 'większe obłożenie, warto zapytać wcześniej.' : 'zwykle swobodnie.');
+          mi.hidden = false;
+        }
+      }
+      document.querySelectorAll('.kalk-miesiac').forEach(function (l) {
+        var inp = l.querySelector('input');
+        l.classList.toggle('wybrany', !!(inp && inp.checked));
+      });
+    }
+
     function wypelnijFormularz(r) {
       aktualizujPasek(r);
+      infoWyboru(r);
       var set = function (id, v) { var e = document.getElementById(id); if (e) e.value = v || ''; };
       var nazwaWyrobu = stan.wyrob && CFG.produkty[stan.wyrob] ? CFG.produkty[stan.wyrob].nazwa : '';
       var mies = stan.miesiac ? MIESIACE[Number(stan.miesiac) - 1] : '';
@@ -1632,15 +1834,35 @@
         box.innerHTML = '<span class="pusty">Wypełnij kalkulator powyżej, a podsumowanie pojawi się tutaj.</span>';
         return;
       }
-      var linie = '<strong>' + nazwaWyrobu + '</strong>, ' + stan.ilosc + ' szt., '
-        + CFG.zakresy[stan.zakres].toLowerCase() + ', trudność ' + stan.trudnosc
-        + (mies ? ', termin: ' + mies : '');
-      if (r && r.od) {
-        linie += '<br>Widziana wycena: <strong>' + r.od + ' do ' + r.do + ' zł za sztukę</strong>, '
-          + 'całość około ' + zl(r.wartoscOd) + ' do ' + zl(r.wartoscDo) + ' zł netto.';
+      /* Czytelna konfiguracja zamiast jednej linii. Do 19.10 pokazywalo tu
+         surowy klucz ("trudność zlozony"), teraz etykiety z cennika bez
+         dopiskow w nawiasach. */
+      var krotko = function (t) { return String(t || '').split(' (')[0]; };
+      var wielka = function (t) { return t ? t.charAt(0).toUpperCase() + t.slice(1) : t; };
+      var wiersze = [
+        ['Wyrób', nazwaWyrobu],
+        ['Ilość', stan.ilosc + ' szt.'],
+        ['Zakres', krotko(CFG.zakresy[stan.zakres])],
+        ['Model', krotko(CFG.trudnosc[stan.trudnosc])],
+        ['Termin', mies ? wielka(mies) : 'do ustalenia']
+      ];
+      var h = '<div class="kalk-podsumowanie-naglowek"><strong>Twoja konfiguracja</strong>'
+        + '<a href="#panel-parametry">Zmień</a></div><dl class="kalk-konfig">';
+      wiersze.forEach(function (w) { h += '<dt>' + w[0] + '</dt><dd>' + w[1] + '</dd>'; });
+      if (r && r.status === 'ok') {
+        h += '<dt>Widełki</dt><dd class="cena">' + r.od + ' do ' + r.do + ' zł/szt. netto</dd>'
+          + '<dt>Całość</dt><dd>około ' + zl(r.wartoscOd) + ' do ' + zl(r.wartoscDo) + ' zł netto</dd>';
       }
-      linie += '<br><span style="color:var(--text-muted);font-size:0.85rem;">Cennik ' + CFG.wersja + '</span>';
-      box.innerHTML = linie;
+      h += '</dl><p class="kalk-podsumowanie-stopka">Te dane wyślemy razem z formularzem. '
+        + 'Dopisz kontakt, a odpowiemy w ciągu 48 h. Cennik ' + CFG.wersja + '.</p>';
+      box.innerHTML = h;
+    }
+
+    function podswietlPodsumowanie() {
+      var box = document.getElementById('podsumowanie');
+      if (!box) return;
+      box.classList.add('podswietl');
+      setTimeout(function () { box.classList.remove('podswietl'); }, 1800);
     }
 
     /* ── Budowa kontrolek z cennika ── */
@@ -1778,6 +2000,25 @@
         if (e.target.name === 'trudnosc') { stan.trudnosc = e.target.value; render(); }
       });
 
+      /* calculator_to_form = klikniecie przycisku prowadzacego z wyniku do
+         formularza (gora wyniku, dol wyniku, pasek na telefonie, ekran wyrobu
+         spoza oferty). Wzorzec gaRaz: raz na wyrob w wizycie, tak jak
+         calculator_result, wiec stosunek obu zdarzen to realny wskaznik przejscia.
+         UWAGA: do 19.10.2026 to zdarzenie lecialo przy WYSLANIU formularza.
+         Wysylka ma teraz wlasne zdarzenie calculator_submit (nizej). */
+      document.addEventListener('click', function (e) {
+        var cta = e.target.closest ? e.target.closest('[data-kalk-cta]') : null;
+        if (!cta) return;
+        var r = policz();
+        gaRaz('calculator_to_form', {
+          wyrob: stan.wyrob,
+          prog_ilosci: progEtykieta(Number(stan.ilosc)),
+          wynik: r.status,
+          miejsce: cta.getAttribute('data-kalk-cta')
+        });
+        podswietlPodsumowanie();
+      });
+
       var form = document.getElementById('kalkulator-form');
       if (form) {
         /* Podsumowanie doklejamy do pola "description", bo TO pole jest juz
@@ -1790,7 +2031,7 @@
            wczytanie cennika). W fazie capture jestesmy pierwsi, wiec handler
            zbiera juz uzupelniona wartosc. */
         form.addEventListener('submit', function () {
-          ga('calculator_to_form', { wyrob: stan.wyrob, prog_ilosci: progEtykieta(Number(stan.ilosc)) });
+          ga('calculator_submit', { wyrob: stan.wyrob || 'brak', prog_ilosci: progEtykieta(Number(stan.ilosc)) });
 
           var pole = document.getElementById('k-description');
           if (!pole || pole.dataset.uzupelnione === '1') return;

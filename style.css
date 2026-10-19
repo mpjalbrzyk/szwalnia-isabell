@@ -1423,3 +1423,145 @@ textarea.input-field {
   .zgoda-przyciski .zgoda-btn { flex: 1; min-width: 0; }
   .footer-bottom p { margin-right: 0; }
 }
+
+/* ========================================
+   GALERIA REALIZACJI + MENU MOBILNE (19.10.2026, martwe klikniecia z Clarity)
+   1) Na stronie glownej kafle realizacji i bento sa linkami <a> (caly kafel).
+      Wzorzec stretched link z kart tu nie pasuje: .realizacja-overlay ma
+      position:absolute, wiec ::after linku pokrylby tylko dolna polowe kafla.
+   2) /realizacje.html: lightbox z assets/lightbox.js (kontener [data-lightbox]).
+   3) Menu mobilne: blokada scrolla bez skoku na gore strony.
+   ======================================== */
+a.realizacja-tile, a.gallery-tile { display: block; color: inherit; }
+a.realizacja-tile:focus-visible, a.gallery-tile:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+a.realizacja-tile:focus-visible img { transform: scale(1.04); }
+
+/* Przezroczysty przycisk na calym kaflu (wstrzykiwany przez lightbox.js) */
+.lightbox-trigger {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: zoom-in;
+}
+.lightbox-trigger:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px #FFF, inset 0 0 0 6px var(--accent);
+}
+.lightbox-tile:focus-within img { transform: scale(1.04); }
+
+html.lightbox-open { overflow: hidden; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #FFF;
+  overflow: hidden;
+}
+.lightbox::backdrop { background: rgba(17, 18, 22, 0.92); }
+.lightbox-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 80px 32px;
+}
+.lightbox-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 100%;
+  max-height: 100%;
+}
+.lightbox-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 190px);
+  max-height: calc(100dvh - 190px);
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--primary);
+}
+.lightbox-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+}
+.lightbox-badge {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.lightbox-badge[hidden] { display: none; }
+.lightbox-title {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.lightbox-count { font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); }
+.lightbox-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(17, 18, 22, 0.6);
+  color: #FFF;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lightbox-btn:hover { background: rgba(255, 255, 255, 0.15); }
+.lightbox-btn:focus-visible { outline: 3px solid #FFF; outline-offset: 2px; }
+.lightbox-btn[hidden] { display: none; }
+.lightbox-close { top: 16px; right: 16px; }
+.lightbox-prev, .lightbox-next { top: 50%; transform: translateY(-50%); }
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+@media (max-width: 640px) {
+  .lightbox-inner { padding: 72px 16px 88px; }
+  .lightbox-img { max-height: calc(100vh - 250px); max-height: calc(100dvh - 250px); }
+  .lightbox-prev, .lightbox-next { top: auto; bottom: 20px; transform: none; }
+  .lightbox-prev { left: calc(50% - 60px); }
+  .lightbox-next { right: calc(50% - 60px); }
+}
+
+/* Menu mobilne: regula z gory pliku (html.menu-open i body: height:100%)
+   skracala dokument do wysokosci ekranu, wiec otwarcie menu zerowalo
+   przewiniecie, a zamkniecie hamburgerem zostawialo uzytkownika na gorze
+   strony. overflow:hidden na <html> sam blokuje scroll i zachowuje pozycje. */
+html.menu-open,
+html.menu-open body { height: auto; }
+.mobile-menu { overscroll-behavior: contain; }

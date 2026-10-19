@@ -670,11 +670,24 @@
       document.documentElement.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
     });
 
+    // Zamknij menu po kliknieciu linku. Kotwice na tej samej stronie (np. #kontakt)
+    // przewijamy sami w nastepnej klatce, juz po zdjeciu blokady scrolla: przewiniecie
+    // w tym samym kroku co zmiana overflow bywa gubione i wyglada jak martwy klik.
     mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
         mobileMenu.classList.remove('active');
         document.documentElement.classList.remove('menu-open');
+        const hash = link.getAttribute('href') || '';
+        const target = hash.length > 1 && hash.charAt(0) === '#' ? document.getElementById(hash.slice(1)) : null;
+        if (target) {
+          e.preventDefault();
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (location.hash !== hash) history.pushState(null, '', hash);
+          });
+        }
       });
     });
 
