@@ -7,7 +7,10 @@
    Zamykanie: X, Esc, klikniecie w tlo. Fokus wraca na kafel.
    Nie rusza loading="lazy" na kaflach: duzy obraz dostaje src dopiero
    przy otwarciu i jest to ten sam plik, wiec idzie z cache przegladarki.
-   Bez wplywu na zgody i GA4. */
+   Bez wplywu na zgody i GA4.
+   Filtry (np. /realizacje.html) ukrywaja kafle atrybutem hidden: strzalki
+   i licznik obejmuja wtedy tylko widoczne zdjecia (lista liczona przy
+   kazdym otwarciu i kroku). */
 (function () {
   'use strict';
   var grids = document.querySelectorAll('[data-lightbox]');
@@ -21,6 +24,7 @@
       var badge = tile.querySelector('.tile-badge');
       var title = tile.querySelector('h3');
       var item = {
+        tile: tile,
         img: img,
         badge: badge ? badge.textContent.trim() : '',
         title: title ? title.textContent.trim() : (img.alt || '')
@@ -30,7 +34,7 @@
       btn.className = 'lightbox-trigger';
       btn.setAttribute('aria-haspopup', 'dialog');
       btn.setAttribute('aria-label', 'Powiększ zdjęcie: ' + item.title);
-      btn.addEventListener('click', function () { open(items.indexOf(item), btn); });
+      btn.addEventListener('click', function () { open(item, btn); });
       tile.appendChild(btn);
       tile.classList.add('lightbox-tile');
       item.trigger = btn;
@@ -71,25 +75,38 @@
   var btnClose = dlg.querySelector('.lightbox-close');
   var btnPrev = dlg.querySelector('.lightbox-prev');
   var btnNext = dlg.querySelector('.lightbox-next');
-  var current = 0;
+  var current = null;
   var returnFocus = null;
+  var list = items;
 
-  if (items.length < 2) { btnPrev.hidden = true; btnNext.hidden = true; }
+  // Tylko kafle, ktorych nie ukryl filtr (hidden na kaflu lub przodku).
+  function visible() {
+    var v = items.filter(function (it) { return !it.tile.closest('[hidden]'); });
+    return v.length ? v : items;
+  }
 
-  function show(i) {
-    current = (i + items.length) % items.length;
-    var it = items[current];
+  function show(it) {
+    current = it;
     bigImg.src = it.img.currentSrc || it.img.src;
     bigImg.alt = it.img.alt || it.title;
     elBadge.textContent = it.badge;
     elBadge.hidden = !it.badge;
     elTitle.textContent = it.title;
-    elCount.textContent = items.length > 1 ? (current + 1) + ' / ' + items.length : '';
+    elCount.textContent = list.length > 1 ? (list.indexOf(it) + 1) + ' / ' + list.length : '';
   }
 
-  function open(i, trigger) {
+  function step(d) {
+    if (list.length < 2) return;
+    var k = list.indexOf(current);
+    show(list[(k + d + list.length) % list.length]);
+  }
+
+  function open(it, trigger) {
     returnFocus = trigger || null;
-    show(i);
+    list = visible();
+    if (list.indexOf(it) < 0) list = items;
+    btnPrev.hidden = btnNext.hidden = list.length < 2;
+    show(it);
     document.documentElement.classList.add('lightbox-open');
     dlg.showModal();
     btnClose.focus();
@@ -103,13 +120,13 @@
     document.documentElement.classList.remove('lightbox-open');
     bigImg.removeAttribute('src');
     // Fokus na kafel, z ktorego otwarto (albo na biezacy po przewijaniu strzalkami).
-    var target = items[current] && items[current].trigger ? items[current].trigger : returnFocus;
+    var target = current && current.trigger ? current.trigger : returnFocus;
     if (target) { try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); } }
   });
 
   btnClose.addEventListener('click', close);
-  btnPrev.addEventListener('click', function () { show(current - 1); });
-  btnNext.addEventListener('click', function () { show(current + 1); });
+  btnPrev.addEventListener('click', function () { step(-1); });
+  btnNext.addEventListener('click', function () { step(1); });
 
   // Klikniecie w tlo (poza zdjeciem, podpisem i przyciskami) zamyka.
   dlg.addEventListener('click', function (e) {
@@ -118,9 +135,9 @@
   });
 
   dlg.addEventListener('keydown', function (e) {
-    if (items.length < 2) return;
-    if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+    if (list.length < 2) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
   });
   // Esc obsluguje sam <dialog> (zdarzenie cancel -> close).
 })();

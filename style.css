@@ -17,12 +17,19 @@
 
 /* ── Reset ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+/* overflow-x: clip zamiast hidden (19.10.2026): hidden na <body> robil z body
+   kontener przewijania, przez co sticky pasek nawigacji (.navbar-wrapper)
+   i kolumna wyniku w kalkulatorze nie przyklejaly sie. clip ucina poziomy
+   wyciek tak samo, ale nie tworzy kontenera przewijania. hidden zostaje jako
+   fallback dla przegladarek bez clip (Safari < 16): tam sticky dalej nie
+   dziala, ale strona nie przewija sie w bok. */
+html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: var(--bg);
   color: var(--primary);
   overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1565,3 +1572,26 @@ html.lightbox-open { overflow: hidden; }
 html.menu-open,
 html.menu-open body { height: auto; }
 .mobile-menu { overscroll-behavior: contain; }
+
+/* ========================================
+   STICKY NAV + KOTWICE + BANER ZGOD PRZY MENU (19.10.2026)
+   1) Po przejsciu na overflow-x: clip (gora pliku) pasek nawigacji realnie
+      sie przykleja (top 12 px, wysokosc 68 px desktop / 58 px telefon), wiec
+      cele kotwic dostaja odstep, zeby nie chowaly sie pod paskiem.
+      Regula ogolna ma niska specyficznosc: wlasne wartosci stron (naglowki
+      wpisow 100 px, #podsumowanie w kalkulatorze 110 px) zostaja.
+      Sekcje z id (np. #kontakt) maja wlasny padding (80 px desktop, mniej
+      na telefonie), wiec wystarczy mniejszy odstep, inaczej nad sekcja widac
+      96 px poprzedniej. 40 px sprawdzone na /kariera i /wspolpraca przy 375 px.
+   2) Baner zgod (z-index 10000) zaslanial dol otwartego menu mobilnego,
+      w tym "Wyslij zapytanie". Na czas otwartego menu baner jest ukryty
+      (visibility: tez wypada z kolejnosci Tab), po zamknieciu menu wraca.
+      Decyzja nie zapada, wiec GA4/Clarity zostaja w stanie domyslnym.
+   ======================================== */
+[id] { scroll-margin-top: 96px; }
+section[id] { scroll-margin-top: 40px; }
+html.menu-open .zgoda { visibility: hidden; }
+/* Filtry /realizacje.html: ukryty kafel (atrybut hidden) wypada z siatki,
+   kolejne kafle wskakuja na jego miejsce, bez dziur. Jawnie, na wypadek
+   gdyby kiedys kafel dostal wlasne display. */
+.realizacja-tile[hidden] { display: none; }

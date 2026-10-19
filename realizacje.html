@@ -16,8 +16,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Realizacje - Szwalnia ISABELL | Portfolio i Case Studies</title>
 <meta name="description" content="Poznaj portfolio Szwalni ISABELL. Ty projektujesz - my odszywamy z precyzją. Zobacz żakiety, kurtki, odzież firmową i małe serie odzieży z warsztatu w Ząbkach.">
-<meta property="og:title" content="Realizacje Szwalni ISABELL">
-<meta property="og:description" content="Wybrane realizacje z 36 lat pracy szwalni. Zobacz co szyjemy dla lokalnych i ogólnopolskich marek odzieżowych.">
+<meta property="og:title" content="Realizacje - Szwalnia ISABELL | Portfolio i Case Studies">
+<meta property="og:description" content="Poznaj portfolio Szwalni ISABELL. Ty projektujesz - my odszywamy z precyzją. Zobacz żakiety, kurtki, odzież firmową i małe serie odzieży z warsztatu w Ząbkach.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,20 +186,19 @@
   <section class="section-surface" style="padding-top: 40px; padding-bottom: 100px;">
     <div style="max-width: 1300px; margin: 0 auto; padding: 0 5%;">
       
-      <!-- Fake Filters UI to look good -->
-      <div class="portfolio-filters">
-        <button class="filter-btn active">Wszystkie</button>
-        <button class="filter-btn">Odzież damska</button>
-        <button class="filter-btn">Kolekcje firmowe</button>
-        <button class="filter-btn">Małe serie</button>
-        <button class="filter-btn">Krojownia</button>
+      <!-- Filtry: data-filtr przycisku = slowo z data-kategoria kafla (skrypt na dole strony) -->
+      <div class="portfolio-filters" role="group" aria-label="Filtruj realizacje">
+        <button type="button" class="filter-btn active" data-filtr="wszystkie" aria-pressed="true">Wszystkie</button>
+        <button type="button" class="filter-btn" data-filtr="zakiety" aria-pressed="false">Żakiety</button>
+        <button type="button" class="filter-btn" data-filtr="kurtki" aria-pressed="false">Kurtki</button>
+        <button type="button" class="filter-btn" data-filtr="detale" aria-pressed="false">Detale i branding</button>
       </div>
 
       <!-- Portfolio grid - 4x3, 12 realizacji -->
       <div class="realizacje-grid" data-lightbox>
 
         <!-- Rząd 1: żakiet + kurtka zimowa + żakiet (róż-bordo-zieleń) -->
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="zakiety">
           <img src="/assets/Realizacje/zakiet-damski-rozowy.webp" alt="Żakiet damski pudrowy róż - szycie żakietów na zlecenie, Szwalnia ISABELL" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Żakiety</span>
@@ -207,7 +206,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="kurtki">
           <img src="/assets/Realizacje/kurtka-zimowa-bordowa.webp" alt="Kurtka zimowa pikowana bordowa - produkcja kurtek damskich na zlecenie" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Kurtki zimowe</span>
@@ -215,7 +214,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="zakiety">
           <img src="/assets/Realizacje/zakiet-damski-zielony.webp" alt="Żakiet damski zielony - szycie odzieży damskiej premium, Szwalnia ISABELL" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Żakiety</span>
@@ -224,7 +223,7 @@
         </div>
 
         <!-- Rząd 2: kurtka zimowa + żakiet + kurtka wiosenna (czerń-kobalt-musztarda) -->
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="kurtki">
           <img src="/assets/Realizacje/kurtka-zimowa-czarna.webp" alt="Kurtka zimowa czarna błyszcząca - pikowana odzież wierzchnia z produkcji ISABELL" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Kurtki zimowe</span>
@@ -232,7 +231,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="zakiety">
           <img src="/assets/Realizacje/zakiet-damski-niebieski.webp" alt="Żakiet damski kobaltowy - szycie żakietów na zamówienie dla marek odzieżowych" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Żakiety</span>
@@ -240,7 +239,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="kurtki">
           <img src="/assets/Realizacje/kurtka-wiosenna-musztardowa.webp" alt="Kurtka wiosenna musztardowa z kapturem - produkcja odzieży wiosennej na zlecenie" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Kurtki wiosenne</span>
@@ -249,7 +248,7 @@
         </div>
 
         <!-- Rząd 3: żakiet + kurtka branding + kurtka wiosenna (beż-oliwka-czerwień) -->
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="zakiety">
           <img src="/assets/Realizacje/zakiet-damski-bezowy-lniany.webp" alt="Żakiet damski lniany beżowy - szycie z naturalnych tkanin, Szwalnia ISABELL" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Żakiety</span>
@@ -257,7 +256,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="kurtki detale">
           <img src="/assets/Realizacje/kurtka-zimowa-oliwkowa-isabell.webp" alt="Kurtka pikowana oliwkowa z brandingiem ISABELL - detale zamka i logo" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Branding</span>
@@ -265,7 +264,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="kurtki">
           <img src="/assets/Realizacje/kurtka-wiosenna-czerwona.webp" alt="Kurtka wiosenna czerwona - produkcja odzieży wiosennej damskiej na zamówienie" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Kurtki wiosenne</span>
@@ -274,7 +273,7 @@
         </div>
 
         <!-- Rząd 4: kurtka przejściowa + detal + parka (niebieski-beż-oliwka) -->
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="kurtki">
           <img src="/assets/Realizacje/kurtka-przejsciowa-niebieska.webp" alt="Kurtka przejściowa pikowana niebieska - szycie kurtek na zlecenie" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Kurtki przejściowe</span>
@@ -282,7 +281,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="detale">
           <img src="/assets/Realizacje/detal-kurtka-pikowana-zamek.webp" alt="Detal pikowania i zamka kurtki damskiej - precyzja rzemiosła Szwalnia ISABELL" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Detale</span>
@@ -290,7 +289,7 @@
           </div>
         </div>
 
-        <div class="realizacja-tile realizacja-tall">
+        <div class="realizacja-tile realizacja-tall" data-kategoria="kurtki">
           <img src="/assets/Realizacje/kurtka-wiosenna-oliwkowa-parka.webp" alt="Parka damska oliwkowa - produkcja odzieży wiosennej na zlecenie, Szwalnia ISABELL" loading="lazy">
           <div class="realizacja-overlay">
             <span class="tile-badge">Kurtki wiosenne</span>
@@ -511,12 +510,21 @@
       });
     }
     
-    // Prosty skrypt filtrów (UI-only for MVP)
+    // Filtry portfolio: kafel ma data-kategoria (lista slow), przycisk data-filtr.
+    // Ukryty kafel dostaje atrybut hidden, wiec siatka uklada sie bez dziur,
+    // a assets/lightbox.js przewija tylko widoczne zdjecia.
     const filters = document.querySelectorAll('.filter-btn');
+    const tiles = document.querySelectorAll('.realizacje-grid [data-kategoria]');
     filters.forEach(btn => {
       btn.addEventListener('click', () => {
-        filters.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        const f = btn.dataset.filtr;
+        filters.forEach(b => {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        tiles.forEach(t => {
+          t.hidden = f !== 'wszystkie' && !t.dataset.kategoria.split(' ').includes(f);
+        });
       });
     });
 
