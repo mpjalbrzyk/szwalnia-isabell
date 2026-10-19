@@ -88,8 +88,24 @@
   .kalk-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
   @media (min-width: 1000px) {
     .kalk-grid { grid-template-columns: 1.15fr 1fr; gap: 40px; }
-    .kalk-wynik-col { position: sticky; top: 120px; }
+    /* 21.10.2026: przyklejamy tylko gorny blok wyniku (status, cena, calosc,
+       glowne CTA), a szczegoly zostaja pod nim w normalnym przeplywie. Cala
+       kolumna (~1360 px) byla wyzsza niz ekran i na krokach 4-6 cena z CTA
+       uciekaly nad ekran. Kolumna rozciagnieta na wysokosc siatki, zeby blok
+       mial gdzie jechac. top = przyklejona nawigacja (12 px + ~68 px) + oddech. */
+    .kalk-wynik-col { align-self: stretch; }
+    #wynik {
+      position: sticky;
+      top: 96px;
+      z-index: 2;
+      max-height: calc(100vh - 112px);
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(17, 18, 22, 0.06);
+    }
   }
+  .kalk-wynik-szczegoly { margin-top: 16px; }
+  .kalk-wynik-szczegoly[hidden] { display: none; }
+  .kalk-wynik-szczegoly .kalk-wynik-body > :first-child { margin-top: 0; }
 
   .kalk-naglowek-narzedzia {
     font-family: 'DM Serif Display', serif;
@@ -942,6 +958,7 @@
               <span>Zacznij od pierwszego pytania, a wycena pojawi się tutaj.</span>
             </div>
           </div>
+          <div class="kalk-wynik kalk-wynik-szczegoly" id="wynik-szczegoly" hidden></div>
         </div>
 
       </div>
@@ -1329,13 +1346,28 @@
       hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
       document.documentElement.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
     });
+
+    // Zamknij menu po kliknieciu linku. Kotwice na tej samej stronie (np. #kontakt)
+    // przewijamy sami w nastepnej klatce, juz po zdjeciu blokady scrolla: przewiniecie
+    // w tym samym kroku co zmiana overflow bywa gubione i wyglada jak martwy klik.
     mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
         mobileMenu.classList.remove('active');
         document.documentElement.classList.remove('menu-open');
+        const hash = link.getAttribute('href') || '';
+        const target = hash.length > 1 && hash.charAt(0) === '#' ? document.getElementById(hash.slice(1)) : null;
+        if (target) {
+          e.preventDefault();
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (location.hash !== hash) history.pushState(null, '', hash);
+          });
+        }
       });
     });
+
     const mobileDropdownTrigger = document.querySelector('.mobile-dropdown-trigger');
     if (mobileDropdownTrigger) {
       mobileDropdownTrigger.addEventListener('click', () => {
@@ -1581,7 +1613,11 @@
     function render() {
       var r = policz();
       var el = document.getElementById('wynik');
+      var szcz = document.getElementById('wynik-szczegoly');
       var h = '';
+      /* Szczegoly maja tylko wyniki z cena. Ekrany STOP zostaja w jednym bloku. */
+      szcz.innerHTML = '';
+      szcz.hidden = true;
 
       if (r.status === 'niekompletne') {
         h = pasek('info', stan.material
@@ -1685,16 +1721,20 @@
             mala ? 'Niewielka partia. Koszt przygotowania mocno podbija cenę sztuki.'
                  : 'Parametry mieszczą się w standardowym zakresie produkcji.');
 
-      r.ostrzezenia.forEach(function (o) { h += pasek('info', o.tekst, o.ikona); });
-
       h += '<div class="kalk-wynik-body">'
         + '<div class="kalk-cena">' + r.od + ' do ' + r.do + ' zł <span class="jedn">za sztukę, netto</span></div>'
         + '<p class="kalk-calosc">Całe zlecenie: około <strong>' + zl(r.wartoscOd) + ' do ' + zl(r.wartoscDo) + ' zł</strong> netto</p>'
         + blokCtaGlowne()
-        + blokZastrzezenie();
+        + blokZastrzezenie()
+        + '</div>';
+
+      /* Szczegoly: ostrzezenia, tabela, czynniki, zastrzezenie prawne, dolne CTA */
+      var d = '';
+      r.ostrzezenia.forEach(function (o) { d += pasek('info', o.tekst, o.ikona); });
+      d += '<div class="kalk-wynik-body">';
 
       if (mala && r.sugerowanaIlosc) {
-        h += '<div class="kalk-zastrzezenie" style="border-left-color:#EA580C;">'
+        d += '<div class="kalk-zastrzezenie" style="border-left-color:#EA580C;">'
           + '<strong>Dlaczego przy tej ilości sztuka kosztuje więcej</strong>'
           + 'Przygotowanie modelu do produkcji kosztuje tyle samo niezależnie od wielkości serii: '
           + 'dokumentacja, wzornik, próbka, ustawienie maszyn. Przy około '
@@ -1703,7 +1743,7 @@
           + '</div>';
       }
 
-      h += blokKrzywa(r)
+      d += blokKrzywa(r)
         + blokCzynniki()
         + '<div class="kalk-zastrzezenie" style="margin-top:18px;">'
         + 'To jest szacunek na podstawie typowych modeli. Ostateczną cenę podajemy po obejrzeniu '
@@ -1714,6 +1754,8 @@
         + '</div>';
 
       el.innerHTML = h;
+      szcz.innerHTML = d;
+      szcz.hidden = false;
       gaRaz('calculator_result', {
         wyrob: stan.wyrob, prog_ilosci: r.prog, niska_wartosc: mala ? 'tak' : 'nie'
       });
@@ -1756,11 +1798,14 @@
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function (wpisy) {
         wpisy.forEach(function (w) {
-          if (w.target.id === 'wynik') wynikWidoczny = w.isIntersecting;
+          /* #wynik to od 21.10 tylko gorny blok (cena + CTA). Liczymy go jako
+             widoczny od polowy, inaczej pasek znikal, gdy z dolu wystawal
+             sam pasek statusu, a cena byla jeszcze pod krawedzia ekranu. */
+          if (w.target.id === 'wynik') wynikWidoczny = w.intersectionRatio >= 0.5;
           if (w.target.id === 'zapytanie') formWidoczny = w.isIntersecting;
         });
         odswiezPasek();
-      }, { threshold: 0.15 });
+      }, { threshold: [0, 0.15, 0.5] });
       ['wynik', 'zapytanie'].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) obs.observe(el);
@@ -1781,6 +1826,7 @@
           var t = 'Wybrano: <strong>' + p.nazwa + '</strong>. ';
           if (r.status === 'ok') t += 'Szacunek: ' + r.od + ' do ' + r.do + ' zł/szt. ';
           else if (r.status === 'ponizej-moq') t += 'Szyjemy od ' + r.moq + ' sztuk. ';
+          else if (r.status === 'poza-oferta') t += 'Ten wyrób szyjemy od ' + r.minimalnaIlosc + ' sztuk. ';
           else t += 'Ten wyrób wyceniamy indywidualnie. ';
           wi.innerHTML = t + '<a href="#wynik-kotwica">Zobacz wynik</a>';
           wi.hidden = false;
@@ -2029,12 +2075,21 @@
            capture: true jest konieczne. form-handler.js podpina sie w fazie
            bubble, a jego listener rejestruje sie wczesniej (nasz czeka na
            wczytanie cennika). W fazie capture jestesmy pierwsi, wiec handler
-           zbiera juz uzupelniona wartosc. */
+           zbiera juz uzupelniona wartosc.
+
+           21.10.2026: blok danych budujemy od nowa przy KAZDEJ wysylce z tego,
+           co uzytkownik wpisal recznie, i od razu po zebraniu danych przez
+           form-handler.js przywracamy pole (nasluch bubble na document, ta sama
+           wysylka zdarzenia, wiec bez migniecia). Uzytkownik nie widzi bloku,
+           a ponowna wysylka po bledzie webhooka niesie aktualne dane. */
+        var reczneOpis = null;
+        var migawkaWysylki = null;
         form.addEventListener('submit', function () {
-          ga('calculator_submit', { wyrob: stan.wyrob || 'brak', prog_ilosci: progEtykieta(Number(stan.ilosc)) });
+          migawkaWysylki = { wyrob: stan.wyrob || 'brak', prog_ilosci: progEtykieta(Number(stan.ilosc)) };
 
           var pole = document.getElementById('k-description');
-          if (!pole || pole.dataset.uzupelnione === '1') return;
+          if (!pole) return;
+          reczneOpis = pole.value;
 
           var r = policz();
           var l = [];
@@ -2069,10 +2124,30 @@
           }
           l.push('Cennik: ' + (CFG ? CFG.wersja : '-') + ' | Zrodlo: ' + window.location.pathname);
 
-          var wpisaneRecznie = pole.value.trim();
+          var wpisaneRecznie = reczneOpis.trim();
           pole.value = (wpisaneRecznie ? wpisaneRecznie + '\n\n' : '') + l.join('\n');
-          pole.dataset.uzupelnione = '1';
         }, true);
+
+        document.addEventListener('submit', function (e) {
+          if (e.target !== form || reczneOpis === null) return;
+          var pole = document.getElementById('k-description');
+          if (pole) pole.value = reczneOpis;
+          reczneOpis = null;
+        });
+
+        /* calculator_submit tylko po UDANEJ wysylce. form-handler.js po
+           odpowiedzi res.ok ustawia form.dataset.leadTracked i podmienia
+           tresc formularza na komunikat sukcesu. Pulapka antyspamowa tez
+           podmienia tresc, ale bez leadTracked i bez POST-a, wiec jej nie
+           liczymy. Blad webhooka niczego nie podmienia, wiec tez nie liczymy. */
+        var submitWyslany = false;
+        if ('MutationObserver' in window) {
+          new MutationObserver(function () {
+            if (submitWyslany || form.dataset.leadTracked !== 'true') return;
+            submitWyslany = true;
+            ga('calculator_submit', migawkaWysylki || { wyrob: stan.wyrob || 'brak' });
+          }).observe(form, { childList: true });
+        }
       }
     }
 
